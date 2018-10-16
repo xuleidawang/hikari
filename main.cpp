@@ -54,8 +54,7 @@ Vector3  castRay(const Ray ray, int depth){
   Intersection intersection = getCloseIntersec(ray);
   if(!intersection.happened)return resColor;
   Sphere* object = (Sphere*)intersection.obj;
-  
-  //return object->color;
+
   Vector3 x = intersection.coords;
   Vector3 n=intersection.normal;
   Vector3 nl=n.dot(ray.direction)<0?n:n*-1;
@@ -69,25 +68,45 @@ Vector3  castRay(const Ray ray, int depth){
   // Ideal DIFFUSE reflection 
   if(object->refl == DIFF)
   {
-
     double r1=2*M_PI*drand48(), r2=drand48(), r2s=sqrt(r2); 
     Vector3 w=nl, u=((fabs(w.x)>.1?Vector3(0,1):Vector3(1)).cross(w)).normalize(), v=w.cross(u); 
     Vector3 d = (u*cos(r1)*r2s + v*sin(r1)*r2s + w*sqrt(1-r2)).normalize(); 
-    // directColor = 1* clamp(n.dot(-ray.direction));
-    // indirectColor = r1*castRay(Ray(x,d),depth);
     return object->e + f*castRay(Ray(x,d),depth);
   }
   else if(object->refl==SPEC){
     double roughness = 0.8;
-        Vector3 reflected = ray.direction - n * 2 * n.dot(ray.direction);
-        Vector3 refdirect (
-            reflected.x + (drand48()-0.5)*roughness,
-            reflected.y + (drand48()-0.5)*roughness,
-            reflected.z + (drand48()-0.5)*roughness
-        );
-    return f*castRay(Ray(x, refdirect.normalize()), depth);
+    Vector3 reflected = ray.direction - n * 2 * n.dot(ray.direction);
+    Vector3 refdirect (
+      reflected.x + (drand48()-0.5)*roughness,
+      reflected.y + (drand48()-0.5)*roughness,
+      reflected.z + (drand48()-0.5)*roughness
+      );
+    Ray reflRay(x,refdirect.normalize());
+    return f*castRay(reflRay, depth);
   }
-  return resColor;
+  else if(object->refl ==REFR){
+    double roughness = 0.8;
+    Vector3 reflected = ray.direction - n * 2 * n.dot(ray.direction);
+    Vector3 refdirect (
+      reflected.x + (drand48()-0.5)*roughness,
+      reflected.y + (drand48()-0.5)*roughness,
+      reflected.z + (drand48()-0.5)*roughness
+      );
+    Ray reflRay(x,refdirect.normalize());
+    bool into = n.dot(nl)>0;                // Ray from outside going in? 
+    double nc=1, nt=1.5, nnt=into?nc/nt:nt/nc, ddn=ray.direction.dot(nl), cos2t; 
+    if ((cos2t=1-nnt*nnt*(1-ddn*ddn))<0)    // Total internal reflection 
+      return object->e + f*(castRay(reflRay,depth)); 
+    Vector3 tdir = (ray.direction*nnt - n*((into?1:-1)*(ddn*nnt+sqrt(cos2t)))).normalize(); 
+   double a=nt-nc, b=nt+nc, R0=a*a/(b*b), c = 1-(into?-ddn:tdir.dot(n)); 
+   double Re=R0+(1-R0)*c*c*c*c*c,Tr=1-Re,P=.25+.5*Re,RP=Re/P,TP=Tr/(1-P); 
+   return object->e + f*(depth>2 ? (drand48()<P ?   // Russian roulette 
+     castRay(reflRay,depth)*RP:castRay(Ray(x,tdir),depth)*TP) : 
+     castRay(reflRay,depth)*Re+castRay(Ray(x,tdir),depth)*Tr); 
+
+
+  }
+  
 }
 
 
