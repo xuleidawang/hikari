@@ -1,7 +1,7 @@
 # PathTracer
 This is my implementation for Monte Carlo Path Tracing.
 
-### Checklist
+### Features Checklist
 
 - [X] Simple Primitives (Sphere, Box, Plane) 
 - [X] Vector class
@@ -16,3 +16,7 @@ This is my implementation for Monte Carlo Path Tracing.
 - [ ] Importance Sampling of glossy/Phone Material
 - [ ] Area light
 - [ ] Multiple importance samlping  
+
+
+
+![Sample Output](/results/image.ppm)
