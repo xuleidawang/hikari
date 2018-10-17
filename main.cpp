@@ -88,7 +88,8 @@ Vector3  castRay(const Ray ray, int depth){
       reflected.y + (drand48()-0.5)*roughness,
       reflected.z + (drand48()-0.5)*roughness
       );
-    Ray reflRay(x,refdirect.normalize());
+    Ray reflRay(x,refdirect
+      .normalize());
     //return object->e + f*(castRay(Ray(x,(ray.direction-n*2*n.dot(ray.direction)).normalize()),depth)); 
     return object->e+ f*castRay(reflRay, depth);
   }
