@@ -19,4 +19,6 @@ This is my implementation for Monte Carlo Path Tracing.
 
 
 
-![Sample Output](/results/image.ppm)
+### Reference
+1. [ScratchPixel](https://www.scratchapixel.com/lessons/3d-basic-rendering/global-illumination-path-tracing)
+2. [smallpt](http://www.kevinbeason.com/smallpt/ )
