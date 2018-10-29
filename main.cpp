@@ -88,8 +88,7 @@ Vector3  castRay(const Ray ray, int depth){
       reflected.y + (drand48()-0.5)*roughness,
       reflected.z + (drand48()-0.5)*roughness
       );
-    Ray reflRay(x,refdirect
-      .normalize());
+    Ray reflRay(x,refdirect.normalize());
     //return object->e + f*(castRay(Ray(x,(ray.direction-n*2*n.dot(ray.direction)).normalize()),depth)); 
     return object->e+ f*castRay(reflRay, depth);
   }
@@ -103,15 +102,18 @@ Vector3  castRay(const Ray ray, int depth){
       );
     Ray reflRay(x,refdirect.normalize());
     bool into = n.dot(nl)>0;                // Ray from outside going in? 
-    double nc=1, nt=1.5, nnt=into?nc/nt:nt/nc, ddn=ray.direction.dot(nl), cos2t; 
-    if ((cos2t=1-nnt*nnt*(1-ddn*ddn))<0)    // Total internal reflection 
-      return object->e + f*(castRay(reflRay,depth)); 
+    double nc=1, nt=1.5, nnt;
+    if(into)nnt = nc/nt;
+    else nnt = nt/nc;
+    double ddn=ray.direction.dot(nl);
+    double cos2t = 1-nnt*nnt*(1-ddn*ddn);
+    if(cos2t<0) return  object->e + f*(castRay(reflRay,depth)); // Total internal reflection 
     Vector3 tdir = (ray.direction*nnt - n*((into?1:-1)*(ddn*nnt+sqrt(cos2t)))).normalize(); 
-   double a=nt-nc, b=nt+nc, R0=a*a/(b*b), c = 1-(into?-ddn:tdir.dot(n)); 
-   double Re=R0+(1-R0)*c*c*c*c*c,Tr=1-Re,P=.25+.5*Re,RP=Re/P,TP=Tr/(1-P); 
-   return object->e + f*(depth>2 ? (drand48()<P ?   // Russian roulette 
-     castRay(reflRay,depth)*RP:castRay(Ray(x,tdir),depth)*TP) : 
-     castRay(reflRay,depth)*Re+castRay(Ray(x,tdir),depth)*Tr); 
+    double a=nt-nc, b=nt+nc, R0=a*a/(b*b), c = 1-(into?-ddn:tdir.dot(n)); 
+    double Re=R0+(1-R0)*c*c*c*c*c,Tr=1-Re,P=.25+.5*Re,RP=Re/P,TP=Tr/(1-P); 
+    return object->e + f*(depth>2 ? (drand48()<P ?   // Russian roulette 
+      castRay(reflRay,depth)*RP:castRay(Ray(x,tdir),depth)*TP): 
+      castRay(reflRay,depth)*Re+castRay(Ray(x,tdir),depth)*Tr); 
   }
   
 }
@@ -119,10 +121,13 @@ Vector3  castRay(const Ray ray, int depth){
 
 int main(int argc, char** argv){	
 	//number of samples per pixel
+
 	int spp = argc==2?atoi(argv[1])/4:1  ;
 	Ray cam(Vector3(50,52,295.6), Vector3(0,-0.042612,-1).normalize()); // camera pos, dir 
 	Vector3 cx(IMAGE_WITDH*.5135/IMAGE_HEIGHT), cy=(cx.cross(cam.direction)).normalize()*.5135, r;
   Vector3 *c=new Vector3[IMAGE_HEIGHT*IMAGE_WITDH]; 
+  Camera camera(Vector3(50,52,295.6),Vector3(0,-0.042612,-1).normalize(),IMAGE_WITDH,IMAGE_HEIGHT);
+  
   for (int y=0; y<IMAGE_HEIGHT; y++){                       // Loop over image rows 
     fprintf(stderr,"\rRendering (%d spp) %5.2f%%",spp*4, 100.*y/(IMAGE_HEIGHT-1)); 
     for (unsigned short x=0, Xi[3]={0,0,y*y*y}; x<IMAGE_WITDH; x++)   // Loop cols 
