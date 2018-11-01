@@ -4,15 +4,24 @@
 #include "Shape.h"
 #include "Ray.h"
 #include "Intersection.h"
+#include "Material.h"
 
  
 class Sphere : public Shape {
 public:
 		const double radius;
-		const Vector3 pos,e, color;
-		const Refl_t refl;
-		Sphere():radius(0.0),pos(Vector3()),e(Vector3()), color(Vector3()),refl(DIFF){}
-		Sphere(double rad_, Vector3 p_, Vector3 e_, Vector3 c_, Refl_t refl_):radius(rad_), pos(p_), e(e_), color(c_), refl(refl_) {} 
+		const Vector3 pos;
+		//,e, color;
+		Material material;
+		//const Refl_t refl;
+		Sphere():radius(0.0),pos(Vector3()),material(Material()){}
+		Sphere(double rad_, Vector3 p_, Material m):radius(rad_),pos(p_), material(m){};
+
+		Sphere(double rad_, Vector3 p_, Vector3 e_, Vector3 c_, MaterialType refl_):
+		radius(rad_), pos(p_){
+			this->material = Material(refl_, c_, e_);
+		} 
+
 		bool intersect(const Ray& ray);
 		Intersection getIntersection(Ray _ray);
 		Vector3 getNormal(Vector3 position);
