@@ -8,7 +8,7 @@ This is my implementation for Monte Carlo Path Tracing.
 - [X] Camera class
 - [X] Ray class
 - [X] Intersection class(position, normal, textrure coords...)
-- [ ] Material class (diffuse, specular, phong, glossy...)
+- [X] Material class (diffuse, specular, phong, glossy...)
 - [ ] Emitter class (point light, (ir)radiance)
 - [X] Russian Roulette
 - [ ] Triangle Meshes
