@@ -60,28 +60,28 @@ include CMakeFiles/PathTracer.dir/flags.make
 CMakeFiles/PathTracer.dir/lib/tiny_obj_loader/tiny_obj_loader.cc.o: CMakeFiles/PathTracer.dir/flags.make
 CMakeFiles/PathTracer.dir/lib/tiny_obj_loader/tiny_obj_loader.cc.o: ../lib/tiny_obj_loader/tiny_obj_loader.cc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/leixu/Desktop/PathTracer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PathTracer.dir/lib/tiny_obj_loader/tiny_obj_loader.cc.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PathTracer.dir/lib/tiny_obj_loader/tiny_obj_loader.cc.o -c /Users/leixu/Desktop/PathTracer/lib/tiny_obj_loader/tiny_obj_loader.cc
+	/usr/local/bin/g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PathTracer.dir/lib/tiny_obj_loader/tiny_obj_loader.cc.o -c /Users/leixu/Desktop/PathTracer/lib/tiny_obj_loader/tiny_obj_loader.cc
 
 CMakeFiles/PathTracer.dir/lib/tiny_obj_loader/tiny_obj_loader.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PathTracer.dir/lib/tiny_obj_loader/tiny_obj_loader.cc.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/leixu/Desktop/PathTracer/lib/tiny_obj_loader/tiny_obj_loader.cc > CMakeFiles/PathTracer.dir/lib/tiny_obj_loader/tiny_obj_loader.cc.i
+	/usr/local/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/leixu/Desktop/PathTracer/lib/tiny_obj_loader/tiny_obj_loader.cc > CMakeFiles/PathTracer.dir/lib/tiny_obj_loader/tiny_obj_loader.cc.i
 
 CMakeFiles/PathTracer.dir/lib/tiny_obj_loader/tiny_obj_loader.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PathTracer.dir/lib/tiny_obj_loader/tiny_obj_loader.cc.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/leixu/Desktop/PathTracer/lib/tiny_obj_loader/tiny_obj_loader.cc -o CMakeFiles/PathTracer.dir/lib/tiny_obj_loader/tiny_obj_loader.cc.s
+	/usr/local/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/leixu/Desktop/PathTracer/lib/tiny_obj_loader/tiny_obj_loader.cc -o CMakeFiles/PathTracer.dir/lib/tiny_obj_loader/tiny_obj_loader.cc.s
 
 CMakeFiles/PathTracer.dir/main.cpp.o: CMakeFiles/PathTracer.dir/flags.make
 CMakeFiles/PathTracer.dir/main.cpp.o: ../main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/leixu/Desktop/PathTracer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/PathTracer.dir/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PathTracer.dir/main.cpp.o -c /Users/leixu/Desktop/PathTracer/main.cpp
+	/usr/local/bin/g++-8  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PathTracer.dir/main.cpp.o -c /Users/leixu/Desktop/PathTracer/main.cpp
 
 CMakeFiles/PathTracer.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PathTracer.dir/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/leixu/Desktop/PathTracer/main.cpp > CMakeFiles/PathTracer.dir/main.cpp.i
+	/usr/local/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/leixu/Desktop/PathTracer/main.cpp > CMakeFiles/PathTracer.dir/main.cpp.i
 
 CMakeFiles/PathTracer.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PathTracer.dir/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/leixu/Desktop/PathTracer/main.cpp -o CMakeFiles/PathTracer.dir/main.cpp.s
+	/usr/local/bin/g++-8 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/leixu/Desktop/PathTracer/main.cpp -o CMakeFiles/PathTracer.dir/main.cpp.s
 
 # Object files for target PathTracer
 PathTracer_OBJECTS = \
@@ -89,12 +89,10 @@ PathTracer_OBJECTS = \
 "CMakeFiles/PathTracer.dir/main.cpp.o"
 
 # External object files for target PathTracer
-PathTracer_EXTERNAL_OBJECTS = \
-"/Users/leixu/Desktop/PathTracer/obj/dragon2.obj"
+PathTracer_EXTERNAL_OBJECTS =
 
 PathTracer: CMakeFiles/PathTracer.dir/lib/tiny_obj_loader/tiny_obj_loader.cc.o
 PathTracer: CMakeFiles/PathTracer.dir/main.cpp.o
-PathTracer: ../obj/dragon2.obj
 PathTracer: CMakeFiles/PathTracer.dir/build.make
 PathTracer: CMakeFiles/PathTracer.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/leixu/Desktop/PathTracer/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable PathTracer"

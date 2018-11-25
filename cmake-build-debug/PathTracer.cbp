@@ -126,36 +126,6 @@
 		<Unit filename="/Users/leixu/Desktop/PathTracer/main.cpp">
 			<Option target="PathTracer"/>
 		</Unit>
-		<Unit filename="/Users/leixu/Desktop/PathTracer/obj/dragon2.obj">
-			<Option target="PathTracer"/>
-		</Unit>
-		<Unit filename="/Users/leixu/Desktop/PathTracer/results/diff+spe128.ppm">
-			<Option target="PathTracer"/>
-		</Unit>
-		<Unit filename="/Users/leixu/Desktop/PathTracer/results/diff+spe256.ppm">
-			<Option target="PathTracer"/>
-		</Unit>
-		<Unit filename="/Users/leixu/Desktop/PathTracer/results/diff+spe4.ppm">
-			<Option target="PathTracer"/>
-		</Unit>
-		<Unit filename="/Users/leixu/Desktop/PathTracer/results/diffuSpeGlossy256.ppm">
-			<Option target="PathTracer"/>
-		</Unit>
-		<Unit filename="/Users/leixu/Desktop/PathTracer/results/diffuSpeGlossy64spp.ppm">
-			<Option target="PathTracer"/>
-		</Unit>
-		<Unit filename="/Users/leixu/Desktop/PathTracer/results/diffuse128.ppm">
-			<Option target="PathTracer"/>
-		</Unit>
-		<Unit filename="/Users/leixu/Desktop/PathTracer/results/diffuse4.ppm">
-			<Option target="PathTracer"/>
-		</Unit>
-		<Unit filename="/Users/leixu/Desktop/PathTracer/results/diffuse64spp.ppm">
-			<Option target="PathTracer"/>
-		</Unit>
-		<Unit filename="/Users/leixu/Desktop/PathTracer/results/image.ppm">
-			<Option target="PathTracer"/>
-		</Unit>
 		<Unit filename="/Users/leixu/Desktop/PathTracer/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

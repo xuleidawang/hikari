@@ -127,4 +127,6 @@ Scene.h
 /Users/leixu/Desktop/PathTracer/Scene.h
 Renderer.h
 /Users/leixu/Desktop/PathTracer/Renderer.h
+time.h
+/Users/leixu/Desktop/PathTracer/time.h
 
