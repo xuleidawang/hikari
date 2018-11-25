@@ -83,6 +83,7 @@ bool Triangle::intersect(const Ray& ray){
 
 Vector3 Triangle::getNormal(Vector3 position){return normal;}
 Intersection Triangle::getIntersection(Ray ray){
+    //std::cout<<"Intersects Triangle!"<<std::endl;
 	Intersection inter;inter.happened=false;
 	if(ray.direction.dot(normal)>0)return inter;
 	double u,v ,t_tmp=0;
@@ -101,6 +102,7 @@ Intersection Triangle::getIntersection(Ray ray){
 
 
 	inter.obj=this;
+	inter.m = *this->m;
 	inter.happened=true;
 	inter.normal = this->normal;
 	inter.coords = t_tmp*ray.direction+ray.origin;
@@ -243,9 +245,9 @@ Intersection Mesh::getIntersection( Ray ray) {
     Vector3 colour = Vector3();
     //bool hit = node->hit(node, ray, t, tmin, normal, colour);
     //bool hit = bvh.getIntersection(ray, t, tmin, normal);
-
+//    std::cout<<"intersect with mesh"<<std::endl;
     Intersection intersection;
-    Material _m(DIFF,Vector3(1.0,1.0,1.0),Vector3(0,0,0));
+    Material _m(DIFF,Vector3(0.0,.85,0.0),Vector3(0,0,0));
     intersection.m = _m;
     //std::cout<<"Intersection with Mesh"<<std::endl;
     return intersection;

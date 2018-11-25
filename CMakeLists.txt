@@ -6,19 +6,14 @@ set(CMAKE_CXX_STANDARD 14)
 include_directories(.)
 include_directories(lib/tiny_obj_loader)
 
+set(CMAKE_CXX_COMPILER /usr/local/bin/g++-8)
+set(CMAKE_C_COMPILER /usr/local/bin/gcc-8)
+# enable openmp using -fopenmp
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fopenmp")
+
 add_executable(PathTracer
         lib/tiny_obj_loader/tiny_obj_loader.cc
         lib/tiny_obj_loader/tiny_obj_loader.h
-        obj/dragon2.obj
-        results/diff+spe128.ppm
-        results/diff+spe256.ppm
-        results/diff+spe4.ppm
-        results/diffuse128.ppm
-        results/diffuse4.ppm
-        results/diffuse64spp.ppm
-        results/diffuSpeGlossy256.ppm
-        results/diffuSpeGlossy64spp.ppm
-        results/image.ppm
         Bounds3.h
         Camera.h
         Intersection.h

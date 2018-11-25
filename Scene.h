@@ -42,7 +42,7 @@ Intersection Scene::intersect(const Ray &ray){
   return intersec;
 }
 
-//Randomly generate a direction along the hemisphere of the shading normal N
+//Randomly generate a direction in a hemisphere w.r.t shading normal n
 Vector3 getHemiRandomDirection(Vector3 n){
   double r1=2*M_PI*drand48(), r2=drand48(), r2s=sqrt(r2); 
   Vector3 w=n;
@@ -58,25 +58,24 @@ Vector3  Scene::castRay(const Ray &ray, int depth){
   // find the intersected object 
   Intersection intersection = Scene::intersect(ray);
   if(!intersection.happened)return resColor;
-  Sphere* object = (Sphere*)intersection.obj;
-
+  Material *m = &intersection.m;
   Vector3 x = intersection.coords;
   Vector3 n=intersection.normal;
   Vector3 nl=n.dot(ray.direction)<0?n:n*-1;// hitting at outside or inside of the intersected object
-  Vector3 f=object->material.getColor(); 
+  Vector3 f=m->getColor();
 
   double p = fmax(fmax(f.x,f.y),f.z);// max refl 
   if (++depth>5){
     if (drand48()<p)f=f*(1/p);
-    else return object->material.getEmission(); //R.R. 
+    else return m->getEmission(); //R.R.
   }
   // Ideal DIFFUSE reflection 
-  if(object->material.getType() == DIFF)
+  if(m->getType() == DIFF)
   {
     Vector3 d = getHemiRandomDirection(nl);
-    return object->material.getEmission() + f*castRay(Ray(x,d),depth);
+    return m->getEmission() + f*castRay(Ray(x,d),depth);
   }
- else if(object->material.getType()==SPEC){
+ else if(m->getType()==SPEC){
    double roughness = 0.8;
    Vector3 reflected = ray.direction - n * 2 * n.dot(ray.direction);
    Vector3 refdirect (
@@ -88,9 +87,9 @@ Vector3  Scene::castRay(const Ray &ray, int depth){
    Ray reflRay(x,refdirect.normalize());
    //Ray reflRay(x, reflected.normalize());
    //return object->e + f*(castRay(Ray(x,(ray.direction-n*2*n.dot(ray.direction)).normalize()),depth));
-   return object->material.getEmission()+ f*castRay(reflRay, depth);
+   return m->getEmission()+ f*castRay(reflRay, depth);
  }
- else if(object->material.getType() ==REFR){
+ else if(m->getType() ==REFR){
    double roughness = 0.8;
    Vector3 reflected = ray.direction - n * 2 * n.dot(ray.direction);
    Vector3 refdirect (
@@ -105,11 +104,11 @@ Vector3  Scene::castRay(const Ray &ray, int depth){
    else nnt = nt/nc;
    double ddn=ray.direction.dot(nl);
    double cos2t = 1-nnt*nnt*(1-ddn*ddn);
-   if(cos2t<0) return  object->material.getEmission() + f*(castRay(reflRay,depth)); // Total internal reflection
+   if(cos2t<0) return  m->getEmission() + f*(castRay(reflRay,depth)); // Total internal reflection
    Vector3 tdir = (ray.direction*nnt - n*((into?1:-1)*(ddn*nnt+sqrt(cos2t)))).normalize();
    double a=nt-nc, b=nt+nc, R0=a*a/(b*b), c = 1-(into?-ddn:tdir.dot(n));
    double Re=R0+(1-R0)*c*c*c*c*c,Tr=1-Re,P=.25+.5*Re,RP=Re/P,TP=Tr/(1-P);
-   return object->material.getEmission() + f*(depth>2 ? (drand48()<P ?   // Russian roulette
+   return m->getEmission() + f*(depth>2 ? (drand48()<P ?   // Russian roulette
      castRay(reflRay,depth)*RP:castRay(Ray(x,tdir),depth)*TP):
      castRay(reflRay,depth)*Re+castRay(Ray(x,tdir),depth)*Tr);
  }

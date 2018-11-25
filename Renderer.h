@@ -5,6 +5,7 @@
 #include "Vectors.h"
 #include "Scene.h"
 #include "Camera.h"
+
 // Clamp double to min/max of 0/1
 inline double clamp(double x){ return x<0 ? 0 : x>1 ? 1 : x; }
 // Clamp to between 0-255
@@ -36,7 +37,7 @@ void Renderer::render(int samples) {
     double samples_recp = 1./samples;
 
     // Main Loop
-    //#pragma omp parallel for schedule(dynamic, 1)       // OpenMP
+    #pragma omp parallel for schedule(dynamic, 1)       // OpenMP
     for (int y=0; y<height; y++){
         fprintf(stderr, "\rRendering (%i samples): %.2f%% ",samples, (double)y/height*100);                   // progress
         for (int x=0; x<width; x++){

@@ -75,7 +75,7 @@ Intersection Sphere::getIntersection(Ray _ray) {
 
 	result.coords = Vector3(_ray.origin + _ray.direction * t);
 	result.normal = Vector3(result.coords - pos).normalize();
-
+	result.m = this->material;
 	result.obj = this;
 	result.distance = t;
 
