@@ -11,7 +11,7 @@ This is my implementation for Monte Carlo Path Tracing.
 - [X] Material class (diffuse, specular, phong, glossy...)
 - [ ] Emitter class (point light, (ir)radiance)
 - [X] Russian Roulette
-- [ ] Triangle Meshes
+- [X] Triangle Meshes
 - [ ] Bounding volume hierarchy(BVH, for triangle mesh only)
 - [ ] Importance Sampling of glossy/Phone Material
 - [ ] Area light

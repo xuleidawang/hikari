@@ -4,7 +4,7 @@
 
 #include "Vectors.h"
 
-enum MaterialType {DIFF, SPEC, REFR };  // material types, used in radiance() 
+enum MaterialType {DIFF, SPEC, REFR};  // material types, used in radiance()
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -16,6 +16,7 @@ private:
 	Vector3 m_emission;
 	//Texture tex;
 public:
+	//Material(){m_type=DIFF;m_color=Vector3(1.0,1.0,1.0);m_emission=Vector3(0.0,0.0,0.0);}
 	Material(MaterialType t=DIFF, Vector3 c=Vector3(1,1,1), Vector3 e=Vector3(0,0,0));
 	MaterialType getType();
 	Vector3 getColor();
@@ -34,6 +35,10 @@ Material::Material(MaterialType t, Vector3 c, Vector3 e){
 MaterialType Material::getType(){return m_type;}
 Vector3 Material::getColor(){return m_color;}
 Vector3 Material::getEmission() {return m_emission;}
+
+Vector3 Material::getColorAt(double u, double v) {
+	return Vector3();
+}
 //Vector3 getColorAt(double u, double v) const;
 
 

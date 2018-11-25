@@ -1,13 +1,13 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 #include "Vectors.h"
-#include "Shape.h"
+#include "Object.h"
 #include "Ray.h"
 #include "Intersection.h"
 #include "Material.h"
 
  
-class Sphere : public Shape {
+class Sphere : public Object {
 public:
 		const double radius;
 		const Vector3 pos;
@@ -22,6 +22,7 @@ public:
 			this->material = Material(refl_, c_, e_);
 		} 
 
+		//Inherited Virtual functions
 		bool intersect(const Ray& ray);
 		Intersection getIntersection(Ray _ray);
 		Vector3 getNormal(Vector3 position);
