@@ -13,11 +13,12 @@ private:
 	std::vector<tinyobj::shape_t> m_shapes;
     std::vector<tinyobj::material_t> m_materials;
     std::vector<Material> materials;
-    std::vector<Triangle*> tris;
+
     Material m_m;	// Material
     //BVH bvh;
 
 public:
+    std::vector<Triangle*> tris;
 	Mesh(Vector3 p_, const char* file_path, Material m_);
 
 	bool intersect(const Ray& ray){return false;};
@@ -169,6 +170,7 @@ Mesh::Mesh(Vector3 p_, const char* file_path, Material m_) {
         }
 
     }
+    std::cout<<"shapes size is :"<<shapes_size<<std::endl;
 
     // Load triangles from obj
     for (int i = 0; i < shapes_size; i++) {
@@ -176,19 +178,19 @@ Mesh::Mesh(Vector3 p_, const char* file_path, Material m_) {
         for (size_t f = 0; f < indices_size; f++) {
 
             // Triangle vertex coordinates
-            Vector3 v0_ = Vector3(
+            Vector3 v0_ = 5*Vector3(
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f] * 3     ],
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f] * 3 + 1 ],
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f] * 3 + 2 ]
             ) + m_p;
 
-            Vector3 v1_ = Vector3(
+            Vector3 v1_ = 5*Vector3(
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f + 1] * 3     ],
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f + 1] * 3 + 1 ],
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f + 1] * 3 + 2 ]
             ) + m_p;
 
-            Vector3 v2_ = Vector3(
+            Vector3 v2_ = 5*Vector3(
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f + 2] * 3     ],
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f + 2] * 3 + 1 ],
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f + 2] * 3 + 2 ]
@@ -221,9 +223,10 @@ Mesh::Mesh(Vector3 p_, const char* file_path, Material m_) {
                 t1_=Vector3();
                 t2_=Vector3();
             }
-
+            std::cout<<v0_<<" , " <<v1_<<" , "<<v2_<<std::endl;
             if (m_shapes[i].mesh.material_ids[ f ] < materials.size())
-                tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_, &materials[ m_shapes[i].mesh.material_ids[ f ] ]));
+                //tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_, &materials[ m_shapes[i].mesh.material_ids[ f ] ]));
+                tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_, &m_m));
             else
                 tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_, &m_m));
         }
@@ -240,17 +243,32 @@ Mesh::Mesh(Vector3 p_, const char* file_path, Material m_) {
 
 // Check if ray intersects with mesh. Returns ObjectIntersection data structure
 Intersection Mesh::getIntersection( Ray ray) {
-    double t=0, tmin=INFINITY;
+    double t=INFINITY, tmin=INFINITY;
+    int size = tris.size();
     Vector3 normal = Vector3();
     Vector3 colour = Vector3();
     //bool hit = node->hit(node, ray, t, tmin, normal, colour);
     //bool hit = bvh.getIntersection(ray, t, tmin, normal);
 //    std::cout<<"intersect with mesh"<<std::endl;
-    Intersection intersection;
+    Intersection tmp,intersec;
+    intersec.happened=false;
     Material _m(DIFF,Vector3(0.0,.85,0.0),Vector3(0,0,0));
-    intersection.m = _m;
+    //intersection.m = _m;
+    for(int i =0;i<size;i++){
+        tmp = tris.at((unsigned)i)->getIntersection(ray);
+
+        if(!tris.at((unsigned)i)->intersect(ray))continue;
+        else {
+            intersec.happened=true;
+            tmp = tris.at((unsigned)i)->getIntersection(ray);
+            if(tmp.distance<t){
+                intersec = tmp;
+                t = intersec.distance;
+            }
+        }
+    }
     //std::cout<<"Intersection with Mesh"<<std::endl;
-    return intersection;
+    return intersec;
 
 }
 

@@ -7,15 +7,17 @@
 #include "Intersection.h"
 #include <vector>
 class Object;
-class Scene {
-private:
-    std::vector<Object*> m_objects;
+class
+Scene {
+
 
 public:
     Scene(){};
     void add(Object *object);
     Intersection intersect(const Ray &ray);
     Vector3 castRay(const Ray &ray, int depth);
+    std::vector<Object*> m_objects;
+
 };
 
 
