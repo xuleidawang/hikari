@@ -4,6 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/leixu/Desktop/PathTracer/BVH.cpp" "/Users/leixu/Desktop/PathTracer/cmake-build-debug/CMakeFiles/PathTracer.dir/BVH.cpp.o"
+  "/Users/leixu/Desktop/PathTracer/Sphere.cpp" "/Users/leixu/Desktop/PathTracer/cmake-build-debug/CMakeFiles/PathTracer.dir/Sphere.cpp.o"
   "/Users/leixu/Desktop/PathTracer/lib/tiny_obj_loader/tiny_obj_loader.cc" "/Users/leixu/Desktop/PathTracer/cmake-build-debug/CMakeFiles/PathTracer.dir/lib/tiny_obj_loader/tiny_obj_loader.cc.o"
   "/Users/leixu/Desktop/PathTracer/main.cpp" "/Users/leixu/Desktop/PathTracer/cmake-build-debug/CMakeFiles/PathTracer.dir/main.cpp.o"
   )

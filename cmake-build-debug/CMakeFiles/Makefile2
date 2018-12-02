@@ -71,7 +71,7 @@ CMAKE_BINARY_DIR = /Users/leixu/Desktop/PathTracer/cmake-build-debug
 CMakeFiles/PathTracer.dir/all:
 	$(MAKE) -f CMakeFiles/PathTracer.dir/build.make CMakeFiles/PathTracer.dir/depend
 	$(MAKE) -f CMakeFiles/PathTracer.dir/build.make CMakeFiles/PathTracer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/leixu/Desktop/PathTracer/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target PathTracer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/leixu/Desktop/PathTracer/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target PathTracer"
 .PHONY : CMakeFiles/PathTracer.dir/all
 
 # Include target in all.
@@ -81,7 +81,7 @@ all: CMakeFiles/PathTracer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/PathTracer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/leixu/Desktop/PathTracer/cmake-build-debug/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/leixu/Desktop/PathTracer/cmake-build-debug/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/PathTracer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/leixu/Desktop/PathTracer/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/PathTracer.dir/rule

@@ -50,6 +50,7 @@ void Renderer::render(int samples) {
             }
             int i = y*width+x;
             m_pixel_buffer[i] = color * samples_recp;
+//            std::cout<< m_pixel_buffer[i]<<std::endl;
             m_pixel_buffer[i] = m_pixel_buffer[i] + Vector3(clamp(color.x),clamp(color.y),clamp(color.z))*.25; 
         }
     }

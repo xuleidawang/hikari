@@ -33,7 +33,7 @@ pos(_pos),target(_target),width(_width),height(_height){
     ratio = (double)width/height;
     direction = (target - pos).normalize();
     //m_x_direction = Vector3(0, 0, 1).cross(direction ).normalize();
-    m_x_direction = Vector3(0, 0, 1).cross(direction ).normalize();
+    m_x_direction = Vector3(0, 0, 1).cross(direction).normalize();
     m_y_direction = m_x_direction.cross(direction).normalize();
 
     m_x_spacing = (2.0 * ratio)/(double)width;

@@ -25,4 +25,7 @@ add_executable(PathTracer
         Scene.h
         Sphere.h
         Triangle.h
-        Vectors.h)
+        Vectors.h
+        Sphere.cpp
+        BVH.h
+        BVH.cpp)

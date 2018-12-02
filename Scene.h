@@ -4,44 +4,61 @@
 #include "Ray.h"
 #include "Vectors.h"
 #include "Object.h"
+#include "Triangle.h"
 #include "Intersection.h"
+#include "BVH.h"
 #include <vector>
 class Object;
-class
-Scene {
+class Scene {
 
 
 public:
     Scene(){};
     void add(Object *object);
+    void addMesh(Mesh* mesh);
     Intersection intersect(const Ray &ray);
     Vector3 castRay(const Ray &ray, int depth);
-    std::vector<Object*> m_objects;
+    //std::vector<std::shared_ptr<Object>> m_objects;
+    std::vector<std::shared_ptr<Object>> m_objects;
+    BVHAccel *bvh;
+    void buildBVH();
 
 };
 
 
 void Scene::add(Object *object) {
-    m_objects.push_back( object );
+    m_objects.push_back( std::shared_ptr<Object>(object) );
 }
+
+void Scene::addMesh(Mesh *mesh) {
+    for(auto tri: mesh->tris)
+        m_objects.push_back(std::shared_ptr<Triangle>(tri));
+    std::cout<<m_objects.size();
+}
+
+void Scene::buildBVH() {
+    this->bvh = new BVHAccel(m_objects, 4, BVHAccel::SplitMethod::SAH);
+}
+
 Intersection Scene::intersect(const Ray &ray){
-  Intersection intersec,tmp;
-  long size= m_objects.size();
-  double t = std::numeric_limits<double>::max();
-
-  for(int i =0;i<size;i++){
-    tmp = m_objects.at((unsigned)i)->getIntersection(ray);
-
-    if(!m_objects.at((unsigned)i)->intersect(ray))continue;
-    else {
-      tmp = m_objects.at((unsigned)i)->getIntersection(ray);
-      if(tmp.distance<t){
-        intersec = tmp;
-        t = intersec.distance;
-      }
-    }
-  }
-  return intersec;
+//  Intersection intersec,tmp;
+//  long size= m_objects.size();
+//  double t = std::numeric_limits<double>::max();
+//
+//  for(int i =0;i<size;i++){
+//    tmp = m_objects.at((unsigned)i)->getIntersection(ray);
+//
+//    if(!m_objects.at((unsigned)i)->intersect(ray))continue;
+//    else {
+//      tmp = m_objects.at((unsigned)i)->getIntersection(ray);
+//      if(tmp.distance<t && tmp.happened){
+//        intersec = tmp;
+//        t = intersec.distance;
+//      }
+//    }
+//  }
+//  return intersec;
+    return this->bvh->Intersect(ray);
 }
 
 //Randomly generate a direction in a hemisphere w.r.t shading normal n
@@ -59,7 +76,9 @@ Vector3  Scene::castRay(const Ray &ray, int depth){
   Vector3 resColor(0.0,0.0,0.0),directColor(0.0,0.0,0.0), indirectColor(0.0,0.0,0.0);
   // find the intersected object 
   Intersection intersection = Scene::intersect(ray);
+
   if(!intersection.happened)return resColor;
+
   Material *m = &intersection.m;
   Vector3 x = intersection.coords;
   Vector3 n=intersection.normal;

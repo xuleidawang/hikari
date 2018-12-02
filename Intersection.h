@@ -1,6 +1,7 @@
 #ifndef INTERSECTION_H
 #define INTERSECTION_H
-#include "Sphere.h"
+
+
 #include "Vectors.h"
 #include "Material.h"
 #include "Object.h"
@@ -11,6 +12,7 @@ class Sphere;
 
 struct Intersection
 {
+	Intersection(){happened=false; distance= std::numeric_limits<double>::max();obj =nullptr;}
 	bool happened;
 	Vector3 coords;
 	Vector3 normal;

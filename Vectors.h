@@ -21,6 +21,15 @@ struct Vector3{
 	double       dot(const Vector3& vec) const;          
 	Vector3     cross(const Vector3& vec) const;        
 	bool        equal(const Vector3& vec, double e) const; // compare with epsilon
+	static Vector3 Min(const Vector3 &p1, const Vector3 &p2) {
+        return Vector3(std::min(p1.x, p2.x), std::min(p1.y, p2.y),
+                std::min(p1.z, p2.z));
+    }
+
+    static Vector3 Max(const Vector3 &p1, const Vector3 &p2) {
+        return Vector3(std::max(p1.x, p2.x), std::max(p1.y, p2.y),
+                          std::max(p1.z, p2.z));
+    }
 
 														
 	Vector3     operator-() const;                     
@@ -38,7 +47,8 @@ struct Vector3{
 	bool        operator!=(const Vector3& rhs) const;   
 	bool        operator<(const Vector3& rhs) const;    
 	double       operator[](int index) const;            
-	double&      operator[](int index);              
+	double&      operator[](int index);
+
 
 	friend Vector3 operator*(const double a, const Vector3 vec);
 	friend std::ostream& operator<<(std::ostream& os, const Vector3& vec);

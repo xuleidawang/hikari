@@ -2,11 +2,11 @@
 #include <limits>
 #include "Vectors.h"
 #include "Ray.h"
+#include "Object.h"
 #include "Sphere.h"
 #include "Intersection.h"
 #include "Material.h"
 #include "Camera.h"
-#include "Object.h"
 #include "Triangle.h"
 #include "Scene.h"
 #include "Renderer.h"
@@ -50,7 +50,7 @@ int main(int argc, char** argv){
   double spp_inv = 1./spp;
 	//Ray cam(Vector3(50,52,295.6), Vector3(0,-0.042612,-1).normalize()); 
   // camera pos, target
-  Camera camera(Vector3(50,52,295.6)+50*Vector3(0,-0.06,-1).normalize(), Vector3(50,52,295.6)+300*Vector3(0,-0.06,-1).normalize(),(int)600,(int)600);
+  Camera camera(Vector3(50,52,295.6)+0*Vector3(0,-0.06,-1).normalize(), Vector3(50,52,295.6)+100*Vector3(0,-0.06,-1).normalize(),(int)600,(int)600);
   Scene scene = Scene();
   scene.add(dynamic_cast<Object*>(new Sphere (1e5, Vector3( 1e5+1,40.8,81.6), Vector3(),Vector3(.75,.25,.25),DIFF)));//Left
   scene.add(dynamic_cast<Object*>(new Sphere (1e5, Vector3(-1e5+99,40.8,81.6),Vector3(),Vector3(.25,.25,.75),DIFF)));//Right
@@ -60,16 +60,17 @@ int main(int argc, char** argv){
   scene.add(dynamic_cast<Object*>(new Sphere (1e5, Vector3(50,-1e5+81.6,81.6),Vector3(),Vector3(.75,.75,.75),DIFF)));//Top
   scene.add(dynamic_cast<Object*>(new Sphere (16.5,Vector3(27,16.5,47),       Vector3(),Vector3(1,1,1)*.999, SPEC)));//Mirror
   scene.add(dynamic_cast<Object*>(new Sphere (16.5,Vector3(73,16.5,78),       Vector3(),Vector3(1,1,1)*.999, REFR)));//Glass
-  scene.add(dynamic_cast<Object*>(new Sphere (600, Vector3(50,681.6-.27,81.6),Vector3(12,12,12),  Vector3(), DIFF)));//Light
+  scene.add(dynamic_cast<Object*>(new Sphere (600, Vector3(50,681.6,81.6),Vector3(12,12,12),  Vector3(), DIFF)));//Light
+
+  //scene.addMesh((new Mesh(Vector3(50,16.5,57), "../obj/cube.obj", Material(DIFF, Vector3(0, 0.85, 0)))) );
 
   //scene.add(dynamic_cast<Object*>(new Triangle(Vector3(27,45.5,47),Vector3(73,55.5,78),Vector3(50,60,80.6), new Material(DIFF,Vector3(0,.85,0)))));
   //scene.add(dynamic_cast<Object*>(new Triangle(Vector3(50,56.5,56.5),Vector3(51,57.5,56.5),Vector3(50,57.5,56.5), new Material(DIFF,Vector3(0,.85,0)))));
-//
-//  scene.add(dynamic_cast<Object*>(new Mesh(Vector3(Vector3(27,45.5,47)), "../obj/cube.obj", Material(DIFF, Vector3(0, 0.85, 0)))) );
-//
-  Renderer renderer = Renderer(&scene, &camera);
-  renderer.render(spp);                       // Render image to pixel buffer
-  renderer.save_image();              // Save image
+
+//  //scene.buildBVH();
+//  Renderer renderer = Renderer(&scene, &camera);
+//  renderer.render(spp);                       // Render image to pixel buffer
+//  renderer.save_image();              // Save image
 
   // Print duration information
   time(&stop);
@@ -87,10 +88,10 @@ int main(int argc, char** argv){
   scene1.add( dynamic_cast<Object*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(),DIFF)));
   scene1.add( dynamic_cast<Object*>(new Sphere(100, Vector3(0,0,110),   Vector3(1,1,1)*.999,Vector3(1.0,1.0,1.0)*.999,DIFF)));
   //scene1.add( dynamic_cast<Object*>(new Mesh(Vector3(), "../obj/dragon2.obj", Material(DIFF, Vector3(0.9, 0.9, 0.9)))) );
-//
-//  Renderer renderer1 =Renderer(&scene1,&camera1);
-//  renderer1.render(spp);
-//  renderer1.save_image();
+  scene1.buildBVH();
+  Renderer renderer1 =Renderer(&scene1,&camera1);
+  renderer1.render(spp);
+  renderer1.save_image();
 
 
 

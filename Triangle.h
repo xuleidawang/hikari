@@ -1,6 +1,7 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
+#include "Object.h"
 #include "Vectors.h"
 #include <vector>
 #include "Bounds3.h"
@@ -24,6 +25,7 @@ public:
 	bool intersect(const Ray& ray){return false;};
 	Intersection getIntersection( Ray ray);
 	Vector3 getNormal(Vector3 position){};
+	Bounds3 getBounds();
 
 };
 
@@ -34,7 +36,6 @@ private:
 	Vector3 t0,t1,t2;//texture coords
 	Vector3 normal;
 	Material *m;
-	Bounds3 box;
 // Triangle Public Methods
 public:
 	Triangle(Vector3 _v0, Vector3 _v1, Vector3 _v2, Material *_m = NULL):v0(_v0),v1(_v1),v2(_v2),m(_m){
@@ -178,19 +179,19 @@ Mesh::Mesh(Vector3 p_, const char* file_path, Material m_) {
         for (size_t f = 0; f < indices_size; f++) {
 
             // Triangle vertex coordinates
-            Vector3 v0_ = 5*Vector3(
+            Vector3 v0_ = Vector3(
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f] * 3     ],
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f] * 3 + 1 ],
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f] * 3 + 2 ]
             ) + m_p;
 
-            Vector3 v1_ = 5*Vector3(
+            Vector3 v1_ = Vector3(
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f + 1] * 3     ],
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f + 1] * 3 + 1 ],
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f + 1] * 3 + 2 ]
             ) + m_p;
 
-            Vector3 v2_ = 5*Vector3(
+            Vector3 v2_ = Vector3(
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f + 2] * 3     ],
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f + 2] * 3 + 1 ],
                     m_shapes[i].mesh.positions[ m_shapes[i].mesh.indices[3*f + 2] * 3 + 2 ]
@@ -271,7 +272,16 @@ Intersection Mesh::getIntersection( Ray ray) {
     return intersec;
 
 }
+Bounds3 Mesh::getBounds() {
+    std::cout<<"This is a Mesh Bound, try something else"<<std::endl;
+    Bounds3 box;
 
+    return box;
+}
+
+Bounds3 Triangle::getBounds() {
+    return Union(Bounds3(v0, v1), v2);
+}
 
 
 #endif// TRIANGLE_H

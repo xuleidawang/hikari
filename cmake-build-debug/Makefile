@@ -123,6 +123,60 @@ PathTracer/fast:
 	$(MAKE) -f CMakeFiles/PathTracer.dir/build.make CMakeFiles/PathTracer.dir/build
 .PHONY : PathTracer/fast
 
+BVH.o: BVH.cpp.o
+
+.PHONY : BVH.o
+
+# target to build an object file
+BVH.cpp.o:
+	$(MAKE) -f CMakeFiles/PathTracer.dir/build.make CMakeFiles/PathTracer.dir/BVH.cpp.o
+.PHONY : BVH.cpp.o
+
+BVH.i: BVH.cpp.i
+
+.PHONY : BVH.i
+
+# target to preprocess a source file
+BVH.cpp.i:
+	$(MAKE) -f CMakeFiles/PathTracer.dir/build.make CMakeFiles/PathTracer.dir/BVH.cpp.i
+.PHONY : BVH.cpp.i
+
+BVH.s: BVH.cpp.s
+
+.PHONY : BVH.s
+
+# target to generate assembly for a file
+BVH.cpp.s:
+	$(MAKE) -f CMakeFiles/PathTracer.dir/build.make CMakeFiles/PathTracer.dir/BVH.cpp.s
+.PHONY : BVH.cpp.s
+
+Sphere.o: Sphere.cpp.o
+
+.PHONY : Sphere.o
+
+# target to build an object file
+Sphere.cpp.o:
+	$(MAKE) -f CMakeFiles/PathTracer.dir/build.make CMakeFiles/PathTracer.dir/Sphere.cpp.o
+.PHONY : Sphere.cpp.o
+
+Sphere.i: Sphere.cpp.i
+
+.PHONY : Sphere.i
+
+# target to preprocess a source file
+Sphere.cpp.i:
+	$(MAKE) -f CMakeFiles/PathTracer.dir/build.make CMakeFiles/PathTracer.dir/Sphere.cpp.i
+.PHONY : Sphere.cpp.i
+
+Sphere.s: Sphere.cpp.s
+
+.PHONY : Sphere.s
+
+# target to generate assembly for a file
+Sphere.cpp.s:
+	$(MAKE) -f CMakeFiles/PathTracer.dir/build.make CMakeFiles/PathTracer.dir/Sphere.cpp.s
+.PHONY : Sphere.cpp.s
+
 lib/tiny_obj_loader/tiny_obj_loader.o: lib/tiny_obj_loader/tiny_obj_loader.cc.o
 
 .PHONY : lib/tiny_obj_loader/tiny_obj_loader.o
@@ -186,6 +240,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... PathTracer"
+	@echo "... BVH.o"
+	@echo "... BVH.i"
+	@echo "... BVH.s"
+	@echo "... Sphere.o"
+	@echo "... Sphere.i"
+	@echo "... Sphere.s"
 	@echo "... lib/tiny_obj_loader/tiny_obj_loader.o"
 	@echo "... lib/tiny_obj_loader/tiny_obj_loader.i"
 	@echo "... lib/tiny_obj_loader/tiny_obj_loader.s"

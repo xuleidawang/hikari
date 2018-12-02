@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/leixu/Desktop/PathTracer/BVH.cpp">
+			<Option target="PathTracer"/>
+		</Unit>
+		<Unit filename="/Users/leixu/Desktop/PathTracer/BVH.h">
+			<Option target="PathTracer"/>
+		</Unit>
 		<Unit filename="/Users/leixu/Desktop/PathTracer/Bounds3.h">
 			<Option target="PathTracer"/>
 		</Unit>
@@ -106,6 +112,9 @@
 			<Option target="PathTracer"/>
 		</Unit>
 		<Unit filename="/Users/leixu/Desktop/PathTracer/Scene.h">
+			<Option target="PathTracer"/>
+		</Unit>
+		<Unit filename="/Users/leixu/Desktop/PathTracer/Sphere.cpp">
 			<Option target="PathTracer"/>
 		</Unit>
 		<Unit filename="/Users/leixu/Desktop/PathTracer/Sphere.h">

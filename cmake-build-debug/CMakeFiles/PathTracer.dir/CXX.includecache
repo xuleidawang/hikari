@@ -14,9 +14,33 @@ vector
 map
 -
 
+/Users/leixu/Desktop/PathTracer/BVH.cpp
+BVH.h
+/Users/leixu/Desktop/PathTracer/BVH.h
+algorithm
+-
+
+/Users/leixu/Desktop/PathTracer/BVH.h
+Ray.h
+/Users/leixu/Desktop/PathTracer/Ray.h
+Object.h
+/Users/leixu/Desktop/PathTracer/Object.h
+Intersection.h
+/Users/leixu/Desktop/PathTracer/Intersection.h
+Bounds3.h
+/Users/leixu/Desktop/PathTracer/Bounds3.h
+atomic
+-
+vector
+-
+memory
+-
+
 /Users/leixu/Desktop/PathTracer/Bounds3.h
 Vectors.h
 /Users/leixu/Desktop/PathTracer/Vectors.h
+Ray.h
+/Users/leixu/Desktop/PathTracer/Ray.h
 limits
 -
 
@@ -27,8 +51,6 @@ Ray.h
 /Users/leixu/Desktop/PathTracer/Ray.h
 
 /Users/leixu/Desktop/PathTracer/Intersection.h
-Sphere.h
-/Users/leixu/Desktop/PathTracer/Sphere.h
 Vectors.h
 /Users/leixu/Desktop/PathTracer/Vectors.h
 Material.h
@@ -41,6 +63,8 @@ Vectors.h
 /Users/leixu/Desktop/PathTracer/Vectors.h
 
 /Users/leixu/Desktop/PathTracer/Object.h
+Bounds3.h
+/Users/leixu/Desktop/PathTracer/Bounds3.h
 Intersection.h
 /Users/leixu/Desktop/PathTracer/Intersection.h
 
@@ -67,24 +91,32 @@ Vectors.h
 /Users/leixu/Desktop/PathTracer/Vectors.h
 Object.h
 /Users/leixu/Desktop/PathTracer/Object.h
+Triangle.h
+/Users/leixu/Desktop/PathTracer/Triangle.h
 Intersection.h
 /Users/leixu/Desktop/PathTracer/Intersection.h
+BVH.h
+/Users/leixu/Desktop/PathTracer/BVH.h
 vector
 -
 
 /Users/leixu/Desktop/PathTracer/Sphere.h
-Vectors.h
-/Users/leixu/Desktop/PathTracer/Vectors.h
 Object.h
 /Users/leixu/Desktop/PathTracer/Object.h
-Ray.h
-/Users/leixu/Desktop/PathTracer/Ray.h
 Intersection.h
 /Users/leixu/Desktop/PathTracer/Intersection.h
+Vectors.h
+/Users/leixu/Desktop/PathTracer/Vectors.h
+Ray.h
+/Users/leixu/Desktop/PathTracer/Ray.h
 Material.h
 /Users/leixu/Desktop/PathTracer/Material.h
+Bounds3.h
+/Users/leixu/Desktop/PathTracer/Bounds3.h
 
 /Users/leixu/Desktop/PathTracer/Triangle.h
+Object.h
+/Users/leixu/Desktop/PathTracer/Object.h
 Vectors.h
 /Users/leixu/Desktop/PathTracer/Vectors.h
 vector
@@ -111,6 +143,8 @@ Vectors.h
 /Users/leixu/Desktop/PathTracer/Vectors.h
 Ray.h
 /Users/leixu/Desktop/PathTracer/Ray.h
+Object.h
+/Users/leixu/Desktop/PathTracer/Object.h
 Sphere.h
 /Users/leixu/Desktop/PathTracer/Sphere.h
 Intersection.h
@@ -119,8 +153,6 @@ Material.h
 /Users/leixu/Desktop/PathTracer/Material.h
 Camera.h
 /Users/leixu/Desktop/PathTracer/Camera.h
-Object.h
-/Users/leixu/Desktop/PathTracer/Object.h
 Triangle.h
 /Users/leixu/Desktop/PathTracer/Triangle.h
 Scene.h

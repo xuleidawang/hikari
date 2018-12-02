@@ -2,16 +2,16 @@
 #define BOUNDS_H
 
 #include "Vectors.h"
+#include "Ray.h"
 #include <limits>
 class Bounds3{
-private:
-	Vector3 pMin,pMax; // two points to specify the bounding box 
 public:
+	Vector3 pMin,pMax; // two points to specify the bounding box
 	Bounds3(){
 		double minNum = std::numeric_limits<double>::lowest();
 		double maxNum = std::numeric_limits<double>::max();
-		pMin = Vector3(minNum,minNum,minNum);
-		pMax = Vector3(maxNum,maxNum,maxNum);
+		pMax = Vector3(minNum,minNum,minNum);
+		pMin = Vector3(maxNum,maxNum,maxNum);
 	}
 	Bounds3(const Vector3 p):pMin(p), pMax(p){}
 	Bounds3(const Vector3 p1, const Vector3 p2){	
@@ -37,15 +37,16 @@ public:
 	// 	return Vector3(Lerp(t.x,pMin.x,pMax.x),Lerp(t.y,pMin.y,pMax.y), Lerp(t.z,pMin.z,pMax.z));
 	// }
 
-	Bounds3 Union(const Bounds3 &b){
-		return Bounds3(Vector3(fmin(pMin.x,b.pMin.x),
-							   fmin(pMin.y,b.pMin.y),
-							   fmin(pMin.z,b.pMin.z)),
-					   Vector3(fmax(pMax.x,b.pMax.x),
-					   		   fmax(pMax.y,b.pMax.y),
-					   		   fmax(pMax.z,b.pMax.z))
-			);
-	}
+//	static Bounds3 Union(const Bounds3 &b){
+//		return Bounds3(Vector3(fmin(pMin.x,b.pMin.x),
+//							   fmin(pMin.y,b.pMin.y),
+//							   fmin(pMin.z,b.pMin.z)),
+//					   Vector3(fmax(pMax.x,b.pMax.x),
+//					   		   fmax(pMax.y,b.pMax.y),
+//					   		   fmax(pMax.z,b.pMax.z))
+//			);
+//	}
+
 
 	Bounds3 Intersect(const Bounds3 &b){
 		return Bounds3(Vector3(fmax(pMin.x,b.pMin.x),
@@ -55,6 +56,14 @@ public:
 					   		   fmin(pMax.y,b.pMax.y),
 					   		   fmin(pMax.z,b.pMax.z))
 			);
+	}
+
+	Vector3 Offset(const Vector3 &p) const {
+		Vector3 o = p - pMin;
+		if (pMax.x > pMin.x) o.x /= pMax.x - pMin.x;
+		if (pMax.y > pMin.y) o.y /= pMax.y - pMin.y;
+		if (pMax.z > pMin.z) o.z /= pMax.z - pMin.z;
+		return o;
 	}
 
 	bool Overlaps(const Bounds3 &b1, const Bounds3 &b2) {
@@ -126,6 +135,19 @@ inline bool Bounds3::IntersectP(const Ray &ray, const Vector3 &invDir, const int
 
 
 
+inline Bounds3 Union(const Bounds3 &b1, const Bounds3 &b2) {
+    Bounds3 ret;
+    ret.pMin = Vector3::Min(b1.pMin, b2.pMin);
+    ret.pMax = Vector3::Max(b1.pMax, b2.pMax);
+    return ret;
+}
+
+inline Bounds3 Union(const Bounds3 &b,const Vector3 &p){
+    Bounds3 ret;
+    ret.pMin = Vector3::Min(b.pMin, p);
+    ret.pMax = Vector3::Max(b.pMax, p);
+    return ret;
+}
 
 
 
