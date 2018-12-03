@@ -20,7 +20,7 @@ private:
 
 public:
     Renderer(Scene *scene, Camera *camera);
-    void render(int samples=4);
+    void render(int samples=4,double spp_inv = 0.25);
     void save_image();
 
 };
@@ -31,13 +31,11 @@ Renderer::Renderer(Scene *scene, Camera *camera) {
     m_pixel_buffer = new Vector3[m_camera->get_width()*m_camera->get_height()];
 }
 
-void Renderer::render(int samples) {
+void Renderer::render(int samples,double spp_recp) {
     int width = m_camera->get_width();
     int height = m_camera->get_height();
-    double samples_recp = 1./samples;
-
     // Main Loop
-    #pragma omp parallel for schedule(dynamic, 1)       // OpenMP
+#pragma omp parallel for schedule(dynamic, 1)       // OpenMP
     for (int y=0; y<height; y++){
         fprintf(stderr, "\rRendering (%i samples): %.2f%% ",samples, (double)y/height*100);                   // progress
         for (int x=0; x<width; x++){
@@ -45,26 +43,26 @@ void Renderer::render(int samples) {
 
             for (int a=0; a<samples; a++){
                 Ray ray = m_camera->generate_ray(x, y, a>0);
-                ray.origin = ray.origin + ray.direction*140;
                 color = color + m_scene->castRay(ray,0);
+//                if(color!=Vector3(0,0,0))std::cout<<color<<std::endl;
             }
             int i = y*width+x;
-            m_pixel_buffer[i] = color * samples_recp;
+            m_pixel_buffer[i] = color * spp_recp;
 //            std::cout<< m_pixel_buffer[i]<<std::endl;
-            m_pixel_buffer[i] = m_pixel_buffer[i] + Vector3(clamp(color.x),clamp(color.y),clamp(color.z))*.25; 
+            m_pixel_buffer[i] = m_pixel_buffer[i] + Vector3(clamp(color.x),clamp(color.y),clamp(color.z))*.25;
         }
     }
 }
 
 void Renderer::save_image(){
-	int width = m_camera->get_width();
-	int height = m_camera->get_height();
+    int width = m_camera->get_width();
+    int height = m_camera->get_height();
 
-	FILE *f = fopen("./image.ppm", "w");         // Write image to PPM file.
-   fprintf(f, "P3\n%d %d\n%d\n", width, height, 255); 
-   for (int i=0; i < height*width; i++) 
-   	fprintf(f,"%d %d %d ", toInt(m_pixel_buffer[i].x), toInt(m_pixel_buffer[i].y), toInt(m_pixel_buffer[i].z)); 
-   std::cout<<std::endl;
+    FILE *f = fopen("./image.ppm", "w");         // Write image to PPM file.
+    fprintf(f, "P3\n%d %d\n%d\n", width, height, 255);
+    for (int i=0; i < height*width; i++)
+        fprintf(f,"%d %d %d ", toInt(m_pixel_buffer[i].x), toInt(m_pixel_buffer[i].y), toInt(m_pixel_buffer[i].z));
+    std::cout<<std::endl;
 }
 
 

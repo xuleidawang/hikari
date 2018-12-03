@@ -12,14 +12,21 @@ class Sphere;
 
 struct Intersection
 {
-	Intersection(){happened=false; distance= std::numeric_limits<double>::max();obj =nullptr;}
+	Intersection(){
+		happened=false;
+		coords=Vector3();
+		normal=Vector3();
+		distance= std::numeric_limits<double>::max();
+		obj =nullptr;
+		m=nullptr;
+	}
 	bool happened;
 	Vector3 coords;
 	Vector3 normal;
 	double distance;
 	Object* obj;
 	//Refl_t refl;
-	Material m;
+	Material* m;
 };
 
 // // SurfaceInteraction Declarations

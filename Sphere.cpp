@@ -29,7 +29,7 @@ bool Sphere::intersect(const Ray& ray, Intersection *isect){
         if(t>ray.t_min&& t<ray.t_max){
             isect->coords = Vector3(ray.origin + ray.direction * t);
             isect->normal = Vector3(isect->coords - pos).normalize();
-            isect->m = this->material;
+            isect->m = &this->material;
             isect->obj = this;
             isect->distance = t;
         }
@@ -41,7 +41,7 @@ bool Sphere::intersect(const Ray& ray, Intersection *isect){
         if(t>ray.t_min&& t<ray.t_max){
             isect->coords = Vector3(ray.origin + ray.direction * t);
             isect->normal = Vector3(isect->coords - pos).normalize();
-            isect->m = this->material;
+            isect->m = &this->material;
             isect->obj = this;
             isect->distance = t;
         }
@@ -83,10 +83,10 @@ Intersection Sphere::getIntersection(Ray _ray) {
 
     result.coords = Vector3(_ray.origin + _ray.direction * t);
     result.normal = Vector3(result.coords - pos).normalize();
-    result.m = this->material;
+    result.m = &this->material;
     result.obj = this;
     result.distance = t;
-
+//    std::cout<<"Hit sphere"<<std::endl;
     return result;
 }
 

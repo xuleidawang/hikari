@@ -44,7 +44,7 @@ public:
         bool IntersectP(const Ray &ray) const;
         BVHBuildNode* root;
 
-private:
+
         // BVHAccel Private Methods
         BVHBuildNode* recursiveBuild(std::vector<BVHPrimitiveInfo> &primitiveInfo, int start,
                                      int end, int *totalNodes,

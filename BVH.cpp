@@ -28,21 +28,9 @@ BVHAccel::BVHAccel(std::vector<std::shared_ptr<Object>> p, int maxPrimsInNode, S
     root = recursiveBuild(primitiveInfo, 0, primitives.size(), &totalNodes, orderedPrims);
     primitives.swap(orderedPrims);
     primitiveInfo.resize(0);
-//    LOG(INFO) << StringPrintf("BVH created with %d nodes for %d "
-//                              "primitives (%.2f MB), arena allocated %.2f MB",
-//                              totalNodes, (int)primitives.size(),
-//                              float(totalNodes * sizeof(LinearBVHNode)) /
-//                              (1024.f * 1024.f),
-//                              float(arena.TotalAllocated()) /
-//                              (1024.f * 1024.f));
-
     // Compute representation of depth-first traversal of BVH tree
     treeBytes += totalNodes * sizeof(LinearBVHNode) + sizeof(*this) +
                  primitives.size() * sizeof(primitives[0]);
-    //nodes = AllocAligned<LinearBVHNode>(totalNodes);
-    int offset = 0;
-    //flattenBVHTree(root, &offset);
-
 }
 
 
@@ -51,8 +39,6 @@ BVHBuildNode* BVHAccel::recursiveBuild(std::vector<BVHPrimitiveInfo> &primitiveI
                                        std::vector<std::shared_ptr<Object>> &orderedPrims)
 {
     BVHBuildNode* node = new BVHBuildNode();
-//    CHECK_NE(start, end);
-//    BVHBuildNode *node = arena.Alloc<BVHBuildNode>();
     (*totalNodes)++;
     // Compute bounds of all primitives in BVH node
     Bounds3 bounds;
@@ -98,16 +84,12 @@ BVHBuildNode* BVHAccel::recursiveBuild(std::vector<BVHPrimitiveInfo> &primitiveI
                         [dim](const BVHPrimitiveInfo &a, const BVHPrimitiveInfo &b) {
                     return a.centroid[dim] < b.centroid[dim]; });
             } else {
-                // Allocate _BucketInfo_ for SAH partition buckets
-                //                        PBRT_CONSTEXPR int nBuckets = 12;
                 int nBuckets = 12;
                 BucketInfo buckets[nBuckets];
                 // Initialize _BucketInfo_ for SAH partition buckets
                 for (int i = start; i < end; ++i) {
                     int b = nBuckets * centroidBounds.Offset(primitiveInfo[i].centroid)[dim];
                     if (b == nBuckets) b = nBuckets - 1;
-//                            CHECK_GE(b, 0);
-//                            CHECK_LT(b, nBuckets);
                     buckets[b].count++;
                     buckets[b].bounds = Union(buckets[b].bounds, primitiveInfo[i].bounds);
                 }
@@ -169,29 +151,10 @@ BVHBuildNode* BVHAccel::recursiveBuild(std::vector<BVHPrimitiveInfo> &primitiveI
 
 }
 
-int BVHAccel::flattenBVHTree(BVHBuildNode *node, int *offset) {
-    LinearBVHNode *linearNode = &nodes[*offset];
-    linearNode->bounds = node->bounds;
-    int myOffset = (*offset)++;
-    if (node->nPrimitives > 0) {
-//        CHECK(!node->children[0] && !node->children[1]);
-//        CHECK_LT(node->nPrimitives, 65536);
-        linearNode->primitivesOffset = node->firstPrimOffset;
-        linearNode->nPrimitives = node->nPrimitives;
-    } else {
-        // Create interior flattened BVH node
-        linearNode->axis = node->splitAxis;
-        linearNode->nPrimitives = 0;
-        flattenBVHTree(node->children[0], offset);
-        linearNode->secondChildOffset = flattenBVHTree(node->children[1], offset);
-    }
-    return myOffset;
-}
-
 
 Intersection BVHAccel::getIntersection(BVHBuildNode* node, const Ray& ray)const{
-    Intersection isec;
-
+    Intersection isec=Intersection();
+    if(!node)return isec;
     Vector3 invDir(1 / ray.direction.x, 1 / ray.direction.y, 1 / ray.direction.z);
     int dirIsNeg[3] = {invDir.x < 0, invDir.y < 0, invDir.z < 0};
     //if intersect with this bounds
@@ -223,20 +186,10 @@ Intersection BVHAccel::Intersect(const Ray &ray) const {
     Intersection isect;
     if(!root)return isect;
     isect = BVHAccel::getIntersection(root,ray);
-    //std::cout<<"Intersect with the scene at: "<<isect.coords<<std::endl;
+    //std::cout<<isect.coords<<" color is "<<isect.m.getColor()<<std::endl;
     return isect;
 
 }
 
 
 
-
-void CreateBVHAccelerator(std::vector<std::shared_ptr<Object>> prims) {
-
-    BVHAccel::SplitMethod splitMethod;
-    splitMethod = BVHAccel::SplitMethod::SAH;
-
-
-    int maxPrimsInNode = 4;
-    //return std::make_shared<BVHAccel>(std::move(prims), maxPrimsInNode, splitMethod);
-}

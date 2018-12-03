@@ -18,7 +18,6 @@ public:
     void addMesh(Mesh* mesh);
     Intersection intersect(const Ray &ray);
     Vector3 castRay(const Ray &ray, int depth);
-    //std::vector<std::shared_ptr<Object>> m_objects;
     std::vector<std::shared_ptr<Object>> m_objects;
     BVHAccel *bvh;
     void buildBVH();
@@ -31,8 +30,11 @@ void Scene::add(Object *object) {
 }
 
 void Scene::addMesh(Mesh *mesh) {
-    for(auto tri: mesh->tris)
-        m_objects.push_back(std::shared_ptr<Triangle>(tri));
+    for(auto tri: mesh->tris){
+      tri->m = & mesh->m_m;
+      m_objects.push_back(std::shared_ptr<Triangle>(tri));
+    }
+
     std::cout<<m_objects.size();
 }
 
@@ -41,24 +43,7 @@ void Scene::buildBVH() {
 }
 
 Intersection Scene::intersect(const Ray &ray){
-//  Intersection intersec,tmp;
-//  long size= m_objects.size();
-//  double t = std::numeric_limits<double>::max();
-//
-//  for(int i =0;i<size;i++){
-//    tmp = m_objects.at((unsigned)i)->getIntersection(ray);
-//
-//    if(!m_objects.at((unsigned)i)->intersect(ray))continue;
-//    else {
-//      tmp = m_objects.at((unsigned)i)->getIntersection(ray);
-//      if(tmp.distance<t && tmp.happened){
-//        intersec = tmp;
-//        t = intersec.distance;
-//      }
-//    }
-//  }
-//  return intersec;
-    return this->bvh->Intersect(ray);
+  return this->bvh->Intersect(ray);
 }
 
 //Randomly generate a direction in a hemisphere w.r.t shading normal n
@@ -79,16 +64,16 @@ Vector3  Scene::castRay(const Ray &ray, int depth){
 
   if(!intersection.happened)return resColor;
 
-  Material *m = &intersection.m;
+  Material *m = intersection.m;
   Vector3 x = intersection.coords;
   Vector3 n=intersection.normal;
   Vector3 nl=n.dot(ray.direction)<0?n:n*-1;// hitting at outside or inside of the intersected object
   Vector3 f=m->getColor();
-
+ // if(f!=Vector3(0,0,0))std::cout<<f<<std::endl;
   double p = fmax(fmax(f.x,f.y),f.z);// max refl 
   if (++depth>5){
     if (drand48()<p)f=f*(1/p);
-    else return m->getEmission(); //R.R.
+    else return m->getEmission(); //Russian Roulette
   }
   // Ideal DIFFUSE reflection 
   if(m->getType() == DIFF)
@@ -104,7 +89,6 @@ Vector3  Scene::castRay(const Ray &ray, int depth){
      reflected.y + (drand48()-0.5)*roughness,
      reflected.z + (drand48()-0.5)*roughness
      );
-
    Ray reflRay(x,refdirect.normalize());
    //Ray reflRay(x, reflected.normalize());
    //return object->e + f*(castRay(Ray(x,(ray.direction-n*2*n.dot(ray.direction)).normalize()),depth));

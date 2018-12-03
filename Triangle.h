@@ -10,7 +10,7 @@
 class Triangle;
 class Mesh : public Object {
 
-private:
+public:
 	std::vector<tinyobj::shape_t> m_shapes;
     std::vector<tinyobj::material_t> m_materials;
     std::vector<Material> materials;
@@ -18,7 +18,7 @@ private:
     Material m_m;	// Material
     //BVH bvh;
 
-public:
+
     std::vector<Triangle*> tris;
 	Mesh(Vector3 p_, const char* file_path, Material m_);
 
@@ -30,14 +30,14 @@ public:
 };
 
 class Triangle: public Object{
-private:
+public:
 	Vector3 v0, v1, v2; //vertices A, B ,C , counter-clockwise order 
 	Vector3 e1, e2; //2 edges v1-v0, v2-v0;
 	Vector3 t0,t1,t2;//texture coords
 	Vector3 normal;
 	Material *m;
 // Triangle Public Methods
-public:
+
 	Triangle(Vector3 _v0, Vector3 _v1, Vector3 _v2, Material *_m = NULL):v0(_v0),v1(_v1),v2(_v2),m(_m){
 		e1 = v1-v0;
 		e2 = v2-v0;
@@ -85,8 +85,7 @@ bool Triangle::intersect(const Ray& ray){
 
 Vector3 Triangle::getNormal(Vector3 position){return normal;}
 Intersection Triangle::getIntersection(Ray ray){
-    //std::cout<<"Intersects Triangle!"<<std::endl;
-	Intersection inter;inter.happened=false;
+	Intersection inter;
 	if(ray.direction.dot(normal)>0)return inter;
 	double u,v ,t_tmp=0;
 	Vector3 pvec = ray.direction.cross(e2);
@@ -104,7 +103,7 @@ Intersection Triangle::getIntersection(Ray ray){
 
 
 	inter.obj=this;
-	inter.m = *this->m;
+	inter.m = this->m;
 	inter.happened=true;
 	inter.normal = this->normal;
 	inter.coords = t_tmp*ray.direction+ray.origin;
@@ -224,7 +223,6 @@ Mesh::Mesh(Vector3 p_, const char* file_path, Material m_) {
                 t1_=Vector3();
                 t2_=Vector3();
             }
-            std::cout<<v0_<<" , " <<v1_<<" , "<<v2_<<std::endl;
             if (m_shapes[i].mesh.material_ids[ f ] < materials.size())
                 //tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_, &materials[ m_shapes[i].mesh.material_ids[ f ] ]));
                 tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_, &m_m));
