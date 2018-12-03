@@ -149,8 +149,6 @@ Mesh::Mesh(Vector3 p_, const char* file_path, Material m_) {
 		std::cerr << err << std::endl;
 		exit(1);
 	}
-	printf(" - Generating k-d tree...\n\n");
-
     long shapes_size, indices_size, materials_size;
     shapes_size = m_shapes.size();
     materials_size = m_materials.size();
@@ -170,8 +168,6 @@ Mesh::Mesh(Vector3 p_, const char* file_path, Material m_) {
         }
 
     }
-    std::cout<<"shapes size is :"<<shapes_size<<std::endl;
-
     // Load triangles from obj
     for (int i = 0; i < shapes_size; i++) {
         indices_size = m_shapes[i].mesh.indices.size() / 3;
@@ -234,9 +230,8 @@ Mesh::Mesh(Vector3 p_, const char* file_path, Material m_) {
     // Clean up
     m_shapes.clear();
     m_materials.clear();
-    //node = KDNode().build(tris, 0);
     printf("\n");
-	//bvh = BVH(&tris);
+
 }
 
 

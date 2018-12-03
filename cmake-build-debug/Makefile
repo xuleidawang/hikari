@@ -150,6 +150,33 @@ BVH.cpp.s:
 	$(MAKE) -f CMakeFiles/PathTracer.dir/build.make CMakeFiles/PathTracer.dir/BVH.cpp.s
 .PHONY : BVH.cpp.s
 
+Reflection.o: Reflection.cpp.o
+
+.PHONY : Reflection.o
+
+# target to build an object file
+Reflection.cpp.o:
+	$(MAKE) -f CMakeFiles/PathTracer.dir/build.make CMakeFiles/PathTracer.dir/Reflection.cpp.o
+.PHONY : Reflection.cpp.o
+
+Reflection.i: Reflection.cpp.i
+
+.PHONY : Reflection.i
+
+# target to preprocess a source file
+Reflection.cpp.i:
+	$(MAKE) -f CMakeFiles/PathTracer.dir/build.make CMakeFiles/PathTracer.dir/Reflection.cpp.i
+.PHONY : Reflection.cpp.i
+
+Reflection.s: Reflection.cpp.s
+
+.PHONY : Reflection.s
+
+# target to generate assembly for a file
+Reflection.cpp.s:
+	$(MAKE) -f CMakeFiles/PathTracer.dir/build.make CMakeFiles/PathTracer.dir/Reflection.cpp.s
+.PHONY : Reflection.cpp.s
+
 Sphere.o: Sphere.cpp.o
 
 .PHONY : Sphere.o
@@ -243,6 +270,9 @@ help:
 	@echo "... BVH.o"
 	@echo "... BVH.i"
 	@echo "... BVH.s"
+	@echo "... Reflection.o"
+	@echo "... Reflection.i"
+	@echo "... Reflection.s"
 	@echo "... Sphere.o"
 	@echo "... Sphere.i"
 	@echo "... Sphere.s"

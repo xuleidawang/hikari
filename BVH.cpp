@@ -29,8 +29,7 @@ BVHAccel::BVHAccel(std::vector<std::shared_ptr<Object>> p, int maxPrimsInNode, S
     primitives.swap(orderedPrims);
     primitiveInfo.resize(0);
     // Compute representation of depth-first traversal of BVH tree
-    treeBytes += totalNodes * sizeof(LinearBVHNode) + sizeof(*this) +
-                 primitives.size() * sizeof(primitives[0]);
+    //treeBytes += totalNodes * sizeof(LinearBVHNode) + sizeof(*this) + primitives.size() * sizeof(primitives[0]);
 }
 
 

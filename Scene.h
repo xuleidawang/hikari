@@ -39,6 +39,7 @@ void Scene::addMesh(Mesh *mesh) {
 }
 
 void Scene::buildBVH() {
+    printf(" - Generating BVH...\n\n");
     this->bvh = new BVHAccel(m_objects, 4, BVHAccel::SplitMethod::SAH);
 }
 

@@ -4,7 +4,7 @@
 
 #include "Vectors.h"
 
-enum MaterialType {DIFF, SPEC, REFR};  // material types, used in radiance()
+enum MaterialType {DIFF, SPEC, REFR, GLOSSY, TRANSMISSION};  // material types, used in radiance()
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846

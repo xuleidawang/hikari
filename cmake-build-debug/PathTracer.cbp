@@ -111,6 +111,12 @@
 		<Unit filename="/Users/leixu/Desktop/PathTracer/Ray.h">
 			<Option target="PathTracer"/>
 		</Unit>
+		<Unit filename="/Users/leixu/Desktop/PathTracer/Reflection.cpp">
+			<Option target="PathTracer"/>
+		</Unit>
+		<Unit filename="/Users/leixu/Desktop/PathTracer/Reflection.h">
+			<Option target="PathTracer"/>
+		</Unit>
 		<Unit filename="/Users/leixu/Desktop/PathTracer/Scene.h">
 			<Option target="PathTracer"/>
 		</Unit>

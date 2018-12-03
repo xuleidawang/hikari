@@ -28,4 +28,4 @@ add_executable(PathTracer
         Vectors.h
         Sphere.cpp
         BVH.h
-        BVH.cpp)
+        BVH.cpp Reflection.h Reflection.cpp)
