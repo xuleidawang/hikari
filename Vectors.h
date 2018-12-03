@@ -175,5 +175,169 @@ inline std::ostream& operator<<(std::ostream& os, const Vector3& vec) {
 	return os;
 }
 
+struct Vector2{
+    double x;
+    double y;
+    //constructors
+    Vector2(double _x=0.0, double _y=0.0) : x(_x), y(_y) {};
+
+    void        set(double x, double y);
+    double       length() const;
+    double       distance(const Vector2& vec) const;
+    double       angle(const Vector2& vec) const;        // angle between two vectors
+    Vector2&    normalize();
+    double       dot(const Vector2& vec) const;
+
+    bool        equal(const Vector2& vec, double e) const; // compare with epsilon
+    static Vector2 Min(const Vector2 &p1, const Vector2 &p2) {
+        return Vector2(std::min(p1.x, p2.x), std::min(p1.y, p2.y));
+    }
+
+    static Vector2 Max(const Vector2 &p1, const Vector2 &p2) {
+        return Vector2(std::max(p1.x, p2.x), std::max(p1.y, p2.y));
+    }
+
+
+    Vector2     operator-() const;
+    Vector2     operator+(const Vector2& rhs) const;
+    Vector2     operator-(const Vector2& rhs) const;
+    Vector2&    operator+=(const Vector2& rhs);
+    Vector2&    operator-=(const Vector2& rhs);
+    Vector2     operator*(const double scale) const;
+    Vector2     operator*(const Vector2& rhs) const;    // multiplay each element
+    Vector2&    operator*=(const double scale);
+    Vector2&    operator*=(const Vector2& rhs);
+    Vector2     operator/(const double scale) const;
+    Vector2&    operator/=(const double scale);
+    bool        operator==(const Vector2& rhs) const;
+    bool        operator!=(const Vector2& rhs) const;
+    bool        operator<(const Vector2& rhs) const;
+    double       operator[](int index) const;
+    double&      operator[](int index);
+
+
+    friend Vector2 operator*(const double a, const Vector2 vec);
+    friend std::ostream& operator<<(std::ostream& os, const Vector3& vec);
+};
+
+inline Vector2 Vector2::operator-() const {
+    return Vector2(-x, -y);
+}
+
+inline Vector2 Vector2::operator+(const Vector2& rhs) const {
+    return Vector2(x + rhs.x, y + rhs.y);
+}
+
+inline Vector2 Vector2::operator-(const Vector2& rhs) const {
+    return Vector2(x - rhs.x, y - rhs.y);
+}
+
+inline Vector2& Vector2::operator+=(const Vector2& rhs) {
+    x += rhs.x; y += rhs.y; return *this;
+}
+
+inline Vector2& Vector2::operator-=(const Vector2& rhs) {
+    x -= rhs.x; y -= rhs.y; return *this;
+}
+
+inline Vector2 Vector2::operator*(const double a) const {
+    return Vector2(x*a, y*a);
+}
+
+inline Vector2 Vector2::operator*(const Vector2& rhs) const {
+    return Vector2(x*rhs.x, y*rhs.y);
+}
+
+inline Vector2& Vector2::operator*=(const double a) {
+    x *= a; y *= a;return *this;
+}
+
+inline Vector2& Vector2::operator*=(const Vector2& rhs) {
+    x *= rhs.x; y *= rhs.y; return *this;
+}
+
+inline Vector2 Vector2::operator/(const double a) const {
+    return Vector2(x / a, y / a);
+}
+
+inline Vector2& Vector2::operator/=(const double a) {
+    x /= a; y /= a; return *this;
+}
+
+inline bool Vector2::operator==(const Vector2& rhs) const {
+    return (x == rhs.x) && (y == rhs.y);
+}
+
+inline bool Vector2::operator!=(const Vector2& rhs) const {
+    return (x != rhs.x) || (y != rhs.y);
+}
+
+inline bool Vector2::operator<(const Vector2& rhs) const {
+    if (x < rhs.x) return true;
+    if (x > rhs.x) return false;
+    if (y < rhs.y) return true;
+    if (y > rhs.y) return false;
+    return false;
+}
+
+inline double Vector2::operator[](int index) const {
+    return (&x)[index];
+}
+
+inline double& Vector2::operator[](int index) {
+    return (&x)[index];
+}
+
+inline void Vector2::set(double x, double y) {
+    this->x = x; this->y = y;
+}
+
+inline double Vector2::length() const {
+    return sqrtf(x*x + y*y);
+}
+
+inline double Vector2::distance(const Vector2& vec) const {
+    return sqrtf((vec.x - x)*(vec.x - x) + (vec.y - y)*(vec.y - y));
+}
+
+inline double Vector2::angle(const Vector2& vec) const {
+    // return angle between [0, 180]
+    double l1 = this->length();
+    double l2 = vec.length();
+    double d = this->dot(vec);
+    double angle = acosf(d / (l1 * l2)) / 3.141592f * 180.0f;
+    return angle;
+}
+
+inline Vector2& Vector2::normalize() {
+    double xxyy = x*x + y*y;
+    double invLength = 1.0f / sqrtf(xxyy);
+    x *= invLength;
+    y *= invLength;
+    return *this;
+}
+
+inline double Vector2::dot(const Vector2& rhs) const {
+    return (x*rhs.x + y*rhs.y);
+}
+
+
+inline bool Vector2::equal(const Vector2& rhs, double epsilon) const {
+    return fabs(x - rhs.x) < epsilon && fabs(y - rhs.y) < epsilon;
+}
+
+inline Vector2 operator*(const double a, const Vector2 vec) {
+    return Vector2(a*vec.x, a*vec.y);
+}
+
+inline std::ostream& operator<<(std::ostream& os, const Vector2& vec) {
+    os << "(" << vec.x << ", " << vec.y << ", " << ")";
+    return os;
+}
+
+
+
+
+
 #endif
 #pragma once 
