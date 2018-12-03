@@ -10,6 +10,11 @@ CMakeFiles/PathTracer.dir/BVH.cpp.o: ../Object.h
 CMakeFiles/PathTracer.dir/BVH.cpp.o: ../Ray.h
 CMakeFiles/PathTracer.dir/BVH.cpp.o: ../Vectors.h
 
+CMakeFiles/PathTracer.dir/Reflection.cpp.o: ../Material.h
+CMakeFiles/PathTracer.dir/Reflection.cpp.o: ../Reflection.cpp
+CMakeFiles/PathTracer.dir/Reflection.cpp.o: ../Reflection.h
+CMakeFiles/PathTracer.dir/Reflection.cpp.o: ../Vectors.h
+
 CMakeFiles/PathTracer.dir/Sphere.cpp.o: ../Bounds3.h
 CMakeFiles/PathTracer.dir/Sphere.cpp.o: ../Intersection.h
 CMakeFiles/PathTracer.dir/Sphere.cpp.o: ../Material.h

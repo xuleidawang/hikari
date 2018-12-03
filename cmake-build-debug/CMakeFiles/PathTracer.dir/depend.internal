@@ -10,6 +10,11 @@ CMakeFiles/PathTracer.dir/BVH.cpp.o
  /Users/leixu/Desktop/PathTracer/Object.h
  /Users/leixu/Desktop/PathTracer/Ray.h
  /Users/leixu/Desktop/PathTracer/Vectors.h
+CMakeFiles/PathTracer.dir/Reflection.cpp.o
+ /Users/leixu/Desktop/PathTracer/Material.h
+ /Users/leixu/Desktop/PathTracer/Reflection.cpp
+ /Users/leixu/Desktop/PathTracer/Reflection.h
+ /Users/leixu/Desktop/PathTracer/Vectors.h
 CMakeFiles/PathTracer.dir/Sphere.cpp.o
  /Users/leixu/Desktop/PathTracer/Bounds3.h
  /Users/leixu/Desktop/PathTracer/Intersection.h
