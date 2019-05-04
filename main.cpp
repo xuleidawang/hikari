@@ -48,17 +48,6 @@ int main(int argc, char** argv){
   int spp = argc==2?atoi(argv[1]):1;
   double spp_inv = 1./spp;
   // camera pos, target
-  Camera camera(Vector3(50,52,295.6)+50*Vector3(0,-0.06,-1).normalize(), Vector3(50,52,295.6)+300*Vector3(0,-0.06,-1).normalize(),(int)600,(int)600);
-  Scene scene = Scene();
-  scene.add(dynamic_cast<Object*>(new Sphere (1e5, Vector3( 1e5+1,40.8,81.6), Vector3(),Vector3(.75,.25,.25),DIFF)));//Left
-  scene.add(dynamic_cast<Object*>(new Sphere (1e5, Vector3(-1e5+99,40.8,81.6),Vector3(),Vector3(.25,.25,.75),DIFF)));//Right
-  scene.add(dynamic_cast<Object*>(new Sphere (1e5, Vector3(50,40.8, 1e5),     Vector3(),Vector3(.75,.75,.75),DIFF)));//Back
-  scene.add(dynamic_cast<Object*>(new Sphere (1e5, Vector3(50,40.8,-1e5+170), Vector3(),Vector3(),           DIFF)));//Front
-  scene.add(dynamic_cast<Object*>(new Sphere (1e5, Vector3(50, 1e5, 81.6),    Vector3(),Vector3(.75,.75,.75),DIFF)));//Bottom
-  scene.add(dynamic_cast<Object*>(new Sphere (1e5, Vector3(50,-1e5+81.6,81.6),Vector3(),Vector3(.75,.75,.75),DIFF)));//Top
-  scene.add(dynamic_cast<Object*>(new Sphere (16.5,Vector3(27,16.5,47),       Vector3(),Vector3(1,1,1)*.999, SPEC)));//Mirror
-  scene.add(dynamic_cast<Object*>(new Sphere (16.5,Vector3(73,16.5,78),       Vector3(),Vector3(1,1,1)*.999, REFR)));//Glass
-  scene.add(dynamic_cast<Object*>(new Sphere (600, Vector3(50,681.6,81.6),Vector3(1,1,1),  Vector3(), DIFF)));//Light
 
   // Print duration information
 

@@ -14,12 +14,6 @@ vector
 map
 -
 
-/Users/leixu/Desktop/PathTracer/BVH.cpp
-BVH.h
-/Users/leixu/Desktop/PathTracer/BVH.h
-algorithm
--
-
 /Users/leixu/Desktop/PathTracer/BVH.h
 Ray.h
 /Users/leixu/Desktop/PathTracer/Ray.h
@@ -74,14 +68,6 @@ Vectors.h
 limits
 -
 
-/Users/leixu/Desktop/PathTracer/Reflection.cpp
-Reflection.h
-/Users/leixu/Desktop/PathTracer/Reflection.h
-
-/Users/leixu/Desktop/PathTracer/Reflection.h
-Material.h
-/Users/leixu/Desktop/PathTracer/Material.h
-
 /Users/leixu/Desktop/PathTracer/Renderer.h
 iostream
 -
@@ -107,10 +93,6 @@ BVH.h
 /Users/leixu/Desktop/PathTracer/BVH.h
 vector
 -
-
-/Users/leixu/Desktop/PathTracer/Sphere.cpp
-Sphere.h
-/Users/leixu/Desktop/PathTracer/Sphere.h
 
 /Users/leixu/Desktop/PathTracer/Sphere.h
 Object.h

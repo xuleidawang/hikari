@@ -64,20 +64,20 @@ static inline bool isNewLine(const char c) {
   return (c == '\r') || (c == '\n') || (c == '\0');
 }
 
-// Make index zero-base, and also support relative index. 
-static inline int fixIndex(int idx, int n)
-{
-  int i;
+// Make index zero-base, and also support relative index.
+    static inline int fixIndex(int idx, int n)
+    {
+      int i;
 
-  if (idx > 0) {
-    i = idx - 1;
-  } else if (idx == 0) {
-    i = 0;
-  } else { // negative value = relative
-    i = n + idx;
-  }
-  return i;
-}
+      if (idx > 0) {
+        i = idx - 1;
+      } else if (idx == 0) {
+        i = 0;
+      } else { // negative value = relative
+        i = n + idx;
+      }
+      return i;
+    }
 
 static inline std::string parseString(const char*& token)
 {
@@ -487,8 +487,7 @@ std::string MaterialFileReader::operator() (
   return LoadMtl(matMap, materials, matIStream);
 }
 
-std::string
-LoadObj(
+std::string LoadObj(
   std::vector<shape_t>& shapes,
   std::vector<material_t>& materials,   // [output]
   const char* filename,

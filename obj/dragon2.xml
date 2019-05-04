@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+
+	Automatically converted from Wavefront OBJ
+
+-->
+
+<scene version="0.5.0">
+	<integrator type="direct"/>
+
+	<shape type="serialized" id="dragon2_mesh">
+		<string name="filename" value="dragon2.serialized"/>
+		<integer name="shapeIndex" value="0"/>
+
+		<bsdf type="diffuse"/>
+	</shape>
+
+	<sensor type="perspective">
+		<float name="farClip" value="20.7019"/>
+		<float name="focusDistance" value="5.38447"/>
+		<float name="fov" value="45"/>
+		<string name="fovAxis" value="x"/>
+		<float name="nearClip" value="0.0402593"/>
+		<transform name="toWorld">
+
+			<lookat target="-0.154154, 4.31087, 1.94073" origin="-0.162474, 5.30119, 2.07924" up="-0.0593836, -0.138755, 0.988545"/>
+		</transform>
+
+		<sampler type="independent">
+			<integer name="sampleCount" value="4"/>
+		</sampler>
+
+		<film type="hdrfilm">
+			<rfilter type="gaussian"/>
+		</film>
+	</sensor>
+</scene>
