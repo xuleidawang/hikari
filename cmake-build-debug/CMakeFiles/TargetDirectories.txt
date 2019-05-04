@@ -1,3 +1,0 @@
-/Users/leixu/Desktop/PathTracer/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/leixu/Desktop/PathTracer/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/leixu/Desktop/PathTracer/cmake-build-debug/CMakeFiles/PathTracer.dir
