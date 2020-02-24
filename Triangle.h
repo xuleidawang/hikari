@@ -22,9 +22,8 @@ public:
     std::vector<Triangle*> tris;
 	Mesh(Vector3 p_, const char* file_path, Material m_);
 
-	bool intersect(const Ray& ray){return false;};
-	Intersection getIntersection( Ray ray);
-	Vector3 getNormal(Vector3 position){};
+	bool intersect(const Ray& ray, Intersection* intersection);
+	Vector3 getNormal(Vector3 position);
 	Bounds3 getBounds();
 
 };
@@ -48,8 +47,7 @@ public:
         t0=t0_, t1=t1_, t2=t2_;
         m=m_;
     }
-	bool intersect(const Ray& ray);
-	Intersection getIntersection(Ray _ray);
+	bool intersect(const Ray& ray, Intersection* intersection);
 	Vector3 getNormal(Vector3 position);
 	Vector3 getBarycentric(Vector3 p);
 	Bounds3 getBounds();
@@ -57,59 +55,37 @@ public:
 };
 
 
-bool Triangle::intersect(const Ray& ray){
-	//Moller-Trumbore algorithm 
+bool Triangle::intersect(const Ray& ray, Intersection* intersection){
+	//Moller-Trumbore algorithm
 	// P = (1-u-v)A + uB +vC 
 	// P = wA + uB + vC
 	// P = A + u(B-A) + v(C-A)
+    if(ray.direction.dot(normal)>0)return false;
+    double u,v ,t_tmp=0;
+    Vector3 pvec = ray.direction.cross(e2);
+    double det = e1.dot(pvec);
+    if(fabs(det)<EPSILON)return false;
 
-	//ray triangle intersection 
-	if(ray.direction.dot(normal)>0) return false;
-	double u,v ,t_tmp=0;
-	Vector3 pvec = ray.direction.cross(e2);
-	double det = e1.dot(pvec);
-	if(fabs(det)<EPSILON) return false;
+    double det_inv = 1./det;
+    Vector3 tvec = ray.origin - v0;
+    u = tvec.dot(pvec)*det_inv;
+    if( u<0 || u>1)return false;
+    Vector3 qvec = tvec.cross(e1);
+    v = ray.direction.dot(qvec)*det_inv;
+    if(v<0||u+v>1)return false;
+    t_tmp = e2.dot(qvec)* det_inv;
 
-	double det_inv = 1./det;
-	Vector3 tvec = ray.origin - v0;
-	u = tvec.dot(pvec)*det_inv;
-	if( u<0 || u>1) return false;
-	Vector3 qvec = tvec.cross(e1);
-	v = ray.direction.dot(qvec)*det_inv;
-	if(v<0||u+v>1) return false;
-	t_tmp = e2.dot(qvec)* det_inv;
-
-	return true;
+    intersection->obj=this;
+    intersection->m = this->m;
+    intersection->happened=true;
+    intersection->normal = this->normal;
+    intersection->coords = t_tmp*ray.direction+ray.origin;
+    intersection->distance =t_tmp;
+    return intersection->happened;
 
 }
 
 Vector3 Triangle::getNormal(Vector3 position){return normal;}
-Intersection Triangle::getIntersection(Ray ray){
-	Intersection inter;
-	if(ray.direction.dot(normal)>0)return inter;
-	double u,v ,t_tmp=0;
-	Vector3 pvec = ray.direction.cross(e2);
-	double det = e1.dot(pvec);
-	if(fabs(det)<EPSILON)return inter;
-
-	double det_inv = 1./det;
-	Vector3 tvec = ray.origin - v0;
-	u = tvec.dot(pvec)*det_inv;
-	if( u<0 || u>1)return inter;
-	Vector3 qvec = tvec.cross(e1);
-	v = ray.direction.dot(qvec)*det_inv;
-	if(v<0||u+v>1)return inter;
-	t_tmp = e2.dot(qvec)* det_inv;
-
-
-	inter.obj=this;
-	inter.m = this->m;
-	inter.happened=true;
-	inter.normal = this->normal;
-	inter.coords = t_tmp*ray.direction+ray.origin;
-	inter.distance =t_tmp;
-	return inter;
-}
 
 // p = u*v0 + v*v1 + w*v2;
 Vector3 Triangle::getBarycentric(Vector3 p){
@@ -126,11 +102,9 @@ Vector3 Triangle::getBarycentric(Vector3 p){
         return Vector3(u, v, w);
 }
 
-
 Vector3 Triangle::getMidpoint(){
 	return (v0+v1+v2)/3;
 }
-
 
 Mesh::Mesh(Vector3 p_, const char* file_path, Material m_) {
 
@@ -234,35 +208,24 @@ Mesh::Mesh(Vector3 p_, const char* file_path, Material m_) {
 
 }
 
-
 // Check if ray intersects with mesh. Returns ObjectIntersection data structure
-Intersection Mesh::getIntersection( Ray ray) {
-    double t=INFINITY, tmin=INFINITY;
+bool Mesh::intersect(const Ray& ray, Intersection* intersection) {
     int size = tris.size();
-    Vector3 normal = Vector3();
-    Vector3 colour = Vector3();
+
     //bool hit = node->hit(node, ray, t, tmin, normal, colour);
     //bool hit = bvh.getIntersection(ray, t, tmin, normal);
-//    std::cout<<"intersect with mesh"<<std::endl;
-    Intersection tmp,intersec;
-    intersec.happened=false;
-    Material _m(DIFF,Vector3(0.0,.85,0.0),Vector3(0,0,0));
-    //intersection.m = _m;
+    //    std::cout<<"intersect with mesh"<<std::endl;
     for(int i =0;i<size;i++){
-        tmp = tris.at((unsigned)i)->getIntersection(ray);
-
-        if(!tris.at((unsigned)i)->intersect(ray))continue;
-        else {
-            intersec.happened=true;
-            tmp = tris.at((unsigned)i)->getIntersection(ray);
-            if(tmp.distance<t){
-                intersec = tmp;
-                t = intersec.distance;
+        Intersection* tmp = new Intersection();
+        if(tris.at((unsigned)i)->intersect(ray, tmp)){
+            intersection->happened=true;
+            if(tmp->distance< intersection->distance){
+                intersection = tmp;
             }
         }
     }
     //std::cout<<"Intersection with Mesh"<<std::endl;
-    return intersec;
+    return intersection->happened;
 
 }
 Bounds3 Mesh::getBounds() {

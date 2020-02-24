@@ -21,7 +21,7 @@ struct BVHPrimitiveInfo;
 struct LinearBVHNode;
 
 // BVHAccel Declarations
-inline int leafNodes, totalLeafNodes, totalPrimitives, interiorNodes, treeBytes;
+inline int leafNodes, totalLeafNodes, totalPrimitives, interiorNodes;
 class BVHAccel {
 
 public:

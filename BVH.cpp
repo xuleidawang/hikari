@@ -160,16 +160,18 @@ Intersection BVHAccel::getIntersection(BVHBuildNode* node, const Ray& ray)const{
     if(node->bounds.IntersectP(ray,invDir,dirIsNeg)){
         //if it is a leaf node
         if(node->nPrimitives>0){
-            Intersection tmp;
+
             for (int i = 0; i < node->nPrimitives; ++i){
-                if (primitives[node->firstPrimOffset + i]->intersect(ray)){
+                Intersection* tmp = new Intersection();
+                if (primitives[node->firstPrimOffset + i]->intersect(ray, tmp)){
                     isec.happened = true;
-                    tmp = primitives[node->firstPrimOffset+i]->getIntersection(ray);
-                    if(tmp.distance<isec.distance)
-                        isec = tmp;
+                    if(tmp->distance<isec.distance)
+                    {
+                        isec = *tmp;
+                    }
                 }
             }
-            //std::cout<<"Hit leaf node"<<isec.m.getColor()<<std::endl;
+//            std::cout<<"Hit leaf node"<<std::endl;
             return isec;
         }
         //else go to its two child nodes
