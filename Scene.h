@@ -59,7 +59,7 @@ Vector3 getHemiRandomDirection(Vector3 n){
 
 
 Vector3  Scene::castRay(const Ray &ray, int depth){
-  Vector3 resColor(0.0,0.0,0.0),directColor(0.0,0.0,0.0), indirectColor(0.0,0.0,0.0);
+  Vector3 resColor(0.0,0.0,0.0);
   // find the intersected object 
   Intersection intersection = Scene::intersect(ray);
 
@@ -70,19 +70,23 @@ Vector3  Scene::castRay(const Ray &ray, int depth){
   Vector3 n=intersection.normal;
   Vector3 nl=n.dot(ray.direction)<0?n:n*-1;// hitting at outside or inside of the intersected object
   Vector3 f=m->getColor();
- // if(f!=Vector3(0,0,0))std::cout<<f<<std::endl;
-  double p = fmax(fmax(f.x,f.y),f.z);// max refl 
-  if (++depth>5){
-    if (drand48()<p)f=f*(1/p);
-    else return m->getEmission(); //Russian Roulette
+
+  double p = fmax(fmax(f.x,f.y),f.z);// max refl
+  if (++depth>5)
+  {
+    if (drand48()<p)
+        f=f*(1/p);
+    else
+        return m->getEmission(); //Russian Roulette
   }
-  // Ideal DIFFUSE reflection 
+  // Ideal DIFFUSE reflection
   if(m->getType() == DIFF)
   {
     Vector3 d = getHemiRandomDirection(nl);
     return m->getEmission() + f*castRay(Ray(x,d),depth);
   }
- else if(m->getType()==SPEC){
+ else if(m->getType()==SPEC)
+ {
    double roughness = 0.8;
    Vector3 reflected = ray.direction - n * 2 * n.dot(ray.direction);
    Vector3 refdirect (
@@ -90,12 +94,12 @@ Vector3  Scene::castRay(const Ray &ray, int depth){
      reflected.y + (drand48()-0.5)*roughness,
      reflected.z + (drand48()-0.5)*roughness
      );
+
    Ray reflRay(x,refdirect.normalize());
-   //Ray reflRay(x, reflected.normalize());
-   //return object->e + f*(castRay(Ray(x,(ray.direction-n*2*n.dot(ray.direction)).normalize()),depth));
    return m->getEmission()+ f*castRay(reflRay, depth);
  }
- else if(m->getType() ==REFR){
+ else if(m->getType() ==REFR)
+ {
    double roughness = 0.8;
    Vector3 reflected = ray.direction - n * 2 * n.dot(ray.direction);
    Vector3 refdirect (
@@ -106,17 +110,42 @@ Vector3  Scene::castRay(const Ray &ray, int depth){
    Ray reflRay(x,refdirect.normalize());
    bool into = n.dot(nl)>0;                // Ray from outside going in?
    double nc=1, nt=1.5, nnt;
-   if(into)nnt = nc/nt;
-   else nnt = nt/nc;
+   if(into)
+   {
+       nnt = nc/nt;
+   }
+   else
+   {
+       nt = nt/nc;
+   }
+
    double ddn=ray.direction.dot(nl);
    double cos2t = 1-nnt*nnt*(1-ddn*ddn);
-   if(cos2t<0) return  m->getEmission() + f*(castRay(reflRay,depth)); // Total internal reflection
+   if(cos2t<0)
+   {
+       return  m->getEmission() + f*(castRay(reflRay,depth)); // Total internal reflection
+   }
    Vector3 tdir = (ray.direction*nnt - n*((into?1:-1)*(ddn*nnt+sqrt(cos2t)))).normalize();
    double a=nt-nc, b=nt+nc, R0=a*a/(b*b), c = 1-(into?-ddn:tdir.dot(n));
    double Re=R0+(1-R0)*c*c*c*c*c,Tr=1-Re,P=.25+.5*Re,RP=Re/P,TP=Tr/(1-P);
-   return m->getEmission() + f*(depth>2 ? (drand48()<P ?   // Russian roulette
-     castRay(reflRay,depth)*RP:castRay(Ray(x,tdir),depth)*TP):
-     castRay(reflRay,depth)*Re+castRay(Ray(x,tdir),depth)*Tr);
+
+   // Russian roulette
+   if(depth > 2)
+   {
+       if( drand48() < P)
+       {
+           return m->getEmission() + f * castRay(reflRay,depth)*RP;
+       }
+       else
+       {
+           return m->getEmission() + f* castRay(Ray(x,tdir),depth)*TP;
+       }
+   }
+   else
+   {
+       return m->getEmission() + f*castRay(reflRay,depth)*Re+castRay(Ray(x,tdir),depth)*Tr;
+   }
+
  }
   return Vector3();
 }

@@ -9,7 +9,7 @@ include_directories(lib/tiny_obj_loader)
 set(CMAKE_CXX_COMPILER /usr/local/bin/g++-9)
 set(CMAKE_C_COMPILER /usr/local/bin/gcc-9)
 # enable openmp using -fopenmp
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fopenmp")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -fopenmp")
 
 add_executable(PathTracer
         lib/tiny_obj_loader/tiny_obj_loader.cc
