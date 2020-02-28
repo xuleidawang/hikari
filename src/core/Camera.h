@@ -1,7 +1,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "Vectors.h"
+#include "src/Vectors.h"
 #include "Ray.h"
 
 class Camera{

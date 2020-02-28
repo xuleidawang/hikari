@@ -2,9 +2,9 @@
 #define TRIANGLE_H
 
 #include "src/core/Shape.h"
-#include "Vectors.h"
+#include "src/Vectors.h"
 #include <vector>
-#include "Bounds3.h"
+#include "src/Bounds3.h"
 #include "src/core/Intersection.h"
 #include "./lib/tiny_obj_loader/tiny_obj_loader.h"
 class Triangle;

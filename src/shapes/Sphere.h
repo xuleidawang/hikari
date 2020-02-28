@@ -3,10 +3,10 @@
 
 #include "src/core/Shape.h"
 #include "src/core/Intersection.h"
-#include "Vectors.h"
-#include "Ray.h"
+#include "src/Vectors.h"
+#include "src/core/Ray.h"
 #include "src/core/Material.h"
-#include "Bounds3.h"
+#include "src/Bounds3.h"
 
 
  

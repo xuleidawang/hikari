@@ -1,5 +1,5 @@
 cmake-build-debug
-.idea
+.idea/*
 .DS_Store
 out
 .vs

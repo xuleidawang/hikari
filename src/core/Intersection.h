@@ -2,7 +2,7 @@
 #define INTERSECTION_H
 
 
-#include "Vectors.h"
+#include "src/Vectors.h"
 #include "Material.h"
 #include "Shape.h"
 //enum Refl_t { DIFF, SPEC, REFR };  // material types, used in radiance() 

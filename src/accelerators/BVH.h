@@ -5,10 +5,10 @@
 #ifndef PATHTRACER_BVH_H
 #define PATHTRACER_BVH_H
 // accelerators/bvh.h*
-#include "Ray.h"
+#include "src/core/Ray.h"
 #include "src/core/Shape.h"
 #include "src/core/Intersection.h"
-#include "Bounds3.h"
+#include "src/Bounds3.h"
 #include <atomic>
 #include <vector>
 #include <memory>

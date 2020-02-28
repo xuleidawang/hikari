@@ -2,7 +2,7 @@
 #define MATERIAL_H
 
 
-#include "Vectors.h"
+#include "src/Vectors.h"
 
 enum MaterialType {DIFF, SPEC, REFR, GLOSSY, TRANSMISSION};  // material types, used in radiance()
 

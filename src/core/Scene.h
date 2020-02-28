@@ -2,11 +2,11 @@
 #define SCENE_H
 
 #include "Ray.h"
-#include "Vectors.h"
+#include "src/Vectors.h"
 #include "Shape.h"
-#include "Triangle.h"
+#include "src/shapes/Triangle.h"
 #include "src/core/Intersection.h"
-#include "BVH.h"
+#include "src/accelerators/BVH.h"
 #include <vector>
 class Object;
 class Scene {

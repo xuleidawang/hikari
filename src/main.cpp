@@ -1,14 +1,14 @@
 #include <iostream>
 #include <limits>
 #include "Vectors.h"
-#include "Ray.h"
-#include "Shape.h"
-#include "Sphere.h"
-#include "Intersection.h"
-#include "Material.h"
-#include "Camera.h"
-#include "Triangle.h"
-#include "Scene.h"
+#include "src/core/Ray.h"
+#include "src/core/Shape.h"
+#include "src/shapes/Sphere.h"
+#include "src/core/Intersection.h"
+#include "src/core/Material.h"
+#include "src/core/Camera.h"
+#include "src/shapes/Triangle.h"
+#include "src/core/Scene.h"
 #include "Renderer.h"
 #include "time.h"
 using namespace std;

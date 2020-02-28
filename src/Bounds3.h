@@ -2,7 +2,7 @@
 #define BOUNDS_H
 
 #include "src/Vectors.h"
-#include "src/Ray.h"
+#include "src/core/Ray.h"
 #include <limits>
 class Bounds3{
 public:

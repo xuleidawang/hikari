@@ -1,6 +1,6 @@
 #ifndef RAY_H
 #define RAY_H
-#include "Vectors.h"
+#include "src/Vectors.h"
 #include <limits>
 
 struct Ray{

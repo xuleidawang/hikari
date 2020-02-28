@@ -3,8 +3,8 @@
 #include <iostream>
 
 #include "Vectors.h"
-#include "Scene.h"
-#include "Camera.h"
+#include "src/core/Scene.h"
+#include "src/core/Camera.h"
 
 // Clamp double to min/max of 0/1
 inline double clamp(double x){ return x<0 ? 0 : x>1 ? 1 : x; }

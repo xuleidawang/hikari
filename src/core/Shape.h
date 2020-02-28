@@ -1,7 +1,7 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include "Bounds3.h"
+#include "src/Bounds3.h"
 #include "src/core/Intersection.h"
 
 class Shape {
