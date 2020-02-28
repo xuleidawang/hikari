@@ -2,7 +2,7 @@
 #include <limits>
 #include "Vectors.h"
 #include "Ray.h"
-#include "Object.h"
+#include "Shape.h"
 #include "Sphere.h"
 #include "Intersection.h"
 #include "Material.h"
@@ -33,15 +33,15 @@ int main(int argc, char** argv){
     Scene cornellBox=Scene();
     // camera pos, target
     Camera camera1(Vector3(0,-20,5),Vector3(0,0,1),1280,720);
-    cornellBox.add( dynamic_cast<Object*>(new Sphere(1000,Vector3(0,0,-1000), Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
-    cornellBox.add( dynamic_cast<Object*>(new Sphere(1000,Vector3(-1004,0,0), Vector3(), Vector3(0.85,0.4,0.4),DIFF)));
-    cornellBox.add( dynamic_cast<Object*>(new Sphere(1000,Vector3(1004,0,0),  Vector3(), Vector3(0.4,0.4,0.85),DIFF)));
-    cornellBox.add( dynamic_cast<Object*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
-    cornellBox.add( dynamic_cast<Object*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
-    cornellBox.add( dynamic_cast<Object*>(new Sphere(100, Vector3(0,0,110),   Vector3(1,1,1)*.999,Vector3(1.0,1.0,1.0)*.999,DIFF))); //light
+    cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,0,-1000), Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
+    cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(-1004,0,0), Vector3(), Vector3(0.85,0.4,0.4),DIFF)));
+    cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(1004,0,0),  Vector3(), Vector3(0.4,0.4,0.85),DIFF)));
+    cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
+    cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
+    cornellBox.add( dynamic_cast<Shape*>(new Sphere(100, Vector3(0,0,110),   Vector3(1,1,1)*.999,Vector3(1.0,1.0,1.0)*.999,DIFF))); //light
 
-    cornellBox.add( dynamic_cast<Object*>(new Sphere(1.5,Vector3(-1.5,0,1.5),  Vector3(), Vector3(1.0,1.0,1.0),SPEC)));
-    cornellBox.add( dynamic_cast<Object*>(new Sphere(1.5,Vector3(2,-2,1.5),  Vector3(), Vector3(1.0,1.0,1.0),REFR)));
+    cornellBox.add( dynamic_cast<Shape*>(new Sphere(1.5,Vector3(-1.5,0,1.5),  Vector3(), Vector3(1.0,1.0,1.0),SPEC)));
+    cornellBox.add( dynamic_cast<Shape*>(new Sphere(1.5,Vector3(2,-2,1.5),  Vector3(), Vector3(1.0,1.0,1.0),REFR)));
     cornellBox.addMesh((new Mesh(Vector3(0,0,2.5), "../obj/dragon2.obj", Material(DIFF, Vector3(0.99, 0.84, 0)))) );
 
     cornellBox.buildBVH();

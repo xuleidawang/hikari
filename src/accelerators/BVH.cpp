@@ -7,7 +7,7 @@
 #include <algorithm>
 
 // BVHAccel Method Definitions
-BVHAccel::BVHAccel(std::vector<std::shared_ptr<Object>> p, int maxPrimsInNode, SplitMethod splitMethod)
+BVHAccel::BVHAccel(std::vector<std::shared_ptr<Shape> > p, int maxPrimsInNode, SplitMethod splitMethod)
         : maxPrimsInNode(std::min(255, maxPrimsInNode)),
           splitMethod(splitMethod),
           primitives(std::move(p)) {
@@ -22,7 +22,7 @@ BVHAccel::BVHAccel(std::vector<std::shared_ptr<Object>> p, int maxPrimsInNode, S
     // Build BVH tree for primitives using _primitiveInfo_
 
     int totalNodes = 0;
-    std::vector<std::shared_ptr<Object>> orderedPrims;
+    std::vector<std::shared_ptr<Shape>> orderedPrims;
     orderedPrims.reserve(primitives.size());
 
     root = recursiveBuild(primitiveInfo, 0, primitives.size(), &totalNodes, orderedPrims);
@@ -35,7 +35,7 @@ BVHAccel::BVHAccel(std::vector<std::shared_ptr<Object>> p, int maxPrimsInNode, S
 
 BVHBuildNode* BVHAccel::recursiveBuild(std::vector<BVHPrimitiveInfo> &primitiveInfo, int start,
                                        int end, int *totalNodes,
-                                       std::vector<std::shared_ptr<Object>> &orderedPrims)
+                                       std::vector<std::shared_ptr<Shape>> &orderedPrims)
 {
     BVHBuildNode* node = new BVHBuildNode();
     (*totalNodes)++;

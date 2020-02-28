@@ -1,8 +1,8 @@
 #ifndef BOUNDS_H
 #define BOUNDS_H
 
-#include "Vectors.h"
-#include "Ray.h"
+#include "src/Vectors.h"
+#include "src/Ray.h"
 #include <limits>
 class Bounds3{
 public:

@@ -2,9 +2,9 @@
 #define OBJECT_H
 
 #include "Bounds3.h"
-#include "Intersection.h"
+#include "src/core/Intersection.h"
 
-class Object {
+class Shape {
 public:
 	virtual bool intersect(const Ray& ray, Intersection *intersection) = 0;
 //	virtual Intersection getIntersection(Ray _ray) = 0;

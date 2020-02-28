@@ -6,8 +6,8 @@
 #define PATHTRACER_BVH_H
 // accelerators/bvh.h*
 #include "Ray.h"
-#include "Object.h"
-#include "Intersection.h"
+#include "src/core/Shape.h"
+#include "src/core/Intersection.h"
 #include "Bounds3.h"
 #include <atomic>
 #include <vector>
@@ -33,7 +33,7 @@ public:
         enum class SplitMethod { SAH };
 
         // BVHAccel Public Methods
-        BVHAccel(std::vector<std::shared_ptr<Object>> p,
+        BVHAccel(std::vector<std::shared_ptr<Shape>> p,
                  int maxPrimsInNode = 1,
                  SplitMethod splitMethod = SplitMethod::SAH);
         Bounds3 WorldBound() const;
@@ -48,15 +48,15 @@ public:
         // BVHAccel Private Methods
         BVHBuildNode* recursiveBuild(std::vector<BVHPrimitiveInfo> &primitiveInfo, int start,
                                      int end, int *totalNodes,
-                                     std::vector<std::shared_ptr<Object>> &orderedPrims);
+                                     std::vector<std::shared_ptr<Shape>> &orderedPrims);
 
         int flattenBVHTree(BVHBuildNode *node, int *offset);
 
         // BVHAccel Private Data
         const int maxPrimsInNode;
         const SplitMethod splitMethod;
-        //std::vector<Object*> primitives;
-        std::vector<std::shared_ptr<Object>> primitives;
+        //std::vector<Shape*> primitives;
+        std::vector<std::shared_ptr<Shape>> primitives;
         LinearBVHNode *nodes = nullptr;
 };
 
@@ -116,7 +116,7 @@ struct BucketInfo {
     Bounds3 bounds;
 };
 
-void CreateBVHAccelerator(std::vector<std::shared_ptr<Object>> prims);
+void CreateBVHAccelerator(std::vector<std::shared_ptr<Shape>> prims);
 
 
 

@@ -3,9 +3,9 @@
 
 #include "Ray.h"
 #include "Vectors.h"
-#include "Object.h"
+#include "Shape.h"
 #include "Triangle.h"
-#include "Intersection.h"
+#include "src/core/Intersection.h"
 #include "BVH.h"
 #include <vector>
 class Object;
@@ -14,19 +14,19 @@ class Scene {
 
 public:
     Scene(){};
-    void add(Object *object);
+    void add(Shape *object);
     void addMesh(Mesh* mesh);
     Intersection intersect(const Ray &ray);
     Vector3 castRay(const Ray &ray, int depth);
-    std::vector<std::shared_ptr<Object>> m_objects;
+    std::vector<std::shared_ptr<Shape>> m_objects;
     BVHAccel *bvh;
     void buildBVH();
 
 };
 
 
-void Scene::add(Object *object) {
-    m_objects.push_back( std::shared_ptr<Object>(object) );
+void Scene::add(Shape *object) {
+    m_objects.push_back( std::shared_ptr<Shape>(object) );
 }
 
 void Scene::addMesh(Mesh *mesh) {

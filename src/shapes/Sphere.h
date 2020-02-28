@@ -1,16 +1,16 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-#include "Object.h"
-#include "Intersection.h"
+#include "src/core/Shape.h"
+#include "src/core/Intersection.h"
 #include "Vectors.h"
 #include "Ray.h"
-#include "Material.h"
+#include "src/core/Material.h"
 #include "Bounds3.h"
 
 
  
-class Sphere: public Object{
+class Sphere: public Shape{
 public:
 		const double radius;
 		const Vector3 pos;

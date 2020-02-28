@@ -1,14 +1,14 @@
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 
-#include "Object.h"
+#include "src/core/Shape.h"
 #include "Vectors.h"
 #include <vector>
 #include "Bounds3.h"
-#include "Intersection.h"
+#include "src/core/Intersection.h"
 #include "./lib/tiny_obj_loader/tiny_obj_loader.h"
 class Triangle;
-class Mesh : public Object {
+class Mesh : public Shape {
 
 public:
 	std::vector<tinyobj::shape_t> m_shapes;
@@ -28,7 +28,7 @@ public:
 
 };
 
-class Triangle: public Object{
+class Triangle: public Shape{
 public:
 	Vector3 v0, v1, v2; //vertices A, B ,C , counter-clockwise order 
 	Vector3 e1, e2; //2 edges v1-v0, v2-v0;
