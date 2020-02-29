@@ -11,7 +11,8 @@ public:
 //	virtual Vector3 getNormal(Vector3 position) = 0;
 	virtual Bounds3 getBounds()=0;
 	//Texture mapping
-	//virtual bool getUVAt(Vector3, double*, double*) { return false; } 
+	//virtual bool getUVAt(Vector3, double*, double*) { return false; }
+	virtual Bounds3f WorldBound() const;
 	Vector3 m_p;
 
 };

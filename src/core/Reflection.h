@@ -5,7 +5,7 @@
 #ifndef PATHTRACER_REFLECTION_H
 #define PATHTRACER_REFLECTION_H
 
-#include "src/core/Material.h"
+#include "Material.h"
 class BxDF {
 public:
     virtual ~BxDF(){}

@@ -33,4 +33,4 @@ add_executable(PathTracer
         src/core/Reflection.h
         src/core/Reflection.cpp
         src/core/Integrator.h
-        README.md src/integrators/whitted.h src/integrators/whitted.cpp)
+        README.md src/integrators/whitted.h src/integrators/whitted.cpp src/core/Primitive.cpp src/core/Primitive.h)

@@ -25,6 +25,7 @@ struct Intersection
 	Vector3 normal;
 	double distance;
 	Shape* obj;
+	Primitive *primitive;
 	//Refl_t refl;
 	Material* m;
 };
