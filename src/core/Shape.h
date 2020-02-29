@@ -12,7 +12,7 @@ public:
 	virtual Bounds3 getBounds()=0;
 	//Texture mapping
 	//virtual bool getUVAt(Vector3, double*, double*) { return false; }
-	virtual Bounds3f WorldBound() const;
+	virtual Bounds3 WorldBound() const;
 	Vector3 m_p;
 
 };

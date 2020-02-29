@@ -5,9 +5,12 @@
 #include "src/Vectors.h"
 #include "Material.h"
 #include "Shape.h"
+#include "Primitive.h"
+
 //enum Refl_t { DIFF, SPEC, REFR };  // material types, used in radiance() 
  
 class Shape;
+class Primitive;
 class Sphere;
 
 struct Intersection

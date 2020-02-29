@@ -8,7 +8,10 @@
 #include <memory>
 #include "Shape.h"
 #include "Material.h"
+#include "Intersection.h"
 
+class Intersection;
+class Shape;
 class Primitive{
 public:
     virtual ~Primitive();
