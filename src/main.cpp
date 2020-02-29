@@ -18,11 +18,6 @@ using namespace std;
 #define MAX_DEPTH		5
 typedef unsigned char u08;
 
-
-// utilities
-
-inline double Lerp(double t, double x, double y){return (1-t)*x+t*y;}
-
 int main(int argc, char** argv){
     time_t start, stop;
     time(&start);               // Start execution timer

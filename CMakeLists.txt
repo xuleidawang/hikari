@@ -4,6 +4,8 @@ project(PathTracer)
 set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
+include_directories(./src)
+include_directories(./src/core)
 include_directories(lib/tiny_obj_loader)
 
 set(CMAKE_CXX_COMPILER /usr/local/bin/g++-9)
@@ -21,11 +23,14 @@ add_executable(PathTracer
         src/core/Material.h
         src/core/Shape.h
         src/core/Ray.h
-        README.md
         src/core/Scene.h
         src/shapes/Sphere.h
         src/shapes/Triangle.h
         src/Vectors.h
         src/shapes/Sphere.cpp
         src/accelerators/BVH.h
-        src/accelerators/BVH.cpp src/core/Reflection.h src/core/Reflection.cpp src/core/Integrator.h)
+        src/accelerators/BVH.cpp
+        src/core/Reflection.h
+        src/core/Reflection.cpp
+        src/core/Integrator.h
+        README.md src/integrators/whitted.h src/integrators/whitted.cpp)

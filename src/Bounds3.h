@@ -31,22 +31,6 @@ public:
 	}
 
 	double SurfaceArea()const{Vector3 d = Diagonal();return 2*(d.x*d.y+d.x*d.z+d.y*d.z);}
-	// double Lerp(double t, double x, double y){return (1-t)*x+t*y;}
-	
-	// Vector3 Lerp(const Vector3 &t)const{
-	// 	return Vector3(Lerp(t.x,pMin.x,pMax.x),Lerp(t.y,pMin.y,pMax.y), Lerp(t.z,pMin.z,pMax.z));
-	// }
-
-//	static Bounds3 Union(const Bounds3 &b){
-//		return Bounds3(Vector3(fmin(pMin.x,b.pMin.x),
-//							   fmin(pMin.y,b.pMin.y),
-//							   fmin(pMin.z,b.pMin.z)),
-//					   Vector3(fmax(pMax.x,b.pMax.x),
-//					   		   fmax(pMax.y,b.pMax.y),
-//					   		   fmax(pMax.z,b.pMax.z))
-//			);
-//	}
-
 
 	Bounds3 Intersect(const Bounds3 &b){
 		return Bounds3(Vector3(fmax(pMin.x,b.pMin.x),

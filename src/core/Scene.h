@@ -16,7 +16,7 @@ public:
     Scene(){};
     void add(Shape *object);
     void addMesh(Mesh* mesh);
-    Intersection intersect(const Ray &ray);
+    Intersection intersect(const Ray &ray)const;
     Vector3 castRay(const Ray &ray, int depth);
     std::vector<std::shared_ptr<Shape>> m_objects;
     BVHAccel *bvh;
@@ -43,7 +43,7 @@ void Scene::buildBVH() {
     this->bvh = new BVHAccel(m_objects, 4, BVHAccel::SplitMethod::SAH);
 }
 
-Intersection Scene::intersect(const Ray &ray){
+Intersection Scene::intersect(const Ray &ray)const{
   return this->bvh->Intersect(ray);
 }
 
