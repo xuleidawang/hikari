@@ -16,6 +16,7 @@ public:
     Scene(){};
     void add(Shape *object);
     void addMesh(Mesh* mesh);
+    bool intersectP(const Ray &ray) const;
     Intersection intersect(const Ray &ray)const;
     Vector3 castRay(const Ray &ray, int depth);
     std::vector<std::shared_ptr<Shape>> m_objects;
@@ -43,8 +44,11 @@ void Scene::buildBVH() {
     this->bvh = new BVHAccel(m_objects, 4, BVHAccel::SplitMethod::SAH);
 }
 
+bool Scene::intersectP(const Ray &ray) const {
+    return this->bvh->Intersect(ray);
+}
 Intersection Scene::intersect(const Ray &ray)const{
-  return this->bvh->Intersect(ray);
+  return this->bvh->getIntersection(bvh->root, ray);
 }
 
 //Randomly generate a direction in a hemisphere w.r.t shading normal n

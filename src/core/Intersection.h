@@ -23,6 +23,17 @@ struct Intersection
 		obj =nullptr;
 		m=nullptr;
 	}
+
+	Ray SpawnRayTo(const Inersection &it) const {
+		Vector3 origin = this->coords;
+		Vector3 target = it.coords;
+		Vector3 d = (target - origin).normalize();
+
+		return Ray(origin, d);
+	}
+
+
+
 	bool happened;
 	Vector3 coords;
 	Vector3 normal;

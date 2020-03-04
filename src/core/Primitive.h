@@ -8,6 +8,7 @@
 #include <memory>
 #include "Shape.h"
 #include "Material.h"
+#include "Light.h"
 #include "Intersection.h"
 
 class Intersection;

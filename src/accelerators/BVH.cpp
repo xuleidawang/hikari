@@ -183,12 +183,12 @@ Intersection BVHAccel::getIntersection(BVHBuildNode* node, const Ray& ray)const{
     }else return isec;
 }
 
-Intersection BVHAccel::Intersect(const Ray &ray) const {
+bool BVHAccel::Intersect(const Ray &ray) const {
     Intersection isect;
-    if(!root)return isect;
+    if(!root)return false;
     isect = BVHAccel::getIntersection(root,ray);
     //std::cout<<isect.coords<<" color is "<<isect.m.getColor()<<std::endl;
-    return isect;
+    return isect.happened;
 
 }
 
