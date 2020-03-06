@@ -5,8 +5,7 @@
 #include "Light.h"
 
 namespace hikari {
-
-
+    
     Light::Light(int nSamples)
             : nSamples(std::max(1, nSamples))
             {}

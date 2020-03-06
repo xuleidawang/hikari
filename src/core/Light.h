@@ -9,7 +9,8 @@
 #include "Intersection.h"
 #include "Scene.h"
 
-namespace hikari{
+namespace hikari {
+
     class Light{
     public:
         virtual ~Light();

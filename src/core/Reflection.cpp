@@ -3,5 +3,6 @@
 //
 #include "Reflection.h"
 
+namespace hikari {
 
-
+}
