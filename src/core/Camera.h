@@ -1,10 +1,9 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "src/Vectors.h"
-#include "Ray.h"
+#include "hikari.h"
 
-namespace hikari{
+namespace hikari {
     class Camera{
     private:
         Vector3 pos,direction;

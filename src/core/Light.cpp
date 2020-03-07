@@ -3,6 +3,7 @@
 //
 
 #include "Light.h"
+#include "Scene.h"
 
 namespace hikari {
     

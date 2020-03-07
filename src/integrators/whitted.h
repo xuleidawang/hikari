@@ -4,9 +4,10 @@
 
 #ifndef PATHTRACER_WHITTED_H
 #define PATHTRACER_WHITTED_H
-#include <memory>
-#include "Integrator.h"
 
+#include "hikari.h"
+#include "Integrator.h"
+#include "Scene.h"
 namespace hikari {
     // WhittedIntegrator Declarations
     class WhittedIntegrator : public SamplerIntegrator {
@@ -17,7 +18,7 @@ namespace hikari {
                           const Bounds2i &pixelBounds)
                 : SamplerIntegrator(camera, sampler, pixelBounds), maxDepth(maxDepth) {}
         Vector3 Li(const Ray &ray, const Scene &scene,
-                   Sampler &sampler, MemoryArena &arena, int depth) const;
+                   Sampler &sampler, int depth) const;
 
     private:
         // WhittedIntegrator Private Data

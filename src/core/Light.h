@@ -5,9 +5,10 @@
 #ifndef PATHTRACER_LIGHT_H
 #define PATHTRACER_LIGHT_H
 
-#include "Vectors.h"
+
+#include "hikari.h"
 #include "Intersection.h"
-#include "Scene.h"
+
 
 namespace hikari {
 

@@ -1,6 +1,8 @@
 #ifndef RAY_H
 #define RAY_H
-#include "src/Vectors.h"
+
+#include "hikari.h"
+#include "Vectors.h"
 #include <limits>
 
 namespace hikari {

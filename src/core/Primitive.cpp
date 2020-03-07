@@ -3,11 +3,13 @@
 //
 
 #include "Primitive.h"
+#include "Light.h"
+#include "Intersection.h"
 
 namespace hikari {
     Primitive::~Primitive() {}
 
-    Bounds3 GeometricPrimitive::WorldBound() const { return shape->WorldBound(); }
+    Bounds3 GeometricPrimitive::WorldBound() const { return shape->getBounds(); }
 //bool GeometricPrimitive::IntersectP(const Ray &r) const {
 //    return shape->IntersectP(r);
 //}

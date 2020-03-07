@@ -5,11 +5,10 @@
 #ifndef PATHTRACER_PRIMITIVE_H
 #define PATHTRACER_PRIMITIVE_H
 
-#include <memory>
+#include "hikari.h"
 #include "Shape.h"
 #include "Material.h"
 #include "Light.h"
-#include "Intersection.h"
 
 namespace  hikari {
     class Intersection;

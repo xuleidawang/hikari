@@ -5,13 +5,11 @@
 #ifndef PATHTRACER_BVH_H
 #define PATHTRACER_BVH_H
 // accelerators/bvh.h*
-#include "src/core/Ray.h"
-#include "src/core/Shape.h"
-#include "src/core/Intersection.h"
-#include "src/Bounds3.h"
+
+#include "hikari.h"
+#include "Primitive.h"
 #include <atomic>
-#include <vector>
-#include <memory>
+
 
 namespace  hikari{
     struct BVHBuildNode;

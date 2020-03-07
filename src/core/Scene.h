@@ -1,6 +1,7 @@
 #ifndef SCENE_H
 #define SCENE_H
 
+#include "hikari.h"
 #include "Ray.h"
 #include "Vectors.h"
 #include "Primitive.h"

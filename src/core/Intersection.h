@@ -25,7 +25,7 @@
              m=nullptr;
          }
 
-         Ray SpawnRayTo(const Inersection &it) const {
+         Ray SpawnRayTo(const Intersection &it) const {
              Vector3 origin = this->coords;
              Vector3 target = it.coords;
              Vector3 d = (target - origin).normalize();

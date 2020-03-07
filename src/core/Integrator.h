@@ -5,8 +5,12 @@
 #ifndef PATHTRACER_INTEGRATOR_H
 #define PATHTRACER_INTEGRATOR_H
 
-#include "src/Vectors.h"
-#include "Intersection.h"
+#include "hikari.h"
+#include "Primitive.h"
+#include "Light.h"
+#include "Reflection.h"
+#include "sampler.h"
+#include "Material.h"
 
 namespace hikari{
     class Integrator {

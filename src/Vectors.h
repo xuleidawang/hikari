@@ -1,6 +1,7 @@
 #ifndef VECTORS_H_DEF
 #define VECTORS_H_DEF
 
+#include "hikari.h"
 #include <cmath>
 #include <iostream>
 

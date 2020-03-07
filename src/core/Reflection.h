@@ -5,7 +5,10 @@
 #ifndef PATHTRACER_REFLECTION_H
 #define PATHTRACER_REFLECTION_H
 
-#include "Material.h"
+#include "hikari.h"
+#include "Bounds3.h"
+#include "Ray.h"
+#include "Shape.h"
 
 namespace  hikari {
     class BxDF {
