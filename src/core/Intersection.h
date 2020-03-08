@@ -2,10 +2,11 @@
 #define INTERSECTION_H
 
 
-#include "src/Vectors.h"
+#include "hikari.h"
+#include "Vectors.h"
+#include "Ray.h"
 #include "Material.h"
-#include "Shape.h"
-#include "Primitive.h"
+
 
 //enum Refl_t { DIFF, SPEC, REFR };  // material types, used in radiance() 
  namespace hikari{
@@ -32,8 +33,6 @@
 
              return Ray(origin, d);
          }
-
-
 
          bool happened;
          Vector3 coords;
