@@ -8,8 +8,7 @@
 
 #include "hikari.h"
 #include "Primitive.h"
-#include <atomic>
-
+//#include <atomic>
 
 namespace  hikari{
     struct BVHBuildNode;

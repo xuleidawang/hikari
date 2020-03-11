@@ -126,7 +126,7 @@ namespace hikari {
         shapes_size = m_shapes.size();
         materials_size = m_materials.size();
 
-        // Load materials/textures from obj
+        // Load materials/textures from scene
         // TODO: Only texture is loaded at the moment, need to implement material types and colours
         for (int i=0; i<materials_size; i++) {
             std::string texture_path = "";
@@ -141,7 +141,7 @@ namespace hikari {
             }
 
         }
-        // Load triangles from obj
+        // Load triangles from scene
         for (int i = 0; i < shapes_size; i++) {
             indices_size = m_shapes[i].mesh.indices.size() / 3;
             for (size_t f = 0; f < indices_size; f++) {

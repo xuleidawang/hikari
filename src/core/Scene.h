@@ -5,6 +5,7 @@
 #include "Ray.h"
 #include "Vectors.h"
 #include "Primitive.h"
+#include "Light.h"
 #include "shapes/Triangle.h"
 #include "accelerators/BVH.h"
 #include <vector>

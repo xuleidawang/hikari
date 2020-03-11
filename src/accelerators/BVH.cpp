@@ -6,7 +6,7 @@
 
 #include <algorithm>
 
-namespace hikari{
+namespace hikari {
     // BVHAccel Method Definitions
     BVHAccel::BVHAccel(std::vector<std::shared_ptr<Shape> > p, int maxPrimsInNode, SplitMethod splitMethod)
             : maxPrimsInNode(std::min(255, maxPrimsInNode)),
@@ -76,7 +76,6 @@ namespace hikari{
             } else {
                 // Partition primitives based on _splitMethod_
                 // Partition primitives using approximate SAH
-
                 if (nPrimitives <= 2) {
                     // Partition primitives into equally-sized subsets
                     mid = (start + end) / 2;
@@ -192,7 +191,6 @@ namespace hikari{
         return isect.happened;
 
     }
-
 }
 
 

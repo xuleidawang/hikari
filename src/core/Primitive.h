@@ -12,20 +12,26 @@
 
 namespace  hikari {
     class Intersection;
+
     class Shape;
-    class Primitive{
+
+    class Primitive {
     public:
         virtual ~Primitive();
+
         virtual Bounds3 WordldBound() const = 0;
-        virtual bool Intersect(const Ray &ray, Intersection *) const =0;
-        virtual bool IntersectP(const Ray &ray) const =0;
+
+        virtual bool Intersect(const Ray &ray, Intersection *) const = 0;
+
+        virtual bool IntersectP(const Ray &ray) const = 0;
+
         //TODO Add AreaLight class
 //    virtual const AreaLight *GetAreaLight() const = 0;
 //    virtual const Material *GetMaterial() const = 0;
         virtual void ComputeScatteringFunctions(Intersection *isect,
                                                 bool allowMultipleLobes) const = 0;
     };
-
+}
 // GeometricPrimitive Declarations
 //    class GeometricPrimitive : public Primitive {
 //    public:

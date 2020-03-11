@@ -3,10 +3,9 @@
 //
 
 #include "Primitive.h"
-
 namespace hikari {
     Primitive::~Primitive() {}
-
+}
 //    Bounds3 GeometricPrimitive::WorldBound() const { return shape->getBounds(); }
 ////bool GeometricPrimitive::IntersectP(const Ray &r) const {
 ////    return shape->IntersectP(r);
@@ -43,5 +42,5 @@ namespace hikari {
 //            material->ComputeScatteringFunctions(isect, arena, mode,
 //                                                 allowMultipleLobes);
 //        CHECK_GE(Dot(isect->n, isect->shading.n), 0.);
-    }
-}
+//}
+

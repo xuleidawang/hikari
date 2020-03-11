@@ -39,7 +39,7 @@ namespace hikari {
 
         cornellBox.add( dynamic_cast<Shape*>(new Sphere(1.5,Vector3(-1.5,0,1.5),  Vector3(), Vector3(1.0,1.0,1.0),SPEC)));
         cornellBox.add( dynamic_cast<Shape*>(new Sphere(1.5,Vector3(2,-2,1.5),  Vector3(), Vector3(1.0,1.0,1.0),REFR)));
-        cornellBox.addMesh((new Mesh(Vector3(0,0,2.5), "../obj/dragon2.obj", Material(DIFF, Vector3(0.99, 0.84, 0)))) );
+        cornellBox.addMesh((new Mesh(Vector3(0,0,2.5), "../scene/dragon2.scene", Material(DIFF, Vector3(0.99, 0.84, 0)))) );
 
         cornellBox.buildBVH();
         Renderer renderer1 =Renderer(&cornellBox,&camera1);
