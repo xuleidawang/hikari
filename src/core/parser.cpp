@@ -99,8 +99,7 @@ namespace hikari {
     }
 
     std::unique_ptr<Tokenizer> Tokenizer::CreateFromFile(
-            const std::string &filename,
-            std::function<void(const char *)> errorCallback) {
+            const std::string &filename) {
         if (filename == "-") {
             // Handle stdin by slurping everything into a string.
             std::string str;
@@ -108,7 +107,7 @@ namespace hikari {
             while ((ch = getchar()) != EOF) str.push_back((char)ch);
             // std::make_unique...
             return std::unique_ptr<Tokenizer>(
-                    new Tokenizer(std::move(str), std::move(errorCallback)));
+                    new Tokenizer(std::move(str));
         }
 
 #ifdef PBRT_HAVE_MMAP
@@ -193,7 +192,7 @@ namespace hikari {
 
         // std::make_unique...
         return std::unique_ptr<Tokenizer>(
-                new Tokenizer(std::move(str), std::move(errorCallback)));
+                new Tokenizer(std::move(str)));
 #endif
     }
 
@@ -201,11 +200,10 @@ namespace hikari {
             std::string str, std::function<void(const char *)> errorCallback) {
         // return std::make_unique<Tokenizer>(std::move(str));
         return std::unique_ptr<Tokenizer>(
-                new Tokenizer(std::move(str), std::move(errorCallback)));
+                new Tokenizer(std::move(str)));
     }
 
-    Tokenizer::Tokenizer(std::string str,
-                         std::function<void(const char *)> errorCallback)
+    Tokenizer::Tokenizer(std::string str)
             : loc("<stdin>"),
               errorCallback(std::move(errorCallback)),
               contents(std::move(str)) {
@@ -834,7 +832,7 @@ namespace hikari {
                 filename = AbsolutePath(ResolveFilename(filename));
                 auto tokError = [](const char *msg) { Error("%s", msg); };
                 std::unique_ptr<Tokenizer> tinc =
-                        Tokenizer::CreateFromFile(filename, tokError);
+                        Tokenizer::CreateFromFile(filename);
                 if (tinc) {
                     fileStack.push_back(std::move(tinc));
                     parserLoc = &fileStack.back()->loc;
@@ -856,8 +854,6 @@ namespace hikari {
             ungetTokenValue = std::string(s.data(), s.size());
             ungetTokenSet = true;
         };
-
-        MemoryArena arena;
 
         // Helper function for pbrt API entrypoints that take a single string
         // parameter and a ParamSet (e.g. pbrtShape()).
@@ -1098,18 +1094,15 @@ namespace hikari {
         }
     }
 
-    void pbrtParseFile(std::string filename) {
-        if (filename != "-") SetSearchDirectory(DirectoryContaining(filename));
-
-        auto tokError = [](const char *msg) { Error("%s", msg); exit(1); };
+    void hikariParseFile(std::string filename) {
         std::unique_ptr<Tokenizer> t =
-                Tokenizer::CreateFromFile(filename, tokError);
+                Tokenizer::CreateFromFile(filename);
         if (!t) return;
         parse(std::move(t));
     }
 
     void pbrtParseString(std::string str) {
-        auto tokError = [](const char *msg) { Error("%s", msg); exit(1); };
+        auto tokError = [](const char *msg) { printf("%s", msg); exit(1); };
         std::unique_ptr<Tokenizer> t =
                 Tokenizer::CreateFromString(std::move(str), tokError);
         if (!t) return;

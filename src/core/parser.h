@@ -104,8 +104,7 @@ namespace hikari {
     class Tokenizer {
     public:
         static std::unique_ptr<Tokenizer> CreateFromFile(
-                const std::string &filename,
-                std::function<void(const char *)> errorCallback);
+                const std::string &filename);
         static std::unique_ptr<Tokenizer> CreateFromString(
                 std::string str, std::function<void(const char *)> errorCallback);
 
@@ -118,7 +117,7 @@ namespace hikari {
         Loc loc;
 
     private:
-        Tokenizer(std::string str, std::function<void(const char *)> errorCallback);
+        Tokenizer(std::string str);
 #if defined(PBRT_HAVE_MMAP) || defined(PBRT_IS_WINDOWS)
         Tokenizer(void *ptr, size_t len, std::string filename,
               std::function<void(const char *)> errorCallback);
