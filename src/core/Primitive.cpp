@@ -6,7 +6,7 @@
 namespace hikari {
     Primitive::~Primitive() {}
 }
-//    Bounds3 GeometricPrimitive::WorldBound() const { return shape->getBounds(); }
+//    Bounds GeometricPrimitive::WorldBound() const { return shape->getBounds(); }
 ////bool GeometricPrimitive::IntersectP(const Ray &r) const {
 ////    return shape->IntersectP(r);
 ////}

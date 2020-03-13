@@ -6,7 +6,7 @@
 #define PATHTRACER_SAMPLER_H
 
 #include "hikari.h"
-#include "Bounds3.h"
+#include "Bounds.h"
 #include "Ray.h"
 
 namespace hikari {

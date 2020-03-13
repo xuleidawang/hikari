@@ -14,8 +14,8 @@ namespace hikari {
         Vector3 t0,t1,t2;//texture coords
         Vector3 normal;
         Material *m;
-// Triangle Public Methods
 
+        // Triangle Public Methods
         Triangle(Vector3 _v0, Vector3 _v1, Vector3 _v2, Material *_m = NULL):v0(_v0),v1(_v1),v2(_v2),m(_m){
             e1 = v1-v0;
             e2 = v2-v0;
@@ -29,7 +29,7 @@ namespace hikari {
         bool intersect(const Ray& ray, Intersection* intersection);
         Vector3 getNormal(Vector3 position);
         Vector3 getBarycentric(Vector3 p);
-        Bounds3 getBounds();
+        Bounds getBounds();
         Vector3 getMidpoint();
     };
 
@@ -49,7 +49,7 @@ namespace hikari {
 
         bool intersect(const Ray& ray, Intersection* intersection);
         Vector3 getNormal(Vector3 position);
-        Bounds3 getBounds();
+        Bounds getBounds();
 
     };
 
@@ -227,15 +227,15 @@ namespace hikari {
         return intersection->happened;
 
     }
-    Bounds3 Mesh::getBounds() {
+    Bounds Mesh::getBounds() {
         std::cout<<"This is a Mesh Bound, try something else"<<std::endl;
-        Bounds3 box;
+        Bounds box;
 
         return box;
     }
 
-    Bounds3 Triangle::getBounds() {
-        return Union(Bounds3(v0, v1), v2);
+    Bounds Triangle::getBounds() {
+        return Union(Bounds(v0, v1), v2);
     }
 
 }

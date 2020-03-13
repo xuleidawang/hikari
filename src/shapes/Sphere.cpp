@@ -43,8 +43,8 @@ namespace hikari {
         Vector3 N = position-pos;
         return N.normalize();
     }
-    Bounds3 Sphere::getBounds() {
-        return Bounds3(Vector3(pos.x-radius, pos.y-radius, pos.z-radius),
+    Bounds Sphere::getBounds() {
+        return Bounds(Vector3(pos.x-radius, pos.y-radius, pos.z-radius),
                        Vector3(pos.x+radius, pos.y+radius, pos.z+radius));
     }
 }

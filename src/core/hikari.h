@@ -22,7 +22,7 @@ namespace hikari {
     class Vector3;
     class Vector2;
     class Ray;
-    class Bounds3;
+    class Bounds;
     class Intersection;
     class Shape;
     class Primitive;

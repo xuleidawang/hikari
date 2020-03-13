@@ -33,7 +33,7 @@ namespace  hikari{
         BVHAccel(std::vector<std::shared_ptr<Shape>> p,
                  int maxPrimsInNode = 1,
                  SplitMethod splitMethod = SplitMethod::SAH);
-        Bounds3 WorldBound() const;
+        Bounds WorldBound() const;
         ~BVHAccel();
 
         bool Intersect(const Ray &ray) const;
@@ -59,25 +59,25 @@ namespace  hikari{
 
     struct BVHPrimitiveInfo {
         BVHPrimitiveInfo() {}
-        BVHPrimitiveInfo(size_t primitiveNumber, const Bounds3 &bounds)
+        BVHPrimitiveInfo(size_t primitiveNumber, const Bounds &bounds)
                 : primitiveNumber(primitiveNumber),
                   bounds(bounds),
                   centroid(.5f * bounds.pMin + .5f * bounds.pMax) {}
         size_t primitiveNumber;
-        Bounds3 bounds;
+        Bounds bounds;
         Vector3 centroid;
     };
     struct BVHBuildNode {
         //BVHBiildNode data
-        Bounds3 bounds;
+        Bounds bounds;
         BVHBuildNode *children[2];
         int splitAxis=0, firstPrimOffset=0, nPrimitives=0;
         // BVHBuildNode Public Methods
         BVHBuildNode(){
-            bounds = Bounds3();
+            bounds = Bounds();
             *children = nullptr ;
         }
-        void InitLeaf(BVHBuildNode* node, int first, int n, const Bounds3 &b) {
+        void InitLeaf(BVHBuildNode* node, int first, int n, const Bounds &b) {
             node->firstPrimOffset = first;
             node->nPrimitives = n;
             node->bounds = b;
@@ -98,7 +98,7 @@ namespace  hikari{
     };
 
     struct LinearBVHNode {
-        Bounds3 bounds;
+        Bounds bounds;
         union {
             int primitivesOffset;   // leaf
             int secondChildOffset;  // interior
@@ -110,7 +110,7 @@ namespace  hikari{
 
     struct BucketInfo {
         int count = 0;
-        Bounds3 bounds;
+        Bounds bounds;
     };
 
     void CreateBVHAccelerator(std::vector<std::shared_ptr<Shape>> prims);

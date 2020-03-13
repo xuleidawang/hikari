@@ -6,7 +6,7 @@
 #define PATHTRACER_REFLECTION_H
 
 #include "hikari.h"
-#include "Bounds3.h"
+#include "Bounds.h"
 #include "Ray.h"
 #include "Shape.h"
 

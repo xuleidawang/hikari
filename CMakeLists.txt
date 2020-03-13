@@ -16,7 +16,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -fopenmp")
 add_executable(PathTracer
         lib/tiny_obj_loader/tiny_obj_loader.cc
         lib/tiny_obj_loader/tiny_obj_loader.h
-        src/Bounds3.h
+        src/Bounds.h
         src/core/Camera.h
         src/core/Intersection.h
         src/main.cpp

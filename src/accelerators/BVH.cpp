@@ -41,7 +41,7 @@ namespace hikari {
         BVHBuildNode* node = new BVHBuildNode();
         (*totalNodes)++;
         // Compute bounds of all primitives in BVH node
-        Bounds3 bounds;
+        Bounds bounds;
         for (int i = start; i < end; ++i)
             bounds = Union(bounds, primitiveInfo[i].bounds);
         int nPrimitives = end - start;
@@ -57,7 +57,7 @@ namespace hikari {
         }
         else {
             // Compute bound of primitive centroids, choose split dimension _dim_
-            Bounds3 centroidBounds;
+            Bounds centroidBounds;
             for (int i = start; i < end; ++i)
                 centroidBounds = Union(centroidBounds, primitiveInfo[i].centroid);
             int dim = centroidBounds.maxExtent();
@@ -95,7 +95,7 @@ namespace hikari {
                     // Compute costs for splitting after each bucket
                     double cost[nBuckets - 1];
                     for (int i = 0; i < nBuckets - 1; ++i) {
-                        Bounds3 b0, b1;
+                        Bounds b0, b1;
                         int count0 = 0, count1 = 0;
                         for (int j = 0; j <= i; ++j) {
                             b0 = Union(b0, buckets[j].bounds);

@@ -24,7 +24,7 @@ namespace hikari {
 		bool intersect(const Ray& ray, Intersection* intersection);
 		Intersection getIntersection(Ray _ray);
 		Vector3 getNormal(Vector3 position);
-		Bounds3 getBounds();
+		Bounds getBounds();
 
 	};
 }
