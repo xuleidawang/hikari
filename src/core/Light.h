@@ -19,6 +19,7 @@ namespace hikari {
         Light(int nSamples = 1);
         virtual Vector3 Sample_Li(const Intersection &ref, const Vector2 &u, Vector3 *wi, float *pdf) const =0;
         virtual Vector3 Power() const = 0;
+        virtual Vector3 Le(const Ray &r) const;
         virtual double Pdf_Li(const Intersection &ref, const Vector3 &wi) const = 0;
         virtual Vector3 Sample_Le(const Vector2 &u1, const Vector2 &u2, float time,
                                    Ray *ray, Vector3 *nLight, float *pdfPos,

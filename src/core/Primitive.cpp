@@ -5,7 +5,7 @@
 #include "Primitive.h"
 namespace hikari {
     Primitive::~Primitive() {}
-}
+
 //    Bounds GeometricPrimitive::WorldBound() const { return shape->getBounds(); }
 ////bool GeometricPrimitive::IntersectP(const Ray &r) const {
 ////    return shape->IntersectP(r);
@@ -35,12 +35,11 @@ namespace hikari {
 //        return material.get();
 //    }
 //
-//    void GeometricPrimitive::ComputeScatteringFunctions(
-//            Intersection *isect, TransportMode mode,
-//            bool allowMultipleLobes) const {
-//        if (material)
-//            material->ComputeScatteringFunctions(isect, arena, mode,
-//                                                 allowMultipleLobes);
-//        CHECK_GE(Dot(isect->n, isect->shading.n), 0.);
-//}
+    void GeometricPrimitive::ComputeScatteringFunctions( Intersection *isect, bool allowMultipleLobes) const {
+        if (material)
+            material->ComputeScatteringFunctions(isect, allowMultipleLobes);
+//        CHECK_GE(Dot(isect->n, isect->normal), 0.);
+}
+
+}
 

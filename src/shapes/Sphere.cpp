@@ -4,7 +4,7 @@
 #include "Sphere.h"
 
 namespace hikari {
-    bool Sphere::intersect(const Ray& ray, Intersection *intersection){
+    bool Sphere::intersect(const Ray& ray, Intersection *intersection) {
         double b = 2 * (ray.direction.x * (ray.origin.x - pos.x)+ ray.direction.y * (ray.origin.y - pos.y)+ ray.direction.z * (ray.origin.z - pos.z));
         double c = (ray.origin.x - pos.x) * (ray.origin.x - pos.x) +(ray.origin.y - pos.y) * (ray.origin.y - pos.y) +(ray.origin.z - pos.z) * (ray.origin.z - pos.z) -radius * radius;
         double d = b * b - 4 * c;
@@ -43,7 +43,7 @@ namespace hikari {
         Vector3 N = position-pos;
         return N.normalize();
     }
-    Bounds Sphere::getBounds() {
+    Bounds Sphere::getBounds() const {
         return Bounds(Vector3(pos.x-radius, pos.y-radius, pos.z-radius),
                        Vector3(pos.x+radius, pos.y+radius, pos.z+radius));
     }

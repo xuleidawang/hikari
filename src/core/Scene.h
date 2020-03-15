@@ -11,7 +11,6 @@
 #include <vector>
 
 namespace hikari {
-    class Object;
     class Scene {
     public:
         Scene(){};
@@ -23,6 +22,8 @@ namespace hikari {
         std::vector<std::shared_ptr<Shape>> m_objects;
         BVHAccel *bvh;
         void buildBVH();
+
+        std::vector<std::shared_ptr<Light> > lights;
 
     };
 

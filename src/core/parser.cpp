@@ -107,7 +107,7 @@ namespace hikari {
             while ((ch = getchar()) != EOF) str.push_back((char)ch);
             // std::make_unique...
             return std::unique_ptr<Tokenizer>(
-                    new Tokenizer(std::move(str));
+                    new Tokenizer(std::move(str)));
         }
 
 #ifdef PBRT_HAVE_MMAP

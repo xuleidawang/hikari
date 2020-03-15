@@ -27,7 +27,7 @@ namespace hikari{
         // SamplerIntegrator Public Methods
         SamplerIntegrator(std::shared_ptr<const Camera> camera,
                           std::shared_ptr<Sampler> sampler,
-                          const Bounds2i &pixelBounds)
+                          const Bounds2 &pixelBounds)
                 : camera(camera), sampler(sampler), pixelBounds(pixelBounds) {}
         virtual void Preprocess(const Scene &scene, Sampler &sampler) {}
         void Render(const Scene &scene);
@@ -47,7 +47,7 @@ namespace hikari{
     private:
         // SamplerIntegrator Private Data
         std::shared_ptr<Sampler> sampler;
-        const Bounds2i pixelBounds;
+        const Bounds2 pixelBounds;
     };
 }
 #endif //PATHTRACER_INTEGRATOR_H

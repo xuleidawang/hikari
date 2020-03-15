@@ -37,6 +37,7 @@
          bool happened;
          Vector3 coords;
          Vector3 normal;
+         Vector3 wo;
          double distance;
          Shape* obj;
          Primitive *primitive;

@@ -31,33 +31,33 @@ namespace  hikari {
         virtual void ComputeScatteringFunctions(Intersection *isect,
                                                 bool allowMultipleLobes) const = 0;
     };
-}
+
 // GeometricPrimitive Declarations
-//    class GeometricPrimitive : public Primitive {
-//    public:
-//        // GeometricPrimitive Public Methods
-//        virtual Bounds WorldBound() const;
-//        virtual bool Intersect(const Ray &r, Intersection *isect) const;
-//        virtual bool IntersectP(const Ray &r) const;
-//        GeometricPrimitive(const std::shared_ptr<Shape> &shape,
-//                           const std::shared_ptr<Material> &material,
-//                           const std::shared_ptr<AreaLight> &areaLight,
-//                           const MediumInterface &mediumInterface);
-//        //const AreaLight *GetAreaLight() const;
-//        const Material *GetMaterial() const;
-//        void ComputeScatteringFunctions(Intersection *isect,
-//                                        bool allowMultipleLobes) const;
-//
-//    private:
-//        // GeometricPrimitive Private Data
-//        std::shared_ptr<Shape> shape;
-//        std::shared_ptr<Material> material;
-//        //TODO light
-////    std::shared_ptr<AreaLight> areaLight;
-//        //TODO Medium class
+    class GeometricPrimitive : public Primitive {
+    public:
+        // GeometricPrimitive Public Methods
+        virtual Bounds WorldBound() const;
+        virtual bool Intersect(const Ray &r, Intersection *isect) const;
+        virtual bool IntersectP(const Ray &r) const;
+        GeometricPrimitive(const std::shared_ptr<Shape> &shape,
+                           const std::shared_ptr<Material> &material,
+                           const std::shared_ptr<AreaLight> &areaLight
+                           );
+        //const AreaLight *GetAreaLight() const;
+        const Material *GetMaterial() const;
+        void ComputeScatteringFunctions(Intersection *isect,
+                                        bool allowMultipleLobes) const;
+
+    private:
+        // GeometricPrimitive Private Data
+        std::shared_ptr<Shape> shape;
+        std::shared_ptr<Material> material;
+        //TODO light
+    std::shared_ptr<AreaLight> areaLight;
+        //TODO Medium class
 //        MediumInterface mediumInterface;
-//    };
-//}
+    };
+}
 
 
 #endif //PATHTRACER_PRIMITIVE_H

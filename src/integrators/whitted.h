@@ -15,7 +15,7 @@ namespace hikari {
         // WhittedIntegrator Public Methods
         WhittedIntegrator(int maxDepth, std::shared_ptr<const Camera> camera,
                           std::shared_ptr<Sampler> sampler,
-                          const Bounds2i &pixelBounds)
+                          const Bounds2 &pixelBounds)
                 : SamplerIntegrator(camera, sampler, pixelBounds), maxDepth(maxDepth) {}
         Vector3 Li(const Ray &ray, const Scene &scene,
                    Sampler &sampler, int depth) const;

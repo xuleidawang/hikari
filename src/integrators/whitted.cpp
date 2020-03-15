@@ -22,8 +22,8 @@ namespace hikari {
         // Compute emitted and reflected light at ray intersection point
 
         // Initialize common variables for Whitted integrator
-        const Normal3f &n = isect.shading.n;
-        Vector3f wo = isect.wo;
+        const Vector3 &n = isect.normal;
+        Vector3 wo = isect.wo;
 
         // Compute scattering functions for surface interaction
         isect.ComputeScatteringFunctions(ray);
