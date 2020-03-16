@@ -34,6 +34,11 @@
              return Ray(origin, d);
          }
 
+
+         void ComputeScatteringFunctions(
+                 const Ray &ray,
+                 bool allowMultipleLobes = false);
+
          bool happened;
          Vector3 coords;
          Vector3 normal;

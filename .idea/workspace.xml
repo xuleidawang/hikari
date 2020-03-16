@@ -12,20 +12,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a2f2b53-14de-4741-acea-65ae759072cb" name="Default Changelist" comment="Refractor code">
+      <change afterPath="$PROJECT_DIR$/src/core/Intersection.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/Integrator.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Integrator.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/Intersection.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Intersection.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/Light.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Light.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/Primitive.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Primitive.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/Material.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Material.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/Primitive.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Primitive.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/Scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Scene.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/Shape.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Shape.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/parser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/parser.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/integrators/whitted.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrators/whitted.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/integrators/whitted.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrators/whitted.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shapes/Sphere.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/shapes/Sphere.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shapes/Sphere.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/shapes/Sphere.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shapes/Triangle.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/shapes/Triangle.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -80,51 +72,45 @@
     <session id="1788155456">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.4" value="2" />
+          <entry key="project.open.time.4" value="3" />
           <entry key="project.open.time.5" value="5" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CMakeLists.txt" value="1" />
           <entry key="Markdown" value="1" />
-          <entry key="ObjectiveC" value="107" />
+          <entry key="ObjectiveC" value="108" />
           <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Markdown" value="544" />
-          <entry key="ObjectiveC" value="4032" />
+          <entry key="ObjectiveC" value="4216" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/core/Intersection.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+            <state relative-caret-position="212">
+              <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shapes/Triangle.h">
+        <entry file="file://$PROJECT_DIR$/src/core/Intersection.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="209" selection-start-line="209" selection-end-line="209" />
-              <folding>
-                <element signature="e#39#56#0" expanded="true" />
-                <element signature="e#152#1170#1" />
-                <element signature="e#3300#7758#0" />
-                <element signature="e#7760#8569#0" />
-              </folding>
+            <state relative-caret-position="135">
+              <caret line="9" column="75" selection-start-line="9" selection-start-column="75" selection-end-line="9" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -132,17 +118,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/integrators/whitted.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="270">
               <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/integrators/whitted.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="375">
+              <caret line="28" column="13" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -151,7 +137,7 @@
         <entry file="file://$PROJECT_DIR$/src/core/Primitive.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="422">
-              <caret line="40" column="53" lean-forward="true" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="53" />
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
             </state>
           </provider>
         </entry>
@@ -159,8 +145,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Material.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2">
-              <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+            <state relative-caret-position="260">
+              <caret line="26" column="91" selection-start-line="26" selection-start-column="91" selection-end-line="26" selection-end-column="91" />
             </state>
           </provider>
         </entry>
@@ -168,8 +154,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Primitive.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="52" column="37" lean-forward="true" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
+            <state relative-caret-position="397">
+              <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
               <folding>
                 <element signature="e#103#122#0" expanded="true" />
               </folding>
@@ -180,7 +166,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Light.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="61">
+            <state relative-caret-position="315">
               <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
             </state>
           </provider>
@@ -189,7 +175,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Light.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
+            <state relative-caret-position="90">
               <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
@@ -259,7 +245,6 @@
         <option value="$PROJECT_DIR$/src/Vectors.h" />
         <option value="$PROJECT_DIR$/src/core/Camera.h" />
         <option value="$PROJECT_DIR$/src/core/Light.cpp" />
-        <option value="$PROJECT_DIR$/src/core/Material.h" />
         <option value="$PROJECT_DIR$/src/core/Ray.h" />
         <option value="$PROJECT_DIR$/src/core/Reflection.h" />
         <option value="$PROJECT_DIR$/src/core/sampler.h" />
@@ -273,7 +258,6 @@
         <option value="$PROJECT_DIR$/src/main/hikari.cpp" />
         <option value="$PROJECT_DIR$/src/Bounds3.h" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/src/core/Primitive.h" />
         <option value="$PROJECT_DIR$/src/core/Integrator.h" />
         <option value="$PROJECT_DIR$/src/core/parser.cpp" />
         <option value="$PROJECT_DIR$/src/shapes/Sphere.cpp" />
@@ -283,9 +267,12 @@
         <option value="$PROJECT_DIR$/src/integrators/whitted.h" />
         <option value="$PROJECT_DIR$/src/core/Scene.h" />
         <option value="$PROJECT_DIR$/src/core/Light.h" />
-        <option value="$PROJECT_DIR$/src/core/Intersection.h" />
         <option value="$PROJECT_DIR$/src/integrators/whitted.cpp" />
         <option value="$PROJECT_DIR$/src/core/Primitive.cpp" />
+        <option value="$PROJECT_DIR$/src/core/Material.h" />
+        <option value="$PROJECT_DIR$/src/core/Intersection.cpp" />
+        <option value="$PROJECT_DIR$/src/core/Primitive.h" />
+        <option value="$PROJECT_DIR$/src/core/Intersection.h" />
       </list>
     </option>
   </component>
@@ -427,18 +414,19 @@
       <workItem from="1583794871652" duration="4117000" />
       <workItem from="1583992939491" duration="2077000" />
       <workItem from="1584059294176" duration="1269000" />
-      <workItem from="1584119016783" duration="5042000" />
+      <workItem from="1584119016783" duration="5085000" />
+      <workItem from="1584337747383" duration="479000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41264000" />
+    <option name="totallyTimeSpent" value="41786000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26007327" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26312578" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -449,7 +437,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Messages" order="8" visible="true" weight="0.32085562" />
+      <window_info anchor="bottom" id="Messages" order="8" visible="true" weight="0.32085562" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.24149287" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32930845" />
@@ -546,9 +534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding>
-            <element signature="e#39#59#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -639,10 +624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1365">
           <caret line="91" column="11" selection-start-line="91" selection-start-column="11" selection-end-line="91" selection-end-column="11" />
-          <folding>
-            <element signature="e#1537#1566#0" expanded="true" />
-            <element signature="e#1876#1888#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -664,14 +645,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="109" column="50" selection-start-line="109" selection-start-column="50" selection-end-line="109" selection-end-column="50" />
-          <folding>
-            <element signature="e#1597#1616#0" expanded="true" />
-            <element signature="e#1661#1679#0" expanded="true" />
-            <element signature="e#1741#1846#0" expanded="true" />
-            <element signature="e#1878#1927#0" expanded="true" />
-            <element signature="e#1935#1956#0" expanded="true" />
-            <element signature="e#2273#3019#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -708,7 +681,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/shapes/Triangle.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
+        <state relative-caret-position="3135">
           <caret line="209" selection-start-line="209" selection-end-line="209" />
           <folding>
             <element signature="e#39#56#0" expanded="true" />
@@ -721,8 +694,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/integrators/whitted.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="270">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Light.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Light.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
@@ -736,55 +723,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Light.cpp">
+    <entry file="file://$PROJECT_DIR$/src/core/Primitive.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="422">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Light.h">
+    <entry file="file://$PROJECT_DIR$/src/core/Material.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
+        <state relative-caret-position="260">
+          <caret line="26" column="91" selection-start-line="26" selection-start-column="91" selection-end-line="26" selection-end-column="91" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Intersection.h">
+    <entry file="file://$PROJECT_DIR$/src/integrators/whitted.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+        <state relative-caret-position="375">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Intersection.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="75" selection-start-line="9" selection-start-column="75" selection-end-line="9" selection-end-column="75" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/Primitive.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="52" column="37" lean-forward="true" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
+        <state relative-caret-position="397">
+          <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
           <folding>
             <element signature="e#103#122#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Primitive.cpp">
+    <entry file="file://$PROJECT_DIR$/src/core/Intersection.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="40" column="53" lean-forward="true" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Material.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2">
-          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/integrators/whitted.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="212">
+          <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
         </state>
       </provider>
     </entry>

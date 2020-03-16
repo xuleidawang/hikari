@@ -26,7 +26,7 @@ namespace  hikari {
         virtual bool IntersectP(const Ray &ray) const = 0;
 
         //TODO Add AreaLight class
-//    virtual const AreaLight *GetAreaLight() const = 0;
+        virtual const AreaLight *GetAreaLight() const = 0;
 //    virtual const Material *GetMaterial() const = 0;
         virtual void ComputeScatteringFunctions(Intersection *isect,
                                                 bool allowMultipleLobes) const = 0;
@@ -52,8 +52,7 @@ namespace  hikari {
         // GeometricPrimitive Private Data
         std::shared_ptr<Shape> shape;
         std::shared_ptr<Material> material;
-        //TODO light
-    std::shared_ptr<AreaLight> areaLight;
+        std::shared_ptr<AreaLight> areaLight;
         //TODO Medium class
 //        MediumInterface mediumInterface;
     };

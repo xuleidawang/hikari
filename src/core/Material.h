@@ -24,6 +24,7 @@ namespace hikari {
         inline Vector3 getColor();
         inline Vector3 getColorAt(double u, double v);
         inline Vector3 getEmission();
+        void ComputeScatteringFunctions(Intersection *intersection, bool allowMultipleLobes);
 
 
     };
