@@ -34,6 +34,9 @@ namespace hikari {
 						   std::max(p1.z, p2.z));
 		}
 
+		bool IsBlack(){
+			return ( x== 0.0 && y==0.0 && z==0.0);
+		}
 
 		Vector3     operator-() const;
 		Vector3     operator+(const Vector3& rhs) const;

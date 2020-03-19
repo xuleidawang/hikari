@@ -11,6 +11,7 @@
 #include "Shape.h"
 
 namespace  hikari {
+
     class BxDF {
     public:
         virtual ~BxDF(){}

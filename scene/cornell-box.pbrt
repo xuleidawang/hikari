@@ -8,7 +8,7 @@ Film "image"
    "integer xresolution" [480]
    "integer yresolution" [480]
 
-SurfaceIntegrator "path"
+SurfaceIntegrator "whitted"
 
 # Renderer "metropolis" "integer samplesperpixel" [128] "bool dodirectseparately" ["false"]
 

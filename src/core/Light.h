@@ -17,7 +17,7 @@ namespace hikari {
         virtual ~Light();
 
         Light(int nSamples = 1);
-        virtual Vector3 Sample_Li(const Intersection &ref, const Vector2 &u, Vector3 *wi, float *pdf) const =0;
+        virtual Vector3 Sample_Li(const Intersection &ref, const Vector2 &u, Vector3 *wi, float *pdf, VisibilityTester *vis) const =0;
         virtual Vector3 Power() const = 0;
         virtual Vector3 Le(const Ray &r) const;
         virtual double Pdf_Li(const Intersection &ref, const Vector3 &wi) const = 0;

@@ -27,7 +27,7 @@ namespace hikari {
 
         // Compute scattering functions for surface interaction
         isect.ComputeScatteringFunctions(ray);
-        if (!isect.bsdf)
+        if (!isect.brdf)
             return Li(isect.SpawnRay(ray.direction), scene, sampler, depth);
 
         // Compute emitted light if ray hit an area light source
@@ -35,15 +35,15 @@ namespace hikari {
 
         // Add contribution of each light source
         for (const auto &light : scene.lights) {
-            Vector3f wi;
-            Float pdf;
+            Vector3 wi;
+            float pdf;
             VisibilityTester visibility;
             Vector3 Li =
                     light->Sample_Li(isect, sampler.Get2D(), &wi, &pdf, &visibility);
             if (Li.IsBlack() || pdf == 0) continue;
-            Vector3 f = isect.bsdf->f(wo, wi);
+            Vector3 f = isect.brdf->f(wo, wi);
             if (!f.IsBlack() && visibility.Unoccluded(scene))
-                L += f * Li * AbsDot(wi, n) / pdf;
+                L += f * Li * abs(wi.dot(n)) / pdf;
         }
         if (depth + 1 < maxDepth) {
             // Trace rays for specular reflection and refraction

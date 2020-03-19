@@ -26,6 +26,10 @@
              m=nullptr;
          }
 
+         Ray SpawnRay(const Vector3 &d) const {
+             return Ray(this->coords, d);
+         }
+
          Ray SpawnRayTo(const Intersection &it) const {
              Vector3 origin = this->coords;
              Vector3 target = it.coords;
@@ -33,7 +37,7 @@
 
              return Ray(origin, d);
          }
-
+         Vector3 Le(const Vector3 &w) const;
 
          void ComputeScatteringFunctions(
                  const Ray &ray,
@@ -46,7 +50,7 @@
          double distance;
          Shape* obj;
          Primitive *primitive;
-         //Refl_t refl;
+         BRDF *brdf;
          Material* m;
      };
 }
