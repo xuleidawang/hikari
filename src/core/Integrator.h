@@ -33,12 +33,12 @@ namespace hikari{
         void Render(const Scene &scene);
         virtual Vector3 Li(const Ray &ray, const Scene &scene,
                            Sampler &sampler, int depth = 0) const = 0;
-//    Vector3 SpecularReflect(const Ray &ray,
-//                             const Intersection &isect,
-//                             const Scene &scene, Sampler &sampler, int depth) const;
-//    Vector3 SpecularTransmit(const Ray &ray,
-//                              const Intersection &isect,
-//                              const Scene &scene, Sampler &sampler, int depth) const;
+    Vector3 SpecularReflect(const Ray &ray,
+                             const Intersection &isect,
+                             const Scene &scene, Sampler &sampler, int depth) const;
+    Vector3 SpecularTransmit(const Ray &ray,
+                              const Intersection &isect,
+                              const Scene &scene, Sampler &sampler, int depth) const;
 
     protected:
         // SamplerIntegrator Protected Data
