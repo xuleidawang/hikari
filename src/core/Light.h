@@ -5,17 +5,13 @@
 #ifndef PATHTRACER_LIGHT_H
 #define PATHTRACER_LIGHT_H
 
-
 #include "hikari.h"
 #include "Intersection.h"
 
-
 namespace hikari {
-
     class Light{
     public:
         virtual ~Light();
-
         Light(int nSamples = 1);
         virtual Vector3 Sample_Li(const Intersection &ref, const Vector2 &u, Vector3 *wi, float *pdf, VisibilityTester *vis) const =0;
         virtual Vector3 Power() const = 0;
@@ -31,6 +27,7 @@ namespace hikari {
     };
 
     class AreaLight: public Light {
+
     public:
         AreaLight(int nSamples);
         virtual Vector3 L(const Intersection &intr, const Vector3 &w) const = 0;
@@ -39,15 +36,9 @@ namespace hikari {
     class VisibilityTester{
     public:
         VisibilityTester(){}
-        VisibilityTester(const Intersection &p0, const Intersection &p1)
-        :p0(p0), p1(p1){}
-        const Intersection &P0() const {return p0;}
-        const Intersection &P1() const {return p1;}
-        bool Unoccluded(const Scene &scene) const ;
-
-    private:
-        Intersection p0, p1;
+        Intersection *p0, *p1;
     };
 
 }
+
 #endif //PATHTRACER_LIGHT_H

@@ -6,14 +6,11 @@
 #include "Vectors.h"
 #include "Ray.h"
 #include "Material.h"
+#include "Primitive.h"
 
 
 //enum Refl_t { DIFF, SPEC, REFR };  // material types, used in radiance() 
  namespace hikari{
-
-     class Shape;
-     class Primitive;
-     class Sphere;
 
      struct Intersection
      {
@@ -22,7 +19,6 @@
              coords=Vector3();
              normal=Vector3();
              distance= std::numeric_limits<double>::max();
-             obj =nullptr;
              m=nullptr;
          }
 
@@ -30,7 +26,7 @@
              return Ray(this->coords, d);
          }
 
-         Ray SpawnRayTo(const Intersection &it) const {
+         Ray SpawnRayTo(const Intersection &it)  {
              Vector3 origin = this->coords;
              Vector3 target = it.coords;
              Vector3 d = (target - origin).normalize();
@@ -38,18 +34,15 @@
              return Ray(origin, d);
          }
          Vector3 Le(const Vector3 &w) const;
-
-         void ComputeScatteringFunctions(
-                 const Ray &ray,
-                 bool allowMultipleLobes = false);
+         void ComputeScatteringFunctions(const Ray &ray, bool allowMultipleLobes = false);
 
          bool happened;
          Vector3 coords;
          Vector3 normal;
          Vector3 wo;
          double distance;
-         Shape* obj;
-         Primitive *primitive;
+         Shape *shape = nullptr;
+         Primitive *primitive = nullptr;
          BRDF *brdf;
          Material* m;
      };

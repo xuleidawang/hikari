@@ -19,17 +19,17 @@ namespace  hikari {
     public:
         virtual ~Primitive();
 
-        virtual Bounds WordldBound() const = 0;
+        virtual Bounds WordldBound();
 
-        virtual bool Intersect(const Ray &ray, Intersection *) const = 0;
+        virtual bool Intersect(const Ray &ray, Intersection *);
 
-        virtual bool IntersectP(const Ray &ray) const = 0;
+        virtual bool IntersectP(const Ray &ray);
 
         //TODO Add AreaLight class
-        virtual const AreaLight *GetAreaLight() const = 0;
+        virtual const AreaLight *GetAreaLight() ;
 //    virtual const Material *GetMaterial() const = 0;
         virtual void ComputeScatteringFunctions(Intersection *isect,
-                                                bool allowMultipleLobes) const = 0;
+                                                bool allowMultipleLobes);
     };
 
 // GeometricPrimitive Declarations

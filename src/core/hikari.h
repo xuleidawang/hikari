@@ -23,7 +23,7 @@ namespace hikari {
     class Vector2;
     class Ray;
     class Bounds;
-    class Intersection;
+    struct Intersection;
     class Shape;
     class Primitive;
     class Camera;

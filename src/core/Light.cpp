@@ -12,9 +12,6 @@ namespace hikari {
             {}
     Light::~Light() {}
 
-    bool VisibilityTester::Unoccluded(const Scene &scene) const {
-        return !scene.intersectP(p0.SpawnRayTo(p1));
-    }
     AreaLight::AreaLight(int nSamples)
             : Light(nSamples) {
         //++numAreaLights;

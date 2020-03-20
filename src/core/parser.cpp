@@ -388,8 +388,8 @@ namespace hikari {
         bool isString = false;
     };
 
-//    PBRT_CONSTEXPR int TokenOptional = 0;
-//    PBRT_CONSTEXPR int TokenRequired = 1;
+    const int TokenOptional = 0;
+    const int TokenRequired = 1;
 
     enum {
         PARAM_TYPE_INT,
@@ -718,7 +718,7 @@ namespace hikari {
     }
 
     template <typename Next, typename Unget>
-    ParamSet parseParams(Next nextToken, Unget ungetToken,) {
+    ParamSet parseParams(Next nextToken, Unget ungetToken) {
         ParamSet ps;
         while (true) {
             string_view decl = nextToken(TokenOptional);
@@ -740,32 +740,32 @@ namespace hikari {
                         exit(1);
                     }
                     if (item.size == nAlloc) {
-                        nAlloc = std::max<size_t>(2 * item.size, 4);
-//                        const char **newData = arena.Alloc<const char *>(nAlloc);
-                        std::copy(item.stringValues, item.stringValues + item.size,
-                                  newData);
-                        item.stringValues = newData;
+//                        nAlloc = std::max<size_t>(2 * item.size, 4);
+////                        const char **newData = arena.Alloc<const char *>(nAlloc);
+//                        std::copy(item.stringValues, item.stringValues + item.size,
+//                                  newData);
+//                        item.stringValues = newData;
                     }
-
-                    val = dequoteString(val);
-//                    char *buf = arena.Alloc<char>(val.size() + 1);
-                    memcpy(buf, val.data(), val.size());
-                    buf[val.size()] = '\0';
-                    item.stringValues[item.size++] = buf;
+//
+//                    val = dequoteString(val);
+////                    char *buf = arena.Alloc<char>(val.size() + 1);
+//                    memcpy(buf, val.data(), val.size());
+//                    buf[val.size()] = '\0';
+//                    item.stringValues[item.size++] = buf;
                 } else {
                     if (item.stringValues) {
-                        Error("mixed string and numeric parameters");
+                        printf("mixed string and numeric parameters");
                         exit(1);
                     }
 
                     if (item.size == nAlloc) {
-                        nAlloc = std::max<size_t>(2 * item.size, 4);
-                        double *newData = arena.Alloc<double>(nAlloc);
-                        std::copy(item.doubleValues, item.doubleValues + item.size,
-                                  newData);
-                        item.doubleValues = newData;
+//                        nAlloc = std::max<size_t>(2 * item.size, 4);
+////                        double *newData = arena.Alloc<double>(nAlloc);
+//                        std::copy(item.doubleValues, item.doubleValues + item.size,
+//                                  newData);
+//                        item.doubleValues = newData;
                     }
-                    item.doubleValues[item.size++] = parseNumber(val);
+//                    item.doubleValues[item.size++] = parseNumber(val);
                 }
             };
 
@@ -781,8 +781,8 @@ namespace hikari {
                 addVal(val);
             }
 
-            AddParam(ps, item, spectrumType);
-            arena.Reset();
+            AddParam(ps, item);
+//            arena.Reset();
         }
 
         return ps;
@@ -811,7 +811,7 @@ namespace hikari {
 
             if (fileStack.empty()) {
                 if (flags & TokenRequired) {
-                    Error("premature EOF");
+                    printf("premature EOF");
                     exit(1);
                 }
                 parserLoc = nullptr;
@@ -830,7 +830,7 @@ namespace hikari {
                 std::string filename =
                         toString(dequoteString(nextToken(TokenRequired)));
                 filename = AbsolutePath(ResolveFilename(filename));
-                auto tokError = [](const char *msg) { Error("%s", msg); };
+                auto tokError = [](const char *msg) { printf("%s", msg); };
                 std::unique_ptr<Tokenizer> tinc =
                         Tokenizer::CreateFromFile(filename);
                 if (tinc) {

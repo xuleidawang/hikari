@@ -74,7 +74,7 @@ namespace hikari {
         if(v<0||u+v>1)return false;
         t_tmp = e2.dot(qvec)* det_inv;
 
-        intersection->obj=this;
+        intersection->shape=this;
         intersection->m = this->m;
         intersection->happened=true;
         intersection->normal = this->normal;

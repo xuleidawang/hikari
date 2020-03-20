@@ -42,7 +42,8 @@ namespace hikari {
                     light->Sample_Li(isect, sampler.Get2D(), &wi, &pdf, &visibility);
             if (Li.IsBlack() || pdf == 0) continue;
             Vector3 f = isect.brdf->f(wo, wi);
-            if (!f.IsBlack() && visibility.Unoccluded(scene))
+            //if (!f.IsBlack() && visibility.Unoccluded(scene))
+            if(!f.IsBlack())
                 L += f * Li * abs(wi.dot(n)) / pdf;
         }
         if (depth + 1 < maxDepth) {

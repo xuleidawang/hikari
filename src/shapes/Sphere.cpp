@@ -17,7 +17,7 @@ namespace hikari {
                 intersection->coords = Vector3(ray.origin + ray.direction * t);
                 intersection->normal = Vector3(intersection->coords - pos).normalize();
                 intersection->m = &this->material;
-                intersection->obj = this;
+                intersection->shape = this;
                 intersection->distance = t;
             }
 
@@ -30,7 +30,7 @@ namespace hikari {
                 intersection->coords = Vector3(ray.origin + ray.direction * t);
                 intersection->normal = Vector3(intersection->coords - pos).normalize();
                 intersection->m = &this->material;
-                intersection->obj = this;
+                intersection->shape = this;
                 intersection->distance = t;
             }
             return true;

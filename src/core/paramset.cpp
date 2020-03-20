@@ -658,29 +658,29 @@ namespace hikari {
         else
             return printf("%.9g ", f);
     }
-    static int print(const Vector2 &p) {
-        int np = print(p.x);
-        return np + print(p.y);
-    }
-    static int print(const Vector2 &v) {
-        int np = print(v.x);
-        return np + print(v.y);
-    }
-    static int print(const Vector3 &p) {
-        int np = print(p.x);
-        np += print(p.y);
-        return np + print(p.z);
-    }
-    static int print(const Vector3 &v) {
-        int np = print(v.x);
-        np += print(v.y);
-        return np + print(v.z);
-    }
-    static int print(const Vector3 &n) {
-        int np = print(n.x);
-        np += print(n.y);
-        return np + print(n.z);
-    }
+//    static int print(const Vector2 &p) {
+//        int np = print(p.x);
+//        return np + print(p.y);
+//    }
+//    static int print(const Vector2 &v) {
+//        int np = print(v.x);
+//        return np + print(v.y);
+//    }
+//    static int print(const Vector3 &p) {
+//        int np = print(p.x);
+//        np += print(p.y);
+//        return np + print(p.z);
+//    }
+//    static int print(const Vector3 &v) {
+//        int np = print(v.x);
+//        np += print(v.y);
+//        return np + print(v.z);
+//    }
+//    static int print(const Vector3 &n) {
+//        int np = print(n.x);
+//        np += print(n.y);
+//        return np + print(n.z);
+//    }
     static int print(const std::string &s) { return printf("\"%s\" ", s.c_str()); }
 //    static int print(const Spectrum &s) {
 //        Float rgb[3];
