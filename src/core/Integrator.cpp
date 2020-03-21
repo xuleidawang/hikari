@@ -15,8 +15,8 @@ namespace hikari {
         // Compute specular reflection direction _wi_ and BSDF value
         Vector3 wo = isect.wo, wi;
         float pdf;
-//        BxDFType type = BxDFType(BSDF_REFLECTION | BSDF_SPECULAR);
-        Vector3 f = isect.brdf->Sample_f(wo, &wi, sampler.Get2D(), &pdf);
+        BxDFType type = BxDFType(BSDF_REFLECTION | BSDF_SPECULAR);
+        Vector3 f = isect.brdf->Sample_f(wo, &wi, sampler.Get2D(), &pdf, type);
 
         // Return contribution of specular reflection
         const Vector3 &ns = isect.normal;
@@ -34,7 +34,7 @@ namespace hikari {
             const Ray &ray, const Intersection &isect,
             const Scene &scene, Sampler &sampler, int depth) const {
         Vector3 wo = isect.wo, wi;
-        double pdf;
+        float pdf;
         const Vector3 &p = isect.coords;
         const Vector3 &ns = isect.normal;
         const BRDF &brdf = *isect.brdf;

@@ -36,7 +36,7 @@
 // core/parser.cpp*
 #include "parser.h"
 //#include "api.h"
-//#include "fileutil.h"
+#include "fileutil.h"
 #include "memory.h"
 #include "paramset.h"
 //#include "stats.h"
@@ -850,7 +850,7 @@ namespace hikari {
         };
 
         auto ungetToken = [&](string_view s) {
-            CHECK(!ungetTokenSet);
+//            CHECK(!ungetTokenSet);
             ungetTokenValue = std::string(s.data(), s.size());
             ungetTokenSet = true;
         };

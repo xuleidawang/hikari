@@ -717,109 +717,109 @@ void ParamSet::Print(int indent) const {
     printItems("normal", indent, normals);
     printItems("string", indent, strings);
     printItems("texture", indent, textures);
-    printItems("rgb", indent, spectra);
+//    printItems("rgb", indent, spectra);
 }
 
-// TextureParams Method Definitions
-std::shared_ptr<Texture<Spectrum>> TextureParams::GetSpectrumTexture(
-        const std::string &n, const Spectrum &def) const {
-    std::shared_ptr<Texture<Spectrum>> tex = GetSpectrumTextureOrNull(n);
-    if (tex)
-        return tex;
-    else
-        return std::make_shared<ConstantTexture<Spectrum>>(def);
-}
+//// TextureParams Method Definitions
+//std::shared_ptr<Texture<Spectrum>> TextureParams::GetSpectrumTexture(
+//        const std::string &n, const Spectrum &def) const {
+//    std::shared_ptr<Texture<Spectrum>> tex = GetSpectrumTextureOrNull(n);
+//    if (tex)
+//        return tex;
+//    else
+//        return std::make_shared<ConstantTexture<Spectrum>>(def);
+//}
 
-std::shared_ptr<Texture<Spectrum>> TextureParams::GetSpectrumTextureOrNull(
-        const std::string &n) const {
-    // Check the shape parameters first.
-    std::string name = geomParams.FindTexture(n);
-    if (name.empty()) {
-        int count;
-        const Spectrum *s = geomParams.FindSpectrum(n, &count);
-        if (s) {
-            if (count > 1)
-                Warning("Ignoring excess values provided with parameter \"%s\"",
-                        n.c_str());
-            return std::make_shared<ConstantTexture<Spectrum>>(*s);
-        }
+//std::shared_ptr<Texture<Spectrum>> TextureParams::GetSpectrumTextureOrNull(
+//        const std::string &n) const {
+//    // Check the shape parameters first.
+//    std::string name = geomParams.FindTexture(n);
+//    if (name.empty()) {
+//        int count;
+//        const Spectrum *s = geomParams.FindSpectrum(n, &count);
+//        if (s) {
+//            if (count > 1)
+//                Warning("Ignoring excess values provided with parameter \"%s\"",
+//                        n.c_str());
+//            return std::make_shared<ConstantTexture<Spectrum>>(*s);
+//        }
+//
+//        name = materialParams.FindTexture(n);
+//        if (name.empty()) {
+//            int count;
+//            const Spectrum *s = materialParams.FindSpectrum(n, &count);
+//            if (s) {
+//                if (count > 1)
+//                    Warning("Ignoring excess values provided with parameter \"%s\"",
+//                            n.c_str());
+//                return std::make_shared<ConstantTexture<Spectrum>>(*s);
+//            }
+//        }
+//
+//        if (name.empty())
+//            return nullptr;
+//    }
+//
+//    // We have a texture name, from either the shape or the material's
+//    // parameters.
+//    if (spectrumTextures.find(name) != spectrumTextures.end())
+//        return spectrumTextures[name];
+//    else {
+//        Error("Couldn't find spectrum texture named \"%s\" for parameter \"%s\"",
+//              name.c_str(), n.c_str());
+//        return nullptr;
+//    }
+//}
 
-        name = materialParams.FindTexture(n);
-        if (name.empty()) {
-            int count;
-            const Spectrum *s = materialParams.FindSpectrum(n, &count);
-            if (s) {
-                if (count > 1)
-                    Warning("Ignoring excess values provided with parameter \"%s\"",
-                            n.c_str());
-                return std::make_shared<ConstantTexture<Spectrum>>(*s);
-            }
-        }
+//std::shared_ptr<Texture<Float>> TextureParams::GetFloatTexture(
+//        const std::string &n, Float def) const {
+//    std::shared_ptr<Texture<Float>> tex = GetFloatTextureOrNull(n);
+//    if (tex)
+//        return tex;
+//    else
+//        return std::make_shared<ConstantTexture<Float>>(def);
+//}
 
-        if (name.empty())
-            return nullptr;
-    }
-
-    // We have a texture name, from either the shape or the material's
-    // parameters.
-    if (spectrumTextures.find(name) != spectrumTextures.end())
-        return spectrumTextures[name];
-    else {
-        Error("Couldn't find spectrum texture named \"%s\" for parameter \"%s\"",
-              name.c_str(), n.c_str());
-        return nullptr;
-    }
-}
-
-std::shared_ptr<Texture<Float>> TextureParams::GetFloatTexture(
-        const std::string &n, Float def) const {
-    std::shared_ptr<Texture<Float>> tex = GetFloatTextureOrNull(n);
-    if (tex)
-        return tex;
-    else
-        return std::make_shared<ConstantTexture<Float>>(def);
-}
-
-std::shared_ptr<Texture<Float>> TextureParams::GetFloatTextureOrNull(
-        const std::string &n) const {
-    // Check the shape parameters first.
-    std::string name = geomParams.FindTexture(n);
-    if (name.empty()) {
-        int count;
-        const Float *s = geomParams.FindFloat(n, &count);
-        if (s) {
-            if (count > 1)
-                Warning("Ignoring excess values provided with parameter \"%s\"",
-                        n.c_str());
-            return std::make_shared<ConstantTexture<Float>>(*s);
-        }
-
-        name = materialParams.FindTexture(n);
-        if (name.empty()) {
-            int count;
-            const Float *s = materialParams.FindFloat(n, &count);
-            if (s) {
-                if (count > 1)
-                    Warning("Ignoring excess values provided with parameter \"%s\"",
-                            n.c_str());
-                return std::make_shared<ConstantTexture<Float>>(*s);
-            }
-        }
-
-        if (name.empty())
-            return nullptr;
-    }
-
-    // We have a texture name, from either the shape or the material's
-    // parameters.
-    if (floatTextures.find(name) != floatTextures.end())
-        return floatTextures[name];
-    else {
-        Error("Couldn't find float texture named \"%s\" for parameter \"%s\"",
-              name.c_str(), n.c_str());
-        return nullptr;
-    }
-}
+//std::shared_ptr<Texture<Float>> TextureParams::GetFloatTextureOrNull(
+//        const std::string &n) const {
+//    // Check the shape parameters first.
+//    std::string name = geomParams.FindTexture(n);
+//    if (name.empty()) {
+//        int count;
+//        const Float *s = geomParams.FindFloat(n, &count);
+//        if (s) {
+//            if (count > 1)
+//                Warning("Ignoring excess values provided with parameter \"%s\"",
+//                        n.c_str());
+//            return std::make_shared<ConstantTexture<Float>>(*s);
+//        }
+//
+//        name = materialParams.FindTexture(n);
+//        if (name.empty()) {
+//            int count;
+//            const Float *s = materialParams.FindFloat(n, &count);
+//            if (s) {
+//                if (count > 1)
+//                    Warning("Ignoring excess values provided with parameter \"%s\"",
+//                            n.c_str());
+//                return std::make_shared<ConstantTexture<Float>>(*s);
+//            }
+//        }
+//
+//        if (name.empty())
+//            return nullptr;
+//    }
+//
+//    // We have a texture name, from either the shape or the material's
+//    // parameters.
+//    if (floatTextures.find(name) != floatTextures.end())
+//        return floatTextures[name];
+//    else {
+//        Error("Couldn't find float texture named \"%s\" for parameter \"%s\"",
+//              name.c_str(), n.c_str());
+//        return nullptr;
+//    }
+//}
 
 template <typename T> static void
 reportUnusedMaterialParams(
