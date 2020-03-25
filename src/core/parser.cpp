@@ -35,7 +35,7 @@
 
 // core/parser.cpp*
 #include "parser.h"
-//#include "api.h"
+#include "api.h"
 #include "fileutil.h"
 #include "memory.h"
 #include "paramset.h"
@@ -841,8 +841,6 @@ namespace hikari {
             } else if (tok[0] == '#') {
                 // Swallow comments, unless --cat or --toply was given, in
                 // which case they're printed to stdout.
-                if (PbrtOptions.cat || PbrtOptions.toPly)
-                    printf("%*s%s\n", catIndentCount, "", toString(tok).c_str());
                 return nextToken(flags);
             } else
                 // Regular token; success.
@@ -855,23 +853,7 @@ namespace hikari {
             ungetTokenSet = true;
         };
 
-        // Helper function for pbrt API entrypoints that take a single string
-        // parameter and a ParamSet (e.g. pbrtShape()).
-        auto basicParamListEntrypoint = [&](
-                SpectrumType spectrumType,
-                std::function<void(const std::string &n, ParamSet p)> apiFunc) {
-            string_view token = nextToken(TokenRequired);
-            string_view dequoted = dequoteString(token);
-            std::string n = toString(dequoted);
-            ParamSet params =
-                    parseParams(nextToken, ungetToken, arena, spectrumType);
-            apiFunc(n, std::move(params));
-        };
 
-        auto syntaxError = [&](string_view tok) {
-            Error("Unexpected token: %s", toString(tok).c_str());
-            exit(1);
-        };
 
         while (true) {
             string_view tok = nextToken(TokenOptional);

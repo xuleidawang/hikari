@@ -35,6 +35,7 @@ namespace hikari {
     class Light;
     class VisibilityTester;
     class AreaLight;
+    class ParamSet;
 }
 
 #endif //PATHTRACER_HIKARI_H
