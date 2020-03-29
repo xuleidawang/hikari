@@ -9,6 +9,8 @@
 #include "camera.h"
 
 namespace hikari {
+    // Integrator Method Definitions
+    Integrator::~Integrator() {}
     Vector3 SamplerIntegrator::SpecularReflect(
             const Ray &ray, const Intersection &isect,
             const Scene &scene, Sampler &sampler, int depth) const {
@@ -47,4 +49,6 @@ namespace hikari {
         }
         return L;
     }
+
+
 }

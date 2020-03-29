@@ -19,7 +19,6 @@ add_executable(PathTracer
         src/Bounds.h
         src/core/Camera.h
         src/core/Intersection.h
-        src/main.cpp
         src/core/Material.h
         src/core/Shape.h
         src/core/Ray.h
@@ -33,4 +32,4 @@ add_executable(PathTracer
         src/core/Reflection.h
         src/core/Reflection.cpp
         src/core/Integrator.h
-        README.md src/integrators/whitted.h src/integrators/whitted.cpp src/core/Primitive.cpp src/core/Primitive.h src/core/Light.cpp src/core/Light.h src/main/hikari.cpp src/core/hikari.h src/core/sampler.cpp src/core/sampler.h src/core/parser.cpp src/core/parser.h src/core/paramset.cpp src/core/paramset.h src/core/Intersection.cpp src/core/Integrator.cpp src/core/fileutil.cpp src/core/fileutil.h src/core/api.h src/core/api.cpp)
+        README.md src/integrators/whitted.h src/integrators/whitted.cpp src/core/Primitive.cpp src/core/Primitive.h src/core/Light.cpp src/core/Light.h src/main/hikari.cpp src/core/hikari.h src/core/sampler.cpp src/core/sampler.h src/core/parser.cpp src/core/parser.h src/core/Intersection.cpp src/core/Integrator.cpp)
