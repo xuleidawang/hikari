@@ -18,10 +18,9 @@
 
 namespace hikari {
     using namespace std;
-
-#define IMAGE_WIDTH 	500
-#define IMAGE_HEIGHT 	500
-#define MAX_DEPTH		5
+    #define IMAGE_WIDTH 	500
+    #define IMAGE_HEIGHT 	500
+    #define MAX_DEPTH		5
     typedef unsigned char u08;
 
     int main(int argc, char** argv){
@@ -31,7 +30,7 @@ namespace hikari {
         int spp = argc==2?atoi(argv[1]):1;
         double spp_recp = 1/spp;
 
-        Scene cornellBox=Scene();
+        Scene cornellBox = Scene();
         // camera pos, target
         Camera camera1(Vector3(0,-20,5),Vector3(0,0,1),1280,720);
         cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,0,-1000), Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
@@ -49,6 +48,10 @@ namespace hikari {
         Renderer renderer1 =Renderer(&cornellBox,&camera1);
         renderer1.render(spp, spp_recp);
         renderer1.save_image();
+
+
+
+
 
         time(&stop);
         double diff = difftime(stop, start);

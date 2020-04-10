@@ -14,6 +14,4 @@ namespace hikari {
     void Intersection::ComputeScatteringFunctions(const Ray &ray, bool allowMultipleLobes) {
         primitive->ComputeScatteringFunctions(this, allowMultipleLobes);
     }
-
-
 }

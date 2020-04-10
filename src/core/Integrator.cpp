@@ -49,6 +49,10 @@ namespace hikari {
         }
         return L;
     }
+    // SamplerIntegrator Method Definitions
+    void SamplerIntegrator::Render(const Scene &scene) {
+
+    }
 
 
 }
