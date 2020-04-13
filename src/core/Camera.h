@@ -21,9 +21,9 @@ namespace hikari {
 
     public:
         Camera(Vector3 _pos, Vector3 _target, int width, int height);
-        int get_width();
-        int get_height();
-        Ray generate_ray(int x,int y, bool jitter);
+        int get_width()const;
+        int get_height()const;
+        Ray generate_ray(int x,int y, bool jitter) const;
 
     };
     Camera::Camera(Vector3 _pos, Vector3 _target, int _width, int _height):
@@ -41,7 +41,7 @@ namespace hikari {
         m_x_spacing_half = m_x_spacing * 0.5;
         m_y_spacing_half = m_y_spacing * 0.5;
     };
-    Ray Camera::generate_ray(int x,int y, bool jitter){
+    Ray Camera::generate_ray(int x,int y, bool jitter)const{
         double x_jitter;
         double y_jitter;
 
@@ -66,8 +66,8 @@ namespace hikari {
     }
 
 
-    int Camera::get_width(){return width;}
-    int Camera::get_height(){return height;}
+    int Camera::get_width()const {return width;}
+    int Camera::get_height()const {return height;}
 }
 
 

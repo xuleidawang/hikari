@@ -44,7 +44,7 @@ namespace hikari {
 
                 for (int a=0; a<samples; a++){
                     Ray ray = m_camera->generate_ray(x, y, a>0);
-                    color = color + m_scene->castRay(ray,0);
+                    //color = color + m_scene->castRay(ray,0);
 //                if(color!=Vector3(0,0,0))std::cout<<color<<std::endl;
                 }
                 int i = y*width+x;
@@ -53,6 +53,8 @@ namespace hikari {
             }
         }
     }
+
+
 
     void Renderer::save_image(){
         int width = m_camera->get_width();

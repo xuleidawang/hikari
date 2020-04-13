@@ -22,6 +22,7 @@ namespace hikari {
         // WhittedIntegrator Private Data
         const int maxDepth;
     };
+
     WhittedIntegrator *CreateWhittedIntegrator(
             std::shared_ptr<Sampler> sampler,
             std::shared_ptr<const Camera> camera);

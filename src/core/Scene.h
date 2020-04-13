@@ -25,8 +25,22 @@ namespace hikari {
 
         std::vector<std::shared_ptr<Light> > lights;
 
-    };
+        /// Return a pointer to the scene's integrator
+        Integrator *getIntegrator() { return m_integrator; }
 
+        /// Return a pointer to the scene's camera
+        const Camera *getCamera() const { return m_camera; }
+
+        /// Return a pointer to the scene's sample generator (const version)
+        const Sampler *getSampler() const { return m_sampler; }
+
+
+    private:
+        Integrator *m_integrator = nullptr;
+        Sampler *m_sampler = nullptr;
+        Camera *m_camera = nullptr;
+
+    };
 
     void Scene::add(Shape *object) {
         m_objects.push_back( std::shared_ptr<Shape>(object) );

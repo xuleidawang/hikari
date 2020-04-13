@@ -16,17 +16,18 @@
 
 namespace hikari {
     // Global Forward Declarations
+    class Vector3;
+    class Vector2;
     class Scene;
     class Integrator;
     class SamplerIntegrator;
-    class Vector3;
-    class Vector2;
     class Ray;
     class Bounds;
     struct Intersection;
     class Shape;
     class Primitive;
     class Camera;
+    class Sampler;
     class BxDF;
     class BRDF;
     class BTDF;

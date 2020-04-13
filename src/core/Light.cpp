@@ -16,4 +16,8 @@ namespace hikari {
             : Light(nSamples) {
         //++numAreaLights;
     }
+
+//    Vector3 AreaLight::L(const hikari::Intersection &intr, const hikari::Vector3 &w) const {
+//        return Vector3(0.0);
+//    }
 }

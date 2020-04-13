@@ -4,15 +4,8 @@
 
 #include <iostream>
 #include <limits>
-#include "Vectors.h"
-#include "src/core/Ray.h"
-#include "src/core/Shape.h"
-#include "src/shapes/Sphere.h"
-#include "src/core/Intersection.h"
-#include "src/core/Material.h"
-#include "src/core/Camera.h"
-#include "src/shapes/Triangle.h"
-#include "src/core/Scene.h"
+#include <src/integrators/whitted.h>
+#include "hikari.h"
 #include "Renderer.h"
 #include "time.h"
 
@@ -23,6 +16,12 @@ namespace hikari {
     #define MAX_DEPTH		5
     typedef unsigned char u08;
 
+    void render(const Scene *scene, Sampler *sampler)
+    {
+        const Camera *camera = scene->getCamera();
+        const Integrator *integrator = scene->getIntegrator();
+
+    }
     int main(int argc, char** argv){
         time_t start, stop;
         time(&start);               // Start execution timer
@@ -33,22 +32,18 @@ namespace hikari {
         Scene cornellBox = Scene();
         // camera pos, target
         Camera camera1(Vector3(0,-20,5),Vector3(0,0,1),1280,720);
-        cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,0,-1000), Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
-        cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(-1004,0,0), Vector3(), Vector3(0.85,0.4,0.4),DIFF)));
-        cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(1004,0,0),  Vector3(), Vector3(0.4,0.4,0.85),DIFF)));
-        cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
-        cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
-        cornellBox.add( dynamic_cast<Shape*>(new Sphere(100, Vector3(0,0,110),   Vector3(1,1,1)*.999,Vector3(1.0,1.0,1.0)*.999,DIFF))); //light
-
-
-        cornellBox.buildBVH();
-        Renderer renderer1 =Renderer(&cornellBox,&camera1);
-        renderer1.render(spp, spp_recp);
-        renderer1.save_image();
-
-
-
-
+//        cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,0,-1000), Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
+//        cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(-1004,0,0), Vector3(), Vector3(0.85,0.4,0.4),DIFF)));
+//        cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(1004,0,0),  Vector3(), Vector3(0.4,0.4,0.85),DIFF)));
+//        cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
+//        cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
+//        cornellBox.add( dynamic_cast<Shape*>(new Sphere(100, Vector3(0,0,110),   Vector3(1,1,1)*.999,Vector3(1.0,1.0,1.0)*.999,DIFF))); //light
+//        cornellBox.buildBVH();
+//
+//        Renderer renderer1 =Renderer(&cornellBox,&camera1);
+//        renderer1.render(spp, spp_recp);
+//        renderer1.save_image();
+        
 
         time(&stop);
         double diff = difftime(stop, start);
