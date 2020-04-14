@@ -19,17 +19,13 @@ namespace  hikari {
     public:
         virtual ~Primitive();
 
-        virtual Bounds WordldBound();
+        virtual Bounds WordldBound() const = 0;
 
-        virtual bool Intersect(const Ray &ray, Intersection *);
+        virtual bool Intersect(const Ray &ray, Intersection *) const = 0;
 
-        virtual bool IntersectP(const Ray &ray);
-
-        //TODO Add AreaLight class
-        virtual const AreaLight *GetAreaLight() ;
-//    virtual const Material *GetMaterial() const = 0;
-        virtual void ComputeScatteringFunctions(Intersection *isect,
-                                                bool allowMultipleLobes);
+        virtual const AreaLight *GetAreaLight() const = 0;
+        virtual const Material *GetMaterial() const = 0;
+        virtual void ComputeScatteringFunctions(Intersection *isect, bool allowMultipleLobes) const =0;
     };
 
 // GeometricPrimitive Declarations
@@ -38,12 +34,11 @@ namespace  hikari {
         // GeometricPrimitive Public Methods
         virtual Bounds WorldBound() const;
         virtual bool Intersect(const Ray &r, Intersection *isect) const;
-        virtual bool IntersectP(const Ray &r) const;
         GeometricPrimitive(const std::shared_ptr<Shape> &shape,
                            const std::shared_ptr<Material> &material,
                            const std::shared_ptr<AreaLight> &areaLight
                            );
-        //const AreaLight *GetAreaLight() const;
+        const AreaLight *GetAreaLight() const;
         const Material *GetMaterial() const;
         void ComputeScatteringFunctions(Intersection *isect,
                                         bool allowMultipleLobes) const;

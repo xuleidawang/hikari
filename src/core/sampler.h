@@ -61,26 +61,5 @@ namespace hikari {
 //        RNG rng;
     };
 
-    class GlobalSampler : public Sampler {
-    public:
-        // GlobalSampler Public Methods
-        bool StartNextSample();
-        void StartPixel(const Vector2 &);
-        bool SetSampleNumber(int64_t sampleNum);
-        float Get1D();
-        Vector2 Get2D();
-        GlobalSampler(int64_t samplesPerPixel) : Sampler(samplesPerPixel) {}
-        virtual int64_t GetIndexForSample(int64_t sampleNum) const = 0;
-        virtual float SampleDimension(int64_t index, int dimension) const = 0;
-
-    private:
-        // GlobalSampler Private Data
-        int dimension;
-        int64_t intervalSampleIndex;
-        static const int arrayStartDim = 5;
-        int arrayEndDim;
-    };
-
-
 }
 #endif //PATHTRACER_SAMPLER_H

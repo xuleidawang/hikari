@@ -25,6 +25,7 @@ namespace hikari {
     class Bounds;
     struct Intersection;
     class Shape;
+    class Sphere;
     class Primitive;
     class Camera;
     class Sampler;

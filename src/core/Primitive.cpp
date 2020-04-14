@@ -6,7 +6,6 @@
 namespace hikari {
     Primitive::~Primitive() {}
 
-//    Bounds GeometricPrimitive::WorldBound() const { return shape->getBounds(); }
 ////bool GeometricPrimitive::IntersectP(const Ray &r) const {
 ////    return shape->IntersectP(r);
 ////}
@@ -27,19 +26,21 @@ namespace hikari {
 //        return true;
 //    }
 //
-//    const AreaLight *GeometricPrimitive::GetAreaLight() const {
-//        return areaLight.get();
-//    }
-//
-//    const Material *GeometricPrimitive::GetMaterial() const {
-//        return material.get();
-//    }
-//
+
     void GeometricPrimitive::ComputeScatteringFunctions( Intersection *isect, bool allowMultipleLobes) const {
         if (material)
             material->ComputeScatteringFunctions(isect, allowMultipleLobes);
 //        CHECK_GE(Dot(isect->n, isect->normal), 0.);
 }
+    Bounds GeometricPrimitive::WorldBound() const { return shape->getBounds(); }
+
+    bool GeometricPrimitive::Intersect(const hikari::Ray &ray, hikari::Intersection *isect) const {
+        return shape->intersect(ray, isect);
+    }
+
+    const AreaLight *GeometricPrimitive::GetAreaLight() const{ return this->areaLight.get(); }
+    const Material *GeometricPrimitive::GetMaterial() const{ return material.get();}
+
 
 }
 

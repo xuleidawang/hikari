@@ -30,7 +30,7 @@ namespace hikari {
 
     public:
         AreaLight(int nSamples);
-//        Vector3 L(const Intersection &intr, const Vector3 &w) const = 0;
+        virtual Vector3 L(const Intersection &intr, const Vector3 &w) const = 0;
     };
 
     class VisibilityTester{
