@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.12)
-project(PathTracer)
+project(Hikari)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -13,7 +13,7 @@ set(CMAKE_C_COMPILER /usr/local/bin/gcc-9)
 # enable openmp using -fopenmp
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -fopenmp")
 
-add_executable(PathTracer
+add_executable(Hikari
         lib/tiny_obj_loader/tiny_obj_loader.cc
         lib/tiny_obj_loader/tiny_obj_loader.h
         src/Bounds.h

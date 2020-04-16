@@ -86,7 +86,7 @@ namespace hikari {
 
     Vector3 Triangle::getNormal(Vector3 position){return normal;}
 
-// p = u*v0 + v*v1 + w*v2;
+    // p = u*v0 + v*v1 + w*v2;
     Vector3 Triangle::getBarycentric(Vector3 p){
         Vector3 v2_ = p - v0;
         double d00 = e1.dot(e1);

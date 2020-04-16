@@ -142,14 +142,13 @@ namespace hikari {
                         return node;
                     }
                 }
-                node->InitInterior(this, dim, recursiveBuild(primitiveInfo, start, mid, totalNodes, orderedPrims),
-                                   recursiveBuild(primitiveInfo, mid, end, totalNodes, orderedPrims));
+                node->InitInterior(this, dim,
+                        recursiveBuild(primitiveInfo, start, mid, totalNodes, orderedPrims),
+                        recursiveBuild(primitiveInfo, mid, end, totalNodes, orderedPrims));
             }
         }
         return node;
-
     }
-
 
     Intersection BVHAccel::getIntersection(BVHBuildNode* node, const Ray& ray)const{
         Intersection isec=Intersection();
@@ -183,12 +182,48 @@ namespace hikari {
         }else return isec;
     }
 
-    bool BVHAccel::Intersect(const Ray &ray) const {
-        Intersection isect;
-        if(!root)return false;
-        isect = BVHAccel::getIntersection(root,ray);
-        //std::cout<<isect.coords<<" color is "<<isect.m.getColor()<<std::endl;
-        return isect.happened;
+    bool BVHAccel::Intersect(BVHBuildNode *node, const Ray &ray, Intersection* isect) const {
+
+        if(root == nullptr) return false;
+
+        Vector3 invDir(1 / ray.direction.x, 1 / ray.direction.y, 1 / ray.direction.z);
+        int dirIsNeg[3] = {invDir.x < 0, invDir.y < 0, invDir.z < 0};
+        //if intersect with this bounds
+        if(node->bounds.IntersectP(ray,invDir,dirIsNeg))
+        {
+            //if it is a leaf node
+            if(node->nPrimitives>0){
+                for (int i = 0; i < node->nPrimitives; ++i){
+                    Intersection* tmp = new Intersection();
+                    if (primitives[node->firstPrimOffset + i]->intersect(ray, tmp)){
+                        isect->happened = true;
+                        if(tmp->distance<isect->distance)
+                        {
+                            isect = tmp;
+                        }
+                    }
+                }
+//            std::cout<<"Hit leaf node"<<std::endl;
+                return isect->happened;
+            }
+            else{
+                //else go to its two child nodes
+                Intersection *ins1 = new Intersection();
+                if(Intersect(node->children[0],ray, ins1))
+                {
+                    isect = ins1;
+                }
+                Intersection *ins2 = new Intersection();
+                if(Intersect(node->children[1],ray, ins2))
+                {
+                    if(ins2->distance < ins1->distance)
+                        isect = ins2;
+                }
+                return isect->happened;
+            }
+        }
+        else
+            return isect->happened;
 
     }
 }

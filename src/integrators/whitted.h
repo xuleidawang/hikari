@@ -5,7 +5,7 @@
 #ifndef PATHTRACER_WHITTED_H
 #define PATHTRACER_WHITTED_H
 
-#include "hikari.h"
+#include "core/hikari.h"
 #include "Integrator.h"
 #include "Scene.h"
 namespace hikari {
@@ -26,8 +26,6 @@ namespace hikari {
     WhittedIntegrator *CreateWhittedIntegrator(
             std::shared_ptr<Sampler> sampler,
             std::shared_ptr<const Camera> camera);
-
-
 }
 
 

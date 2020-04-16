@@ -5,7 +5,6 @@
 #include "Material.h"
 
 namespace hikari {
-    void Material::ComputeScatteringFunctions(hikari::Intersection *intersection, bool allowMultipleLobes)
-    {
-    }
+
+    Material::~Material(){}
 }

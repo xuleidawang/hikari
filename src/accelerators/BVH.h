@@ -36,9 +36,9 @@ namespace  hikari{
         Bounds WorldBound() const;
         ~BVHAccel();
 
-        bool Intersect(const Ray &ray) const;
-        Intersection getIntersection(BVHBuildNode* node, const Ray& ray)const;
         bool IntersectP(const Ray &ray) const;
+        bool Intersect(BVHBuildNode* node, const Ray &ray, Intersection* isect) const;
+        Intersection getIntersection(BVHBuildNode* node, const Ray& ray)const;
         BVHBuildNode* root;
 
 
@@ -47,12 +47,9 @@ namespace  hikari{
                                      int end, int *totalNodes,
                                      std::vector<std::shared_ptr<Shape>> &orderedPrims);
 
-        int flattenBVHTree(BVHBuildNode *node, int *offset);
-
         // BVHAccel Private Data
         const int maxPrimsInNode;
         const SplitMethod splitMethod;
-        //std::vector<Shape*> primitives;
         std::vector<std::shared_ptr<Shape>> primitives;
         LinearBVHNode *nodes = nullptr;
     };

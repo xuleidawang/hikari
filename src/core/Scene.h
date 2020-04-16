@@ -16,8 +16,8 @@ namespace hikari {
         Scene(){};
         void add(Shape *object);
         void addMesh(Mesh* mesh);
-        bool intersectP(const Ray &ray) const;
-        Intersection intersect(const Ray &ray)const;
+        bool IntersectP(const Ray &ray) const;
+        bool Intersect(const Ray &ray, Intersection* isect)const;
         Vector3 castRay(const Ray &ray, int depth);
         std::vector<std::shared_ptr<Shape>> m_objects;
         BVHAccel *bvh;
@@ -60,11 +60,12 @@ namespace hikari {
         this->bvh = new BVHAccel(m_objects, 4, BVHAccel::SplitMethod::SAH);
     }
 
-    bool Scene::intersectP(const Ray &ray) const {
-        return this->bvh->Intersect(ray);
+    bool Scene::IntersectP(const Ray &ray) const {
+        return this->bvh->IntersectP(ray);
     }
-    Intersection Scene::intersect(const Ray &ray)const{
-        return this->bvh->getIntersection(bvh->root, ray);
+    bool Scene::Intersect(const Ray &ray, Intersection *isect)const{
+
+        return (this->bvh->Intersect(this->bvh->root, ray, isect));
     }
 
 //Randomly generate a direction in a hemisphere w.r.t shading normal n

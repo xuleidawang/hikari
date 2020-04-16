@@ -12,16 +12,13 @@ namespace hikari {
 #define M_PI 3.14159265358979323846
 #endif
 
-    class Material{
-    private:
-        //Texture tex;
+class Material{
+
     public:
-        void ComputeScatteringFunctions(Intersection *intersection, bool allowMultipleLobes);
+    virtual ~Material();
+    virtual void ComputeScatteringFunctions(Intersection *intersection, bool allowMultipleLobes) const =0;
+
     };
 
-//Vector3 getColorAt(double u, double v) const;
 }
-
-
-
 #endif //MATERIAL_H
