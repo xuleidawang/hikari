@@ -42,7 +42,7 @@
          Vector3 wo;
          double distance;
          Shape *shape = nullptr;
-         Primitive *primitive = nullptr;
+         const Primitive *primitive = nullptr;
          BRDF *brdf;
          Material* m;
      };

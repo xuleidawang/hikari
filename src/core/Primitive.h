@@ -19,7 +19,7 @@ namespace  hikari {
     public:
         virtual ~Primitive();
 
-        virtual Bounds WordldBound() const = 0;
+        virtual Bounds WordldBound() const;
 
         virtual bool Intersect(const Ray &ray, Intersection *) const = 0;
 

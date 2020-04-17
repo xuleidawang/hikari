@@ -10,7 +10,7 @@ namespace hikari {
     class Shape {
     public:
         virtual bool intersect(const Ray& ray, Intersection *intersection);
-        virtual Bounds getBounds()const =0;
+        virtual Bounds getBounds() const =0;
     };
 }
 

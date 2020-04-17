@@ -3,12 +3,11 @@
 //
 
 #include "BVH.h"
-
 #include <algorithm>
 
 namespace hikari {
-    // BVHAccel Method Definitions
-    BVHAccel::BVHAccel(std::vector<std::shared_ptr<Shape> > p, int maxPrimsInNode, SplitMethod splitMethod)
+    // BVHAccel Method Definitions 
+    BVHAccel::BVHAccel(std::vector<std::shared_ptr<Primitive> > p, int maxPrimsInNode, SplitMethod splitMethod)
             : maxPrimsInNode(std::min(255, maxPrimsInNode)),
               splitMethod(splitMethod),
               primitives(std::move(p)) {
@@ -18,12 +17,12 @@ namespace hikari {
         // Initialize _primitiveInfo_ array for primitives
         std::vector<BVHPrimitiveInfo> primitiveInfo(primitives.size());
         for (size_t i = 0; i < primitives.size(); ++i)
-            primitiveInfo[i] = {i, primitives[i]->getBounds()};
+            primitiveInfo[i] = {i, primitives[i]->WordldBound()};
 
         // Build BVH tree for primitives using _primitiveInfo_
 
         int totalNodes = 0;
-        std::vector<std::shared_ptr<Shape>> orderedPrims;
+        std::vector<std::shared_ptr<Primitive>> orderedPrims;
         orderedPrims.reserve(primitives.size());
 
         root = recursiveBuild(primitiveInfo, 0, primitives.size(), &totalNodes, orderedPrims);
@@ -34,9 +33,7 @@ namespace hikari {
     }
 
 
-    BVHBuildNode* BVHAccel::recursiveBuild(std::vector<BVHPrimitiveInfo> &primitiveInfo, int start,
-                                           int end, int *totalNodes,
-                                           std::vector<std::shared_ptr<Shape>> &orderedPrims)
+    BVHBuildNode* BVHAccel::recursiveBuild(std::vector<BVHPrimitiveInfo> &primitiveInfo, int start, int end, int *totalNodes, std::vector<std::shared_ptr<Primitive>> &orderedPrims)
     {
         BVHBuildNode* node = new BVHBuildNode();
         (*totalNodes)++;
@@ -162,7 +159,7 @@ namespace hikari {
 
                 for (int i = 0; i < node->nPrimitives; ++i){
                     Intersection* tmp = new Intersection();
-                    if (primitives[node->firstPrimOffset + i]->intersect(ray, tmp)){
+                    if (primitives[node->firstPrimOffset + i]->Intersect(ray, tmp)){
                         isec.happened = true;
                         if(tmp->distance<isec.distance)
                         {
@@ -195,7 +192,7 @@ namespace hikari {
             if(node->nPrimitives>0){
                 for (int i = 0; i < node->nPrimitives; ++i){
                     Intersection* tmp = new Intersection();
-                    if (primitives[node->firstPrimOffset + i]->intersect(ray, tmp)){
+                    if (primitives[node->firstPrimOffset + i]->Intersect(ray, tmp)){
                         isect->happened = true;
                         if(tmp->distance<isect->distance)
                         {

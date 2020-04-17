@@ -8,18 +8,20 @@
 #include "Light.h"
 #include "shapes/Triangle.h"
 #include "accelerators/BVH.h"
+#include "materials/matte.h"
 #include <vector>
 
 namespace hikari {
     class Scene {
     public:
         Scene(){};
-        void add(Shape *object);
+        void add(Shape *object, Material *material);
         void addMesh(Mesh* mesh);
+        void addPrimitive(Primitive *primitive);
         bool IntersectP(const Ray &ray) const;
         bool Intersect(const Ray &ray, Intersection* isect)const;
         Vector3 castRay(const Ray &ray, int depth);
-        std::vector<std::shared_ptr<Shape>> m_objects;
+        std::vector<std::shared_ptr<Primitive>> primitives;
         BVHAccel *bvh;
         void buildBVH();
 
@@ -42,22 +44,26 @@ namespace hikari {
 
     };
 
-    void Scene::add(Shape *object) {
-        m_objects.push_back( std::shared_ptr<Shape>(object) );
+    void Scene::add(Shape *object, Material *material) {
+        MatteMaterial *diffuseGreen = new MatteMaterial(Vector3(0.0, 1.0, 0.0));
+        primitives.push_back( new GeometricPrimitive(std::shared_ptr<Shape>(object), std::shared_ptr<Material>(material), std::shared_ptr<AreaLight>(new AreaLight(0))));
+    }
+    void Scene::addPrimitive(Primitive* primitive){
+        primitives.push_back(primitive);
     }
 
     void Scene::addMesh(Mesh *mesh) {
         for(auto tri: mesh->tris){
-            tri->m = & mesh->m_m;
-            m_objects.push_back(std::shared_ptr<Triangle>(tri));
+            // tri->m = & mesh->m_m;
+            primitives.push_back(new GeometricPrimitives(std::shared_ptr<Triangle>(tri), new MatteMaterial(Vector3(0.0, 1.0, 0.0), new AreaLight(0)));
         }
 
-        std::cout<<m_objects.size();
+        std::cout<<primitives.size();
     }
 
     void Scene::buildBVH() {
         printf(" - Generating BVH...\n\n");
-        this->bvh = new BVHAccel(m_objects, 4, BVHAccel::SplitMethod::SAH);
+        this->bvh = new BVHAccel(primitives, 4, BVHAccel::SplitMethod::SAH);
     }
 
     bool Scene::IntersectP(const Ray &ray) const {

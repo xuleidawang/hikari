@@ -9,6 +9,7 @@
 #include "Renderer.h"
 #include "shapes/Sphere.h"
 #include "time.h"
+#include "materials/matte.h"
 
 namespace hikari {
     using namespace std;
@@ -40,7 +41,7 @@ namespace hikari {
         cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
         cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
         cornellBox.add( dynamic_cast<Shape*>(new Sphere(100, Vector3(0,0,110),   Vector3(1,1,1)*.999,Vector3(1.0,1.0,1.0)*.999,DIFF))); //light
-        cornellBox.addMesh( new Mesh(Vector3(0,0,2.5), "../scene/dragon2.scene", Material(DIFF, Vector3(0.99, 0.84, 0)));
+        cornellBox.addMesh( new GeometricPrimitive(new Mesh(Vector3(0,0,2.5), "../scene/dragon2.scene"), new MatteMaterial(Vector3(0.99, 0.84, 0))));
         
         cornellBox.buildBVH();
 

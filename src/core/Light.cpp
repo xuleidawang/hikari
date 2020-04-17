@@ -20,4 +20,12 @@ namespace hikari {
     Vector3 AreaLight::L(const hikari::Intersection &intr, const hikari::Vector3 &w) const {
         return Vector3(0.0);
     }
+
+    Vector3 AreaLight::Le(const Ray &ray() const{
+        return Vector3(0.0);
+    }
+    
+    Vector3 AreaLight::Sample_Li(const Intersection &ref, const Vector2 &u, Vector3 *wi, float *pdf, VisibilityTester *vis) const{
+        return Vector3(0.0);
+    }
 }

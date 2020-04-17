@@ -18,7 +18,7 @@ namespace  hikari{
     struct LinearBVHNode;
 
 // BVHAccel Declarations
-    inline int leafNodes, totalLeafNodes, totalPrimitives, interiorNodes;
+    int leafNodes, totalLeafNodes, totalPrimitives, interiorNodes;
     class BVHAccel {
 
     public:
@@ -30,9 +30,7 @@ namespace  hikari{
         enum class SplitMethod { SAH };
 
         // BVHAccel Public Methods
-        BVHAccel(std::vector<std::shared_ptr<Shape>> p,
-                 int maxPrimsInNode = 1,
-                 SplitMethod splitMethod = SplitMethod::SAH);
+        BVHAccel(std::vector<std::shared_ptr<Primitive>> p, int maxPrimsInNode = 1, SplitMethod splitMethod = SplitMethod::SAH);
         Bounds WorldBound() const;
         ~BVHAccel();
 
@@ -45,12 +43,12 @@ namespace  hikari{
         // BVHAccel Private Methods
         BVHBuildNode* recursiveBuild(std::vector<BVHPrimitiveInfo> &primitiveInfo, int start,
                                      int end, int *totalNodes,
-                                     std::vector<std::shared_ptr<Shape>> &orderedPrims);
+                                     std::vector<std::shared_ptr<Primitive>> &orderedPrims);
 
         // BVHAccel Private Data
         const int maxPrimsInNode;
         const SplitMethod splitMethod;
-        std::vector<std::shared_ptr<Shape>> primitives;
+        std::vector<std::shared_ptr<Primitive>> primitives;
         LinearBVHNode *nodes = nullptr;
     };
 
@@ -110,7 +108,7 @@ namespace  hikari{
         Bounds bounds;
     };
 
-    void CreateBVHAccelerator(std::vector<std::shared_ptr<Shape>> prims);
+    void CreateBVHAccelerator(std::vector<std::shared_ptr<Primitive>> prims);
 }
 
 #endif //PATHTRACER_BVH_H
