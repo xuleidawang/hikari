@@ -38,6 +38,9 @@ namespace  hikari {
                            const std::shared_ptr<Material> &material,
                            const std::shared_ptr<AreaLight> &areaLight
                            );
+        GeometricPrimitive(const std::shared_ptr<Shape> &shape,
+                           const std::shared_ptr<Material> &material
+                           );
         const AreaLight *GetAreaLight() const;
         const Material *GetMaterial() const;
         void ComputeScatteringFunctions(Intersection *isect,

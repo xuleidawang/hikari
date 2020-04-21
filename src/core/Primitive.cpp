@@ -8,6 +8,22 @@ namespace hikari {
     const AreaLight *GeometricPrimitive::GetAreaLight() const{ return this->areaLight.get(); }
     const Material *GeometricPrimitive::GetMaterial() const{ return material.get();}
     
+    GeometricPrimitive::GeometricPrimitive(const std::shared_ptr<Shape> &shape,
+                                       const std::shared_ptr<Material> &material,
+                                       const std::shared_ptr<AreaLight> &areaLight
+                                        )
+    : shape(shape),
+    material(material),
+    areaLight(areaLight){
+    }
+
+    GeometricPrimitive::GeometricPrimitive(const std::shared_ptr<Shape> &shape,
+                                       const std::shared_ptr<Material> &material
+                                        )
+    : shape(shape),
+    material(material){
+    }
+
     bool GeometricPrimitive::Intersect(const Ray &r, Intersection *isect) const {
        float tHit;
        if (!shape->intersect(r, isect)) return false;
