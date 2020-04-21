@@ -1,6 +1,7 @@
 #include "hikari.h"
 #include "Material.h"
 
+
 namespace hikari
 {
     //MatteMaterial Declarations

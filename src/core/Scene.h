@@ -46,16 +46,19 @@ namespace hikari {
 
     void Scene::add(Shape *object, Material *material) {
         MatteMaterial *diffuseGreen = new MatteMaterial(Vector3(0.0, 1.0, 0.0));
-        primitives.push_back( new GeometricPrimitive(std::shared_ptr<Shape>(object), std::shared_ptr<Material>(material), std::shared_ptr<AreaLight>(new AreaLight(0))));
+        auto primitive = new GeometricPrimitive(std::shared_ptr<Shape>(object), std::shared_ptr<Material>(material));
+        primitives.push_back( std::shared_ptr<GeometricPrimitive>(primitive));
     }
     void Scene::addPrimitive(Primitive* primitive){
-        primitives.push_back(primitive);
+        primitives.push_back(std::shared_ptr<Primitive> (primitive));
     }
 
     void Scene::addMesh(Mesh *mesh) {
         for(auto tri: mesh->tris){
             // tri->m = & mesh->m_m;
-            primitives.push_back(new GeometricPrimitives(std::shared_ptr<Triangle>(tri), new MatteMaterial(Vector3(0.0, 1.0, 0.0), new AreaLight(0)));
+            auto  material = new MatteMaterial(Vector3(0.0, 1.0, 0.0));
+            auto primitive = new GeometricPrimitive(std::shared_ptr<Triangle>(tri), std::shared_ptr<Material>(material));
+            primitives.push_back(std::shared_ptr<GeometricPrimitive>(primitive)); 
         }
 
         std::cout<<primitives.size();
