@@ -40,7 +40,7 @@
 
 #include <ctype.h>
 #include <stdio.h>
-#include <string.h>
+#include <string>
 #include <functional>
 #include <iostream>
 #include <memory>

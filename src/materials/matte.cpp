@@ -8,6 +8,5 @@ namespace hikari
         si->bsdf->Add(LambertianReflection(r));
     }
     
-    MatteMaterial *CreateMatteMaterial(const Vector3 kd)
-    {returnn new MatteMaterial(kd);}
+    MatteMaterial *CreateMatteMaterial(const Vector3 kd){returnn new MatteMaterial(kd);}
 } // namespace hikari

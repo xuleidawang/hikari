@@ -12,6 +12,9 @@ namespace hikari {
             {}
     Light::~Light() {}
 
+    Vector3 Light::Le(const Ray &ray) const {
+        retrun Vector3(0.0);
+    }
     AreaLight::AreaLight(int nSamples)
             : Light(nSamples) {
         //++numAreaLights;
