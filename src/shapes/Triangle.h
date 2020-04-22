@@ -26,7 +26,7 @@ namespace hikari {
             t0=t0_, t1=t1_, t2=t2_;
             m=m_;
         }
-        bool intersect(const Ray& ray, Intersection* intersection);
+        bool Intersect(const Ray& ray, Intersection* intersection);
         Vector3 getNormal(Vector3 position);
         Vector3 getBarycentric(Vector3 p);
         Bounds getBounds();

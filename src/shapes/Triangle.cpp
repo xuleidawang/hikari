@@ -2,7 +2,7 @@
 
 namespace hikari{
 
-    bool Triangle::intersect(const Ray& ray, Intersection* intersection){
+    bool Triangle::Intersect(const Ray& ray, Intersection* intersection){
         //Moller-Trumbore algorithm
         // P = (1-u-v)A + uB +vC
         // P = wA + uB + vC
@@ -169,7 +169,7 @@ namespace hikari{
         //    std::cout<<"intersect with mesh"<<std::endl;
         for(int i =0;i<size;i++){
             Intersection* tmp = new Intersection();
-            if(tris.at((unsigned)i)->intersect(ray, tmp)){
+            if(tris.at((unsigned)i)->Intersect(ray, tmp)){
                 intersection->happened=true;
                 if(tmp->distance< intersection->distance){
                     intersection = tmp;

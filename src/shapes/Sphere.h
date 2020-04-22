@@ -18,7 +18,7 @@ namespace hikari {
 				radius(rad_), pos(p_){};
 
 		//Inherited Virtual functions
-		bool intersect(const Ray& ray, Intersection* intersection);
+		bool Intersect(const Ray& ray, Intersection* intersection);
 		Bounds getBounds() const;
 
 		Vector3 getNormal(Vector3 position);

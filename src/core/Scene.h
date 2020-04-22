@@ -70,7 +70,7 @@ namespace hikari {
     }
 
     bool Scene::IntersectP(const Ray &ray) const {
-        return this->bvh->IntersectP(ray);
+        return this->bvh->IntersectP(bvh->root, ray);
     }
     bool Scene::Intersect(const Ray &ray, Intersection *isect)const{
 

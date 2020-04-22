@@ -34,7 +34,7 @@ namespace  hikari{
         Bounds WorldBound() const;
         ~BVHAccel();
 
-        bool IntersectP(const Ray &ray) const;
+        bool IntersectP(BVHBuildNode* node, const Ray &ray) const;
         bool Intersect(BVHBuildNode* node, const Ray &ray, Intersection* isect) const;
         Intersection getIntersection(BVHBuildNode* node, const Ray& ray)const;
         BVHBuildNode* root;

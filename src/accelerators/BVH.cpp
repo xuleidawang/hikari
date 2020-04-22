@@ -17,7 +17,7 @@ namespace hikari {
         // Initialize _primitiveInfo_ array for primitives
         std::vector<BVHPrimitiveInfo> primitiveInfo(primitives.size());
         for (size_t i = 0; i < primitives.size(); ++i)
-            primitiveInfo[i] = {i, primitives[i]->WordldBound()};
+            primitiveInfo[i] = {i, primitives[i]->WorldBound()};
 
         // Build BVH tree for primitives using _primitiveInfo_
 
@@ -176,7 +176,9 @@ namespace hikari {
                 Intersection ins2 = getIntersection(node->children[1],ray);
                 return ins1.distance < ins2.distance ? ins1:ins2;
             }
-        }else return isec;
+        }
+        else 
+            return isec;
     }
 
     bool BVHAccel::Intersect(BVHBuildNode *node, const Ray &ray, Intersection* isect) const {
@@ -221,7 +223,41 @@ namespace hikari {
         }
         else
             return isect->happened;
+    }
 
+    bool BVHAccel::IntersectP(BVHBuildNode *node, const Ray& ray) const 
+    {
+        Intersection isec=Intersection();
+        if(!node)return false;
+        Vector3 invDir(1 / ray.direction.x, 1 / ray.direction.y, 1 / ray.direction.z);
+        int dirIsNeg[3] = {invDir.x < 0, invDir.y < 0, invDir.z < 0};
+        //if intersect with this bounds
+        if(node->bounds.IntersectP(ray,invDir,dirIsNeg)){
+            //if it is a leaf node
+            if(node->nPrimitives>0){
+                for (int i = 0; i < node->nPrimitives; ++i){
+                    Intersection* tmp = new Intersection();
+                    if (primitives[node->firstPrimOffset + i]->Intersect(ray, tmp))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            //else go to its two child nodes
+            else{
+                if(IntersectP(node->children[0],ray)) 
+                {
+                    return true;
+                }
+                else 
+                {
+                    return IntersectP(node->children[1],ray);
+                }
+            }
+        }
+        else 
+            return false;
     }
 }
 
