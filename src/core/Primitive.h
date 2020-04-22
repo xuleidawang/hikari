@@ -19,7 +19,7 @@ namespace  hikari {
     public:
         virtual ~Primitive();
 
-        virtual Bounds WordldBound() const;
+        virtual Bounds WorldBound() const = 0;
 
         virtual bool Intersect(const Ray &ray, Intersection *) const = 0;
 
@@ -32,8 +32,8 @@ namespace  hikari {
     class GeometricPrimitive : public Primitive {
     public:
         // GeometricPrimitive Public Methods
-        virtual Bounds WorldBound() const;
-        virtual bool Intersect(const Ray &r, Intersection *isect) const;
+        Bounds WorldBound() const;
+        bool Intersect(const Ray &r, Intersection *isect) const;
         GeometricPrimitive(const std::shared_ptr<Shape> &shape,
                            const std::shared_ptr<Material> &material,
                            const std::shared_ptr<AreaLight> &areaLight

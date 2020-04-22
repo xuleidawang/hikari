@@ -12,7 +12,7 @@
 #include <memory>
 #include <string>
 #include <vector>
-#include <string.h>
+#include <string>
 
 namespace hikari {
     // Global Forward Declarations
@@ -27,6 +27,7 @@ namespace hikari {
     class Shape;
     class Sphere;
     class Primitive;
+    class GeometricPrimitive;
     class Camera;
     class Sampler;
     class BxDF;
