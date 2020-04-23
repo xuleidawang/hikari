@@ -22,11 +22,51 @@ namespace  hikari {
                    BSDF_TRANSMISSION,
     };
 
+    class BSDF {
+  public:
+    // BSDF Public Methods
+    BSDF(const Intersection &si, float eta = 1)
+        : eta(eta) {}
+    void Add(BxDF *b) {
+        bxdfs[nBxDFs++] = b;
+    }
+    int NumComponents(BxDFType flags = BSDF_ALL) const;
+
+    Vector3 f(const Vector3 &woW, const Vector3 &wiW,
+               BxDFType flags = BSDF_ALL) const;
+    Vector3 rho(int nSamples, const Vector2 *samples1, const Vector2 *samples2,
+                 BxDFType flags = BSDF_ALL) const;
+    Vector3 rho(const Vector3 &wo, int nSamples, const Vector2 *samples,
+                 BxDFType flags = BSDF_ALL) const;
+    Vector3 Sample_f(const Vector3 &wo, Vector3 *wi, const Vector2 &u,
+                      float *pdf, BxDFType type = BSDF_ALL,
+                      BxDFType *sampledType = nullptr) const;
+    float Pdf(const Vector3 &wo, const Vector3 &wi,
+              BxDFType flags = BSDF_ALL) const;
+    std::string ToString() const;
+
+    // BSDF Public Data
+    const float eta;
+
+  private:
+    // BSDF Private Methods
+    ~BSDF() {}
+
+    // BSDF Private Data
+    // const Vector3 ns, ng;
+    // const Vector3 ss, ts;
+    int nBxDFs = 0;
+    static const int MaxBxDFs = 8;
+    BxDF *bxdfs[MaxBxDFs];
+    // friend class MixMaterial;
+};
+
+
     class BxDF {
     public:
         virtual ~BxDF(){}
         BxDF(MaterialType type) : type(type) {}
-        //bool MatchesFlags(MaterialType t) const { return (type & t) == type; }
+        bool MatchesFlags(MaterialType t) const { return (type & t) == type; }
         virtual Vector3 f(const Vector3 &wo, const Vector3 &wi) const = 0;
         virtual Vector3 Sample_f(const Vector3 &wo, Vector3 *wi, const Vector2 &sample, float *pdf, BxDFType sampledType) const;
         virtual Vector3 rho(const Vector3 &wo, int nSamples, const Vector2 *samples) const;
