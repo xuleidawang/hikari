@@ -39,6 +39,8 @@ namespace hikari {
     class VisibilityTester;
     class AreaLight;
     class ParamSet;
+
+    const double OneMinusEpsilon = 0x1.fffffffffffffp-1;
 }
 
 #endif //PATHTRACER_HIKARI_H

@@ -11,7 +11,8 @@ Vector3 BSDF::f(const Vector3 &woW, const Vector3 &wiW,
     // Vector3 wi = WorldToLocal(wiW), wo = WorldToLocal(woW);
     Vector3 wi = wiW, wo = woW;
     if (wo.z == 0) return 0.;
-    bool reflect = Dot(wiW, ng) * Dot(woW, ng) > 0;
+    // bool reflect = Dot(wiW, ng) * Dot(woW, ng) > 0;
+    bool reflect = wiW.dot(ng) * woW.dot(ng) >0;
     Vector3 f(0.f);
     for (int i = 0; i < nBxDFs; ++i)
         if (bxdfs[i]->MatchesFlags(flags) &&
@@ -26,7 +27,7 @@ Vector3 BSDF::rho(int nSamples, const Vector2 *samples1,
     Vector3 ret(0.f);
     for (int i = 0; i < nBxDFs; ++i)
         if (bxdfs[i]->MatchesFlags(flags))
-            ret += bxdfs[i]->rho(nSamples, samples1, samples2);
+        ret += bxdfs[i]->rho(nSamples, samples1, samples2);
     return ret;
 }
 
@@ -66,11 +67,10 @@ Vector3 BSDF::Sample_f(const Vector3 &woWorld, Vector3 *wiWorld,
     //     matchingComps << ", bxdf: " << bxdf->ToString();
 
     // Remap _BxDF_ sample _u_ to $[0,1)^2$
-    Vector2 uRemapped(std::min(u[0] * matchingComps - comp, OneMinusEpsilon),
-                      u[1]);
+    Vector2 uRemapped(std::min(u[0] * matchingComps - comp, OneMinusEpsilon), u[1]);
 
     // Sample chosen _BxDF_
-    Vector3 wi, wo = WorldToLocal(woWorld);
+    Vector3 wi, wo = (woWorld);
     if (wo.z == 0) return 0.;
     *pdf = 0;
     if (sampledType) *sampledType = bxdf->type;
@@ -92,7 +92,8 @@ Vector3 BSDF::Sample_f(const Vector3 &woWorld, Vector3 *wiWorld,
 
     // Compute value of BSDF for sampled direction
     if (!(bxdf->type & BSDF_SPECULAR)) {
-        bool reflect = Dot(*wiWorld, ng) * Dot(woWorld, ng) > 0;
+        // bool reflect = Dot(*wiWorld, ng) * Dot(woWorld, ng) > 0;
+        bool reflect = ((*wiWorld->dot(ng)) * (woWorld.dot(ng))) > 0;
         f = 0.;
         for (int i = 0; i < nBxDFs; ++i)
             if (bxdfs[i]->MatchesFlags(type) &&
@@ -109,7 +110,7 @@ float BSDF::Pdf(const Vector3 &woWorld, const Vector3 &wiWorld,
                 BxDFType flags) const {
     // ProfilePhase pp(Prof::BSDFPdf);
     if (nBxDFs == 0.f) return 0.f;
-    Vector3 wo = WorldToLocal(woWorld), wi = WorldToLocal(wiWorld);
+    Vector3 wo = (woWorld), wi = (wiWorld);
     if (wo.z == 0) return 0.;
     float pdf = 0.f;
     int matchingComps = 0;
@@ -123,10 +124,10 @@ float BSDF::Pdf(const Vector3 &woWorld, const Vector3 &wiWorld,
 }
 
 std::string BSDF::ToString() const {
-    std::string s = StringPrintf("[ BSDF eta: %f nBxDFs: %d", eta, nBxDFs);
-    for (int i = 0; i < nBxDFs; ++i)
-        s += StringPrintf("\n  bxdfs[%d]: ", i) + bxdfs[i]->ToString();
-    return s + std::string(" ]");
+    // std::string s = StringPrintf("[ BSDF eta: %f nBxDFs: %d", eta, nBxDFs);
+    // for (int i = 0; i < nBxDFs; ++i)
+    //     s += StringPrintf("\n  bxdfs[%d]: ", i) + bxdfs[i]->ToString();
+    return  std::string(" []");
 }
 
 }
