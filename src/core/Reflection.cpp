@@ -93,7 +93,7 @@ Vector3 BSDF::Sample_f(const Vector3 &woWorld, Vector3 *wiWorld,
     // Compute value of BSDF for sampled direction
     if (!(bxdf->type & BSDF_SPECULAR)) {
         // bool reflect = Dot(*wiWorld, ng) * Dot(woWorld, ng) > 0;
-        bool reflect = ((*wiWorld->dot(ng)) * (woWorld.dot(ng))) > 0;
+        bool reflect = (wiWorld->dot(ng))*(woWorld.dot(ng)) > 0 ;
         f = 0.;
         for (int i = 0; i < nBxDFs; ++i)
             if (bxdfs[i]->MatchesFlags(type) &&
@@ -128,6 +128,13 @@ std::string BSDF::ToString() const {
     // for (int i = 0; i < nBxDFs; ++i)
     //     s += StringPrintf("\n  bxdfs[%d]: ", i) + bxdfs[i]->ToString();
     return  std::string(" []");
+}
+
+inline int BSDF::NumComponents(BxDFType flags) const {
+    int num = 0;
+    for (int i=0; i < nBxDFs; i++)
+        if(bxdfs[i] -> MatchesFlags(flags)) num++;
+    return num;
 }
 
 }

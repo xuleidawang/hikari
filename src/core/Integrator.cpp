@@ -19,7 +19,7 @@ namespace hikari {
         Vector3 wo = isect.wo, wi;
         float pdf;
         BxDFType type = BxDFType(BSDF_REFLECTION | BSDF_SPECULAR);
-        Vector3 f = isect.brdf->Sample_f(wo, &wi, sampler.Get2D(), &pdf, type);
+        Vector3 f = isect.bsdf->Sample_f(wo, &wi, sampler.Get2D(), &pdf, type);
 
         // Return contribution of specular reflection
         const Vector3 &ns = isect.normal;
@@ -40,8 +40,8 @@ namespace hikari {
         float pdf;
         const Vector3 &p = isect.coords;
         const Vector3 &ns = isect.normal;
-        const BRDF &brdf = *isect.brdf;
-        Vector3 f = brdf.Sample_f(wo, &wi, sampler.Get2D(), &pdf, BxDFType(BSDF_TRANSMISSION | BSDF_SPECULAR));
+        const BSDF &bsdf = *isect.bsdf;
+        Vector3 f = bsdf.Sample_f(wo, &wi, sampler.Get2D(), &pdf, BxDFType(BSDF_TRANSMISSION | BSDF_SPECULAR));
         Vector3 L = Vector3(0.f);
         if (pdf > 0.f && !f.IsBlack() && abs(wi.dot(ns)) != 0.f) {
             // Compute ray differential _rd_ for specular transmission

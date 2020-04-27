@@ -25,8 +25,7 @@ namespace  hikari {
 class BSDF {
     public:
     // BSDF Public Methods
-    BSDF(const Intersection &si, float eta = 1)
-        : eta(eta) {}
+    BSDF(const Intersection &si, float eta = 1) : eta(eta) {}
     void Add(BxDF *b) {
         bxdfs[nBxDFs++] = b;
     }

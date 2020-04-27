@@ -43,7 +43,7 @@
          double distance;
          Shape *shape = nullptr;
          const Primitive *primitive = nullptr;
-         BRDF *brdf;
+         BSDF *bsdf;
          Material* m;
      };
 }

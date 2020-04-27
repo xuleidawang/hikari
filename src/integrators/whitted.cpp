@@ -27,7 +27,7 @@ namespace hikari {
 
         // Compute scattering functions for surface interaction
         isect->ComputeScatteringFunctions(ray);
-        if (!isect->brdf)
+        if (!isect->bsdf)
             return Li(isect->SpawnRay(ray.direction), scene, sampler, depth);
 
         // Compute emitted light if ray hit an area light source
@@ -40,7 +40,7 @@ namespace hikari {
             VisibilityTester visibility;
             Vector3 Li = light->Sample_Li(*isect, sampler.Get2D(), &wi, &pdf, &visibility);
             if (Li.IsBlack() || pdf == 0) continue;
-            Vector3 f = isect->brdf->f(wo, wi);
+            Vector3 f = isect->bsdf->f(wo, wi);
             //if (!f.IsBlack() && visibility.Unoccluded(scene))
             if(!f.IsBlack())
                 L += f * Li * abs(wi.dot(n)) / pdf;
