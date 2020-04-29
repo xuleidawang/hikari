@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
-      <config projectName="PathTracer" targetName="PathTracer" />
+      <config projectName="Hikari" targetName="Hikari" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -12,10 +12,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a2f2b53-14de-4741-acea-65ae759072cb" name="Default Changelist" comment="Refractor code">
-      <change beforePath="$PROJECT_DIR$/src/accelerators/BVH.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/accelerators/BVH.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/accelerators/BVH.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/accelerators/BVH.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/core/Scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/Scene.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/hikari.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/hikari.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/materials/matte.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/materials/matte.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/materials/matte.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/materials/matte.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -70,26 +72,27 @@
     <session id="1788155456">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="17" />
+          <entry key="project.closed" value="18" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.4" value="5" />
-          <entry key="project.open.time.5" value="11" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.open.time.5" value="12" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CMakeLists.txt" value="1" />
+          <entry key="CMakeLists.txt" value="2" />
           <entry key="Markdown" value="1" />
-          <entry key="ObjectiveC" value="205" />
+          <entry key="ObjectiveC" value="206" />
           <entry key="PLAIN_TEXT" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+          <entry key="CMakeLists.txt" value="19" />
           <entry key="Doxygen file" value="1" />
           <entry key="Markdown" value="544" />
-          <entry key="ObjectiveC" value="6660" />
+          <entry key="ObjectiveC" value="6695" />
           <entry key="PLAIN_TEXT" value="9" />
         </counts>
       </usages-collector>
@@ -107,13 +110,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="23" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/hikari.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-              <folding>
-                <element signature="e#39#58#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="90">
+              <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -121,8 +130,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Scene.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="67" column="54" selection-start-line="67" selection-start-column="54" selection-end-line="67" selection-end-column="54" />
+            <state relative-caret-position="1005">
+              <caret line="73" column="54" selection-start-line="73" selection-start-column="54" selection-end-line="73" selection-end-column="54" />
               <folding>
                 <element signature="e#33#52#0" expanded="true" />
                 <element signature="e#1880#2293#0" />
@@ -134,8 +143,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Primitive.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+            <state relative-caret-position="660">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
             </state>
           </provider>
         </entry>
@@ -143,8 +152,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Primitive.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="32" selection-start-line="32" selection-end-line="32" selection-end-column="53" />
+            <state relative-caret-position="435">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
             </state>
           </provider>
         </entry>
@@ -152,7 +161,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Shape.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="165">
               <caret line="11" column="75" selection-start-line="11" selection-start-column="75" selection-end-line="11" selection-end-column="75" />
             </state>
           </provider>
@@ -161,7 +170,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Bounds.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
+            <state relative-caret-position="2970">
               <caret line="198" selection-start-line="198" selection-end-line="198" />
             </state>
           </provider>
@@ -170,8 +179,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/Light.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+            <state relative-caret-position="375">
+              <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -210,7 +219,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Sphere.h" />
         <option value="$PROJECT_DIR$/Triangle.h" />
         <option value="$PROJECT_DIR$/Intersection.h" />
         <option value="$PROJECT_DIR$/BVH.h" />
@@ -220,10 +228,8 @@
         <option value="$PROJECT_DIR$/Integrator.h" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/core/Reflection.cpp" />
-        <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/src/core/Ray.h" />
         <option value="$PROJECT_DIR$/src/Bounds3.h" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/scene/cornell-box.pbrt" />
         <option value="$PROJECT_DIR$/src/shapes/Triangle.h" />
         <option value="$PROJECT_DIR$/src/integrators/whitted.cpp" />
@@ -261,6 +267,9 @@
         <option value="$PROJECT_DIR$/src/core/Scene.h" />
         <option value="$PROJECT_DIR$/src/accelerators/BVH.cpp" />
         <option value="$PROJECT_DIR$/src/main/hikari.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/src/main.cpp" />
+        <option value="$PROJECT_DIR$/src/main/main.cpp" />
       </list>
     </option>
   </component>
@@ -288,34 +297,21 @@
         <subPane>
           <expand>
             <path>
-              <item name="PathTracer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Hikari" type="b2602c69:ProjectViewProjectNode" />
               <item name="hikari" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="PathTracer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Hikari" type="b2602c69:ProjectViewProjectNode" />
               <item name="hikari" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="PathTracer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hikari" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="accelerators" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PathTracer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Hikari" type="b2602c69:ProjectViewProjectNode" />
               <item name="hikari" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="PathTracer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hikari" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="integrators" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PathTracer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Hikari" type="b2602c69:ProjectViewProjectNode" />
               <item name="hikari" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
@@ -355,13 +351,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.PathTracer">
+  <component name="RunManager" selected="Application.Hikari">
     <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PathTracer" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../scene/cornell-box.pbrt" PASS_PARENT_ENVS_2="true" PROJECT_NAME="PathTracer" TARGET_NAME="PathTracer" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="PathTracer" RUN_TARGET_NAME="PathTracer">
+    <configuration name="Hikari" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Hikari" TARGET_NAME="Hikari" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Hikari" RUN_TARGET_NAME="Hikari">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PathTracer" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../scene/cornell-box.pbrt" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Hikari" TARGET_NAME="PathTracer" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Hikari" RUN_TARGET_NAME="PathTracer">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -369,6 +370,7 @@
     <list>
       <item itemvalue="Application.Build All" />
       <item itemvalue="Application.PathTracer" />
+      <item itemvalue="Application.Hikari" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -407,17 +409,18 @@
       <workItem from="1586498597095" duration="1852000" />
       <workItem from="1586752331438" duration="2990000" />
       <workItem from="1586823403686" duration="4477000" />
+      <workItem from="1588132267297" duration="860000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58475000" />
+    <option name="totallyTimeSpent" value="59335000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2875458" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17460318" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -428,8 +431,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="8" visible="true" weight="0.32085562" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.24149287" />
+      <window_info active="true" anchor="bottom" id="Messages" order="8" visible="true" weight="0.32085562" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.24064171" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32930845" />
       <window_info anchor="bottom" id="CMake" order="12" weight="0.32930845" />
@@ -493,13 +496,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/fileutil.cpp" />
     <entry file="file://$PROJECT_DIR$/src/core/fileutil.h" />
     <entry file="file://$PROJECT_DIR$/src/core/paramset.cpp" />
@@ -518,7 +514,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.cpp" />
     <entry file="file://$PROJECT_DIR$/src/core/api.cpp" />
     <entry file="file://$PROJECT_DIR$/src/core/paramset.h" />
     <entry file="file://$PROJECT_DIR$/scene/bunny.obj">
@@ -539,10 +534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
           <caret line="50" selection-start-line="50" selection-end-line="50" />
-          <folding>
-            <element signature="e#1535#1564#0" expanded="true" />
-            <element signature="e#1646#1665#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -704,48 +695,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bounds.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="198" selection-start-line="198" selection-end-line="198" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/hikari.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Shape.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="11" column="75" selection-start-line="11" selection-start-column="75" selection-end-line="11" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Primitive.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="32" selection-start-line="32" selection-end-line="32" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Light.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/Primitive.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/accelerators/BVH.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1869">
@@ -770,8 +719,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/core/Scene.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="67" column="54" selection-start-line="67" selection-start-column="54" selection-end-line="67" selection-end-column="54" />
+        <state relative-caret-position="1005">
+          <caret line="73" column="54" selection-start-line="73" selection-start-column="54" selection-end-line="73" selection-end-column="54" />
           <folding>
             <element signature="e#33#52#0" expanded="true" />
             <element signature="e#1880#2293#0" />
@@ -779,13 +728,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Primitive.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Primitive.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Shape.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="75" selection-start-line="11" selection-start-column="75" selection-end-line="11" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bounds.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2970">
+          <caret line="198" selection-start-line="198" selection-end-line="198" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/Light.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/hikari.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
+        <state relative-caret-position="345">
           <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
           <folding>
             <element signature="e#39#58#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/hikari.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/hikari.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="23" />
         </state>
       </provider>
     </entry>

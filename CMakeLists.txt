@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.12)
 project(Hikari)
 
-set(CMAKE_CXX_STANDARD 14)
+# specify the C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 include_directories(.)
 include_directories(./src)
@@ -14,6 +16,7 @@ set(CMAKE_C_COMPILER /usr/local/bin/gcc-9)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -fopenmp")
 
 add_executable(Hikari
+        src/main/hikari.cpp
         lib/tiny_obj_loader/tiny_obj_loader.cc
         lib/tiny_obj_loader/tiny_obj_loader.h
         src/Bounds.h
@@ -38,7 +41,6 @@ add_executable(Hikari
         src/core/Primitive.h 
         src/core/Light.cpp 
         src/core/Light.h 
-        src/main/hikari.cpp 
         src/core/hikari.h 
         src/core/sampler.cpp 
         src/core/sampler.h 

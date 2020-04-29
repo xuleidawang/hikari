@@ -8,7 +8,6 @@
 #include "Light.h"
 #include "shapes/Triangle.h"
 #include "accelerators/BVH.h"
-#include "materials/matte.h"
 #include <vector>
 
 namespace hikari {
@@ -16,7 +15,7 @@ namespace hikari {
     public:
         Scene(){};
         void add(Shape *object, Material *material);
-        void addMesh(Mesh* mesh);
+        void addMesh(Mesh* mesh, Material *material);
         void addPrimitive(Primitive *primitive);
         bool IntersectP(const Ray &ray) const;
         bool Intersect(const Ray &ray, Intersection* isect)const;
@@ -45,7 +44,6 @@ namespace hikari {
     };
 
     void Scene::add(Shape *object, Material *material) {
-        MatteMaterial *diffuseGreen = new MatteMaterial(Vector3(0.0, 1.0, 0.0));
         auto primitive = new GeometricPrimitive(std::shared_ptr<Shape>(object), std::shared_ptr<Material>(material));
         primitives.push_back( std::shared_ptr<GeometricPrimitive>(primitive));
     }
@@ -53,10 +51,9 @@ namespace hikari {
         primitives.push_back(std::shared_ptr<Primitive> (primitive));
     }
 
-    void Scene::addMesh(Mesh *mesh) {
+    void Scene::addMesh(Mesh *mesh, Material *material){
         for(auto tri: mesh->tris){
             // tri->m = & mesh->m_m;
-            auto  material = new MatteMaterial(Vector3(0.0, 1.0, 0.0));
             auto primitive = new GeometricPrimitive(std::shared_ptr<Triangle>(tri), std::shared_ptr<Material>(material));
             primitives.push_back(std::shared_ptr<GeometricPrimitive>(primitive)); 
         }
