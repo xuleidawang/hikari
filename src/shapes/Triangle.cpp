@@ -2,7 +2,7 @@
 
 namespace hikari{
 
-    bool Triangle::Intersect(const Ray& ray, Intersection* intersection){
+    bool Triangle::Intersect(const Ray& ray, Intersection* intersection)const{
         //Moller-Trumbore algorithm
         // P = (1-u-v)A + uB +vC
         // P = wA + uB + vC
@@ -161,7 +161,7 @@ namespace hikari{
     }
 
 // Check if ray intersects with mesh. Returns ObjectIntersection data structure
-    bool Mesh::intersect(const Ray& ray, Intersection* intersection) {
+    bool Mesh::Intersect(const Ray& ray, Intersection* intersection) const{
         int size = tris.size();
 
         //bool hit = node->hit(node, ray, t, tmin, normal, colour);

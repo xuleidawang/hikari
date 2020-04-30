@@ -37,7 +37,9 @@
 // core/parser.h*
 #include "scene.h"
 #include "Primitive.h"
-#include "Shape.h"
+#include "Shapes/Triangle.h"
+#include "Shapes/Sphere.h"
+#include "Materials/matte.h"
 
 
 namespace hikari {

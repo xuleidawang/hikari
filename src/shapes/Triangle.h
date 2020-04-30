@@ -12,10 +12,9 @@ namespace hikari {
         Vector3 e1, e2; //2 edges v1-v0, v2-v0;
         Vector3 t0,t1,t2;//texture coords
         Vector3 normal;
-        Material *m;
 
         // Triangle Public Methods
-        Triangle(Vector3 _v0, Vector3 _v1, Vector3 _v2, Material *_m = NULL):v0(_v0),v1(_v1),v2(_v2),m(_m){
+        Triangle(Vector3 _v0, Vector3 _v1, Vector3 _v2):v0(_v0),v1(_v1),v2(_v2){
             e1 = v1-v0;
             e2 = v2-v0;
             normal = e1.cross(e2).normalize();
@@ -25,7 +24,7 @@ namespace hikari {
             t0=t0_, t1=t1_, t2=t2_;
             m=m_;
         }
-        bool Intersect(const Ray& ray, Intersection* intersection);
+        bool Intersect(const Ray& ray, Intersection* intersection)const;
         Vector3 getNormal(Vector3 position);
         Vector3 getBarycentric(Vector3 p);
         Bounds getBounds();
@@ -46,7 +45,7 @@ namespace hikari {
         std::vector<Triangle*> tris;
         Mesh(Vector3 p_, const char* file_path);
 
-        bool intersect(const Ray& ray, Intersection* intersection);
+        bool Intersect(const Ray& ray, Intersection* intersection)const;
         Vector3 getNormal(Vector3 position);
         Bounds getBounds()const;
     };

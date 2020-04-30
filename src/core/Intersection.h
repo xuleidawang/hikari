@@ -1,6 +1,4 @@
-#ifndef INTERSECTION_H
-#define INTERSECTION_H
-
+#pragma once
 
 #include "hikari.h"
 #include "Vectors.h"
@@ -47,5 +45,3 @@
          Material* m;
      };
 }
-
-#endif 

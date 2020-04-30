@@ -41,13 +41,14 @@ namespace hikari {
   // Parsing Global Interface
   void loadScene(Scene *scene)
   {
-    scene->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,0,-1000), Vector3(), Vector3(1.0,1.0,1.0),new MatteMaterial(Vector3(1.0, 0.0, 0.0)))));
-    scene->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(-1004,0,0), Vector3(), Vector3(0.85,0.4,0.4),DIFF)));
-    scene->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(1004,0,0),  Vector3(), Vector3(0.4,0.4,0.85),DIFF)));
-    scene->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
-    scene->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
-    scene->add( dynamic_cast<Shape*>(new Sphere(100, Vector3(0,0,110),   Vector3(1,1,1)*.999,Vector3(1.0,1.0,1.0)*.999,DIFF))); //light
-    scene->addMesh( new GeometricPrimitive(new Mesh(Vector3(0,0,2.5), "../scene/dragon2.scene"), new MatteMaterial(Vector3(0.99, 0.84, 0))));
+    scene->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,0,-1000), Vector3(), Vector3(1.0,1.0,1.0))), new MatteMaterial(Vector3(1.0, 0.0, 0.0)));
+    scene->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(-1004,0,0), Vector3(), Vector3(0.85,0.4,0.4))), new MatteMaterial(Vector3(1.0, 0.0, 0.0)));
+    scene->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(1004,0,0),  Vector3(), Vector3(0.4,0.4,0.85))), new MatteMaterial(Vector3(1.0, 0.0, 0.0)));
+    scene->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0))), new MatteMaterial(Vector3(1.0, 0.0, 0.0)));
+    scene->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0))), new MatteMaterial(Vector3(1.0, 0.0, 0.0)));
+    // scene->add( dynamic_cast<Shape*>(new Sphere(100, Vector3(0,0,110),   Vector3(1,1,1)*.999,Vector3(1.0,1.0,1.0)*.999,DIFF))); //light
+    scene->addMesh(new Mesh(Vector3(0,0,2.5), "../scene/dragon2.scene"), new MatteMaterial(Vector3(0.99, 0.84, 0)));
+    
   }
 
     

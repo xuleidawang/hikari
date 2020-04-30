@@ -4,7 +4,7 @@
 #include "Sphere.h"
 
 namespace hikari {
-    bool Sphere::Intersect(const Ray& ray, Intersection *intersection) {
+    bool Sphere::Intersect(const Ray& ray, Intersection *intersection)const {
         double b = 2 * (ray.direction.x * (ray.origin.x - pos.x)+ ray.direction.y * (ray.origin.y - pos.y)+ ray.direction.z * (ray.origin.z - pos.z));
         double c = (ray.origin.x - pos.x) * (ray.origin.x - pos.x) +(ray.origin.y - pos.y) * (ray.origin.y - pos.y) +(ray.origin.z - pos.z) * (ray.origin.z - pos.z) -radius * radius;
         double d = b * b - 4 * c;
