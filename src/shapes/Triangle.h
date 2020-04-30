@@ -22,7 +22,6 @@ namespace hikari {
         Triangle(Vector3 v0_, Vector3 v1_, Vector3 v2_, Vector3 t0_=Vector3(), Vector3 t1_=Vector3(), Vector3 t2_=Vector3(), Material *m_=NULL){
             v0=v0_, v1=v1_, v2=v2_, e1=v1-v0, e2=v2-v0, normal=e1.cross(e2).normalize();
             t0=t0_, t1=t1_, t2=t2_;
-            m=m_;
         }
         bool Intersect(const Ray& ray, Intersection* intersection)const;
         Vector3 getNormal(Vector3 position);

@@ -30,6 +30,7 @@ int main(int argc, char** argv){
 
     cornellBox->buildBVH();
 
+    
     // Renderer renderer1 =Renderer(&cornellBox,&camera1);
     // renderer1.render(spp, spp_recp);
     // renderer1.save_image();

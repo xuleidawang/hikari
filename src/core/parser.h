@@ -40,6 +40,7 @@
 #include "Shapes/Triangle.h"
 #include "Shapes/Sphere.h"
 #include "Materials/matte.h"
+#include "Vectors.h"
 
 
 namespace hikari {

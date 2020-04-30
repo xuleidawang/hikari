@@ -39,7 +39,7 @@
          Vector3 normal;
          Vector3 wo;
          double distance;
-         Shape *shape = nullptr;
+         const Shape *shape = nullptr;
          const Primitive *primitive = nullptr;
          BSDF *bsdf;
          Material* m;

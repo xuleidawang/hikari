@@ -1,9 +1,7 @@
 #include "hikari.h"
 #include "Material.h"
 
-#ifndef MATTE_MATERIAL_H
-#define MATTE_MATERIAL_H
-
+#pragma once
 namespace hikari
 {
     //MatteMaterial Declarations
@@ -19,5 +17,3 @@ namespace hikari
     };
     MatteMaterial *CreateMatteMaterial(const Vector3 kd);
 } // namespace hikari
-
-#endif
