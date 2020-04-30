@@ -2,9 +2,7 @@
 // Created by LEI XU on 3/7/20.
 //
 
-#ifndef PATHTRACER_SAMPLER_H
-#define PATHTRACER_SAMPLER_H
-
+#pragma once
 #include "hikari.h"
 #include "Bounds.h"
 #include "Ray.h"
@@ -62,4 +60,3 @@ namespace hikari {
     };
 
 }
-#endif //PATHTRACER_SAMPLER_H

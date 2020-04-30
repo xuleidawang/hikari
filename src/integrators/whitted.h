@@ -2,9 +2,7 @@
 // Created by LEI XU on 2/29/20.
 //
 
-#ifndef PATHTRACER_WHITTED_H
-#define PATHTRACER_WHITTED_H
-
+#pragma once
 #include "core/hikari.h"
 #include "Integrator.h"
 #include "Scene.h"
@@ -29,4 +27,3 @@ namespace hikari {
 }
 
 
-#endif //PATHTRACER_WHITTED_H

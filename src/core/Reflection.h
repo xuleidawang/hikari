@@ -2,9 +2,7 @@
 // Created by LEI XU on 12/3/18.
 //
 
-#ifndef PATHTRACER_REFLECTION_H
-#define PATHTRACER_REFLECTION_H
-
+#pragma once
 #include "hikari.h"
 #include "Bounds.h"
 #include "Ray.h"
@@ -91,11 +89,3 @@ class BSDF {
 
 }
 
-
-
-
-
-
-
-
-#endif //PATHTRACER_REFLECTION_H

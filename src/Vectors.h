@@ -1,10 +1,7 @@
-#ifndef VECTORS_H_DEF
-#define VECTORS_H_DEF
+#pragma once
 
-#include "hikari.h"
 #include <cmath>
 #include <iostream>
-
 namespace hikari {
 	const double PI = 4* atanf(1);
 	const double EPSILON = 1e-6;
@@ -342,5 +339,3 @@ namespace hikari {
         return os;
     }
 }
-
-#endif

@@ -2,8 +2,7 @@
 // Created by LEI XU on 11/28/18.
 //
 
-#ifndef PATHTRACER_BVH_H
-#define PATHTRACER_BVH_H
+#pragma once
 // accelerators/bvh.h*
 
 #include "hikari.h"
@@ -111,4 +110,3 @@ namespace  hikari{
     void CreateBVHAccelerator(std::vector<std::shared_ptr<Primitive>> prims);
 }
 
-#endif //PATHTRACER_BVH_H

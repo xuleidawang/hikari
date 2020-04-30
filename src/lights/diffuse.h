@@ -2,6 +2,7 @@
 #include "Light.h"
 #include "Primitive.h"
 
+#pragma once
 namespace hikari
 {
     class DiffuseAreaLight : public AreaLight{

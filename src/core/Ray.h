@@ -1,5 +1,4 @@
-#ifndef RAY_H
-#define RAY_H
+#pragma once
 
 #include "hikari.h"
 #include "Vectors.h"
@@ -29,6 +28,5 @@ namespace hikari {
 	};
 }
 
-#endif
 
 

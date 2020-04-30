@@ -1,6 +1,4 @@
-#ifndef SHAPE_H
-#define SHAPE_H
-
+#pragma once
 #include "Bounds.h"
 #include "Intersection.h"
 
@@ -14,5 +12,5 @@ namespace hikari {
     };
 }
 
-#endif
+
 

@@ -1,6 +1,4 @@
-#ifndef BOUNDS_H
-#define BOUNDS_H
-
+#pragma once
 #include "src/Vectors.h"
 #include "src/core/Ray.h"
 #include <limits>
@@ -205,5 +203,4 @@ namespace hikari {
 
 }
 
-#endif //BOUNDS_H
 

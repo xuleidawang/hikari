@@ -1,5 +1,4 @@
-#ifndef RENDERER_H
-#define RENDERER_H
+#pragma once
 #include <iostream>
 
 #include "Vectors.h"
@@ -69,5 +68,3 @@ namespace hikari {
 }
 
 
-
-#endif //RENDERER_H

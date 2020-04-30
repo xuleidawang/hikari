@@ -1,9 +1,7 @@
 //
 // Created by LEI XU on 2/29/20.
 //
-
-#ifndef PATHTRACER_PRIMITIVE_H
-#define PATHTRACER_PRIMITIVE_H
+#pragma once
 
 #include "hikari.h"
 #include "Shape.h"
@@ -57,4 +55,3 @@ namespace  hikari {
 }
 
 
-#endif //PATHTRACER_PRIMITIVE_H

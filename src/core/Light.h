@@ -2,8 +2,7 @@
 // Created by LEI XU on 3/3/20.
 //
 
-#ifndef PATHTRACER_LIGHT_H
-#define PATHTRACER_LIGHT_H
+#pragma once
 
 #include "hikari.h"
 #include "Intersection.h"
@@ -39,5 +38,3 @@ namespace hikari {
     };
 
 }
-
-#endif //PATHTRACER_LIGHT_H

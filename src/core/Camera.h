@@ -1,6 +1,4 @@
-#ifndef CAMERA_H
-#define CAMERA_H
-
+#pragma once
 #include "hikari.h"
 
 namespace hikari {
@@ -69,7 +67,3 @@ namespace hikari {
     int Camera::get_width()const {return width;}
     int Camera::get_height()const {return height;}
 }
-
-
-
-#endif//CAMERA_H

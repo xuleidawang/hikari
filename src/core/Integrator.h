@@ -2,9 +2,7 @@
 // Created by LEI XU on 2/27/20.
 //
 
-#ifndef PATHTRACER_INTEGRATOR_H
-#define PATHTRACER_INTEGRATOR_H
-
+#pragma once
 #include "hikari.h"
 #include "Primitive.h"
 #include "Light.h"
@@ -50,4 +48,3 @@ namespace hikari{
         const Bounds2 pixelBounds;
     };
 }
-#endif //PATHTRACER_INTEGRATOR_H

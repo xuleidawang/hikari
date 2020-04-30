@@ -1,6 +1,5 @@
-#ifndef SCENE_H
-#define SCENE_H
 
+#pragma once
 #include "hikari.h"
 #include "Ray.h"
 #include "Vectors.h"
@@ -84,5 +83,3 @@ namespace hikari {
         return Vector3(u*cos(r1)*r2s + v*sin(r1)*r2s + w*sqrt(1-r2)).normalize();
     }
 }
-
-#endif //SCENE_H

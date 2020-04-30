@@ -32,23 +32,19 @@
 
  */
 
-#if defined(_MSC_VER)
-#define NOMINMAX
 #pragma once
-#endif
-
-#ifndef PBRT_CORE_PARSER_H
-#define PBRT_CORE_PARSER_H
 
 // core/parser.h*
-#include "hikari.h"
-#include <functional>
-#include <memory>
-#include <string>
-#include <vector>
+#include "scene.h"
+#include "Primitive.h"
+#include "Shape.h"
+
 
 namespace hikari {
-
+  /**
+ * \brief Load a scene from the specified filename and
+ * return its root object
+ */
+extern void loadScene(Scene * scene);
 }  // namespace hikari
 
-#endif  // PBRT_CORE_PARSER_H

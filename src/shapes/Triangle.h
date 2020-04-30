@@ -1,5 +1,4 @@
-#ifndef TRIANGLE_H
-#define TRIANGLE_H
+#pragma once
 
 #include <vector>
 #include "Shape.h"
@@ -55,5 +54,3 @@ namespace hikari {
 
 }
 
-
-#endif// TRIANGLE_H

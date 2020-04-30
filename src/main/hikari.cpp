@@ -1,18 +1,13 @@
 //
 // Created by LEI XU on 3/6/20.
 //
-
-#include "hikari.h"
+#include "parser.h"
+#include "Scene.h"
+#include "Camera.h"
 #include "time.h"
 
 using namespace std;
 using namespace hikari;
-
-#define IMAGE_WIDTH 	500
-#define IMAGE_HEIGHT 	500
-#define MAX_DEPTH		5
-typedef unsigned char u08;
-
 
 void render(Scene *scene, Sampler *sampler)
 {
@@ -28,17 +23,12 @@ int main(int argc, char** argv){
     int spp = argc==2?atoi(argv[1]):1;
     double spp_recp = 1/spp;
 
-    Scene cornellBox = Scene();
+    Scene *cornellBox = new Scene();
     // camera pos, target
+    loadScene(cornellBox);
     Camera camera1(Vector3(0,-20,5),Vector3(0,0,1),1280,720);
-    // cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,0,-1000), Vector3(), Vector3(1.0,1.0,1.0),new MatteMaterial(Vector3(1.0, 0.0, 0.0)))));
-    // cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(-1004,0,0), Vector3(), Vector3(0.85,0.4,0.4),DIFF)));
-    // cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(1004,0,0),  Vector3(), Vector3(0.4,0.4,0.85),DIFF)));
-    // cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
-    // cornellBox.add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0),DIFF)));
-    // cornellBox.add( dynamic_cast<Shape*>(new Sphere(100, Vector3(0,0,110),   Vector3(1,1,1)*.999,Vector3(1.0,1.0,1.0)*.999,DIFF))); //light
-    // cornellBox.addMesh( new GeometricPrimitive(new Mesh(Vector3(0,0,2.5), "../scene/dragon2.scene"), new MatteMaterial(Vector3(0.99, 0.84, 0))));
-    cornellBox.buildBVH();
+
+    cornellBox->buildBVH();
 
     // Renderer renderer1 =Renderer(&cornellBox,&camera1);
     // renderer1.render(spp, spp_recp);

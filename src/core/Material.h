@@ -1,7 +1,4 @@
-#ifndef MATERIAL_H
-#define MATERIAL_H
-
-
+#pragma once
 #include "hikari.h"
 #include "Vectors.h"
 
@@ -21,4 +18,3 @@ class Material{
     };
 
 }
-#endif //MATERIAL_H

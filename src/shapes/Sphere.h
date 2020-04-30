@@ -1,6 +1,4 @@
-#ifndef SPHERE_H
-#define SPHERE_H
-
+#pragma once
 #include "Shape.h"
 
 namespace hikari {
@@ -26,5 +24,3 @@ namespace hikari {
 
 	};
 }
-
-#endif
