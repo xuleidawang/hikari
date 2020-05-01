@@ -1,9 +1,12 @@
 //
 // Created by LEI XU on 3/6/20.
 //
-#include "parser.h"
 #include "Scene.h"
 #include "Camera.h"
+#include "Shapes/Triangle.h"
+#include "shapes/Sphere.h"
+#include "Vectors.h"
+#include "materials/matte.h"
 #include "time.h"
 
 using namespace std;
@@ -25,11 +28,21 @@ int main(int argc, char** argv){
 
     Scene *cornellBox = new Scene();
     // camera pos, target
-    loadScene(cornellBox);
     Camera camera1(Vector3(0,-20,5),Vector3(0,0,1),1280,720);
 
-    cornellBox->buildBVH();
 
+    MatteMaterial* red = new MatteMaterial(Vector3(1.0, 0.0,0.0));
+    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,0,-1000), Vector3(), Vector3(1.0,1.0,1.0))), red);
+    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(-1004,0,0), Vector3(), Vector3(0.85,0.4,0.4))), red);
+    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(1004,0,0),  Vector3(), Vector3(0.4,0.4,0.85))), red);
+    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0))), red);
+    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0))), red);
+    // scene->add( dynamic_cast<Shape*>(new Sphere(100, Vector3(0,0,110),   Vector3(1,1,1)*.999,Vector3(1.0,1.0,1.0)*.999,DIFF))); //light
+    // const char* path = "../scene/dragon2.scene";
+    // Mesh dragon(Vector3(0.0,0.0,0.0), "../scene/dragon2.obj");
+
+    // cornellBox->addMesh( &dragon, new MatteMaterial(Vector3(0.99, 0.84, 0)));
+    cornellBox->buildBVH();
     
     // Renderer renderer1 =Renderer(&cornellBox,&camera1);
     // renderer1.render(spp, spp_recp);

@@ -3,7 +3,7 @@
 //
 
 #pragma once
-#include "hikari.h"
+
 #include "Bounds.h"
 #include "Ray.h"
 #include "Shape.h"
@@ -17,9 +17,9 @@ namespace  hikari {
         BSDF_DIFFUSE = 1 << 2,
         BSDF_GLOSSY = 1 << 3,
         BSDF_SPECULAR = 1 << 4,
-        BSDF_ALL = BSDF_DIFFUSE | BSDF_GLOSSY | BSDF_SPECULAR | BSDF_REFLECTION |
-                   BSDF_TRANSMISSION,
-    };
+        BSDF_ALL = BSDF_DIFFUSE | BSDF_GLOSSY | BSDF_SPECULAR | BSDF_REFLECTION |BSDF_TRANSMISSION
+        };
+        
 class BSDF {
     public:
     // BSDF Public Methods
@@ -59,8 +59,7 @@ class BSDF {
     // friend class MixMaterial;
 };
 
-
-    class BxDF {
+class BxDF {
     public:
         virtual ~BxDF(){}
         BxDF(BxDFType type) : type(type) {}
@@ -74,18 +73,28 @@ class BSDF {
 
         // BxDF Public Data
         const BxDFType type;
-    };
+};
 
 
-    class BRDF: public BxDF{
+class BRDF: public BxDF{
 
-    };
+};
 
 
-    class BTDF: public  BxDF{
+class BTDF: public  BxDF{
 
-    };
+};
 
+class LambertianReflection : public BxDF{
+    public:
+        LambertianReflection(const Vector3 R): BxDF(BxDFType(BSDF_REFLECTION | BSDF_DIFFUSE)), R(R) {}
+        Vector3 f (const Vector3 &wo, const Vector3 &wi) const;
+        Vector3 rho(const Vector3 &, int, const Vector2 *)const {return R;}
+        Vector3 rho(int, const Vector2 *, const Vector2 *) const {return R;}   
+        std::string ToString() const;
+    private:
+        Vector3 R;
+};
 
 }
 

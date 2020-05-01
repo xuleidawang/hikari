@@ -137,4 +137,16 @@ inline int BSDF::NumComponents(BxDFType flags) const {
     return num;
 }
 
+Vector3 LambertianReflection::f(const Vector3 &wo, const Vector3 &wi) const{
+    return R /M_PI;
+}
+
+std::string LambertianReflection::ToString() const {
+    return std::string("LambertianReflection R");
+}
+
+
+
+
+
 }

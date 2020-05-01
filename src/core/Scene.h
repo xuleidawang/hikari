@@ -1,6 +1,6 @@
 
 #pragma once
-#include "hikari.h"
+
 #include "Ray.h"
 #include "Vectors.h"
 #include "Primitive.h"

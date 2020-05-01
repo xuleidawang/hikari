@@ -4,7 +4,6 @@
 
 #pragma once
 
-#include "hikari.h"
 #include "Intersection.h"
 
 namespace hikari {

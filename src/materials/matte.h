@@ -1,19 +1,18 @@
-#include "hikari.h"
-#include "Material.h"
 
 #pragma once
+
+#include "Material.h"
+
 namespace hikari
 {
     //MatteMaterial Declarations
     class MatteMaterial : public Material{
-        public:
-
+    public:
         MatteMaterial(Vector3 kd);
-        void ComputeScatteringFunctions(Intersection *si, bool allowMultiplelobes)const;
-
-        private:
+        ~MatteMaterial(){};
+        void ComputeScatteringFunctions(Intersection *intersection, bool allowMultipleLobes) const;
+        
+    private:
         Vector3 kd;
-
     };
-    MatteMaterial *CreateMatteMaterial(const Vector3 kd);
 } // namespace hikari

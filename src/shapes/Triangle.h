@@ -6,6 +6,7 @@
 
 namespace hikari {
 
+    class mesh;
     class Triangle: public Shape {
     public:
         Vector3 v0, v1, v2; //vertices A, B ,C , counter-clockwise order
@@ -26,7 +27,7 @@ namespace hikari {
         bool Intersect(const Ray& ray, Intersection* intersection)const;
         Vector3 getNormal(Vector3 position);
         Vector3 getBarycentric(Vector3 p);
-        Bounds getBounds();
+        Bounds getBounds()const;
         Vector3 getMidpoint();
     };
 
@@ -35,7 +36,7 @@ namespace hikari {
     public:
         std::vector<tinyobj::shape_t> m_shapes;
         std::vector<tinyobj::material_t> m_materials;
-        std::vector<Material> materials;
+        // std::vector<Material> materials;
 
         //Material m_m;	// Material
         //BVH bvh;

@@ -1,7 +1,6 @@
-#include "hikari.h"
-#include "Light.h"
-#include "Primitive.h"
 
+#include "Light.h"
+#include "Intersection.h"
 #pragma once
 namespace hikari
 {

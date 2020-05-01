@@ -1,5 +1,4 @@
 #pragma once
-#include "hikari.h"
 
 namespace hikari {
     class Camera{

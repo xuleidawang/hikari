@@ -52,13 +52,11 @@ namespace hikari{
     Vector3 Triangle::getMidpoint(){
         return (v0+v1+v2)/3;
     }
-
-    Bounds Triangle::getBounds(){
-        Bounds bound (v0, v1);
-        return Union(bound, v2);
+    
+    Bounds Triangle::getBounds() const{
+        return Union(Bounds(v0, v1), v2);
     }
 
-    //Disabled
     Mesh::Mesh(Vector3 p_, const char* file_path) {
 
     //    m_p=p_, m_m=m_;
@@ -81,19 +79,19 @@ namespace hikari{
 
        // Load materials/textures from scene
        // TODO: Only texture is loaded at the moment, need to implement material types and colours
-       for (int i=0; i<materials_size; i++) {
-           std::string texture_path = "";
+    //    for (int i=0; i<materials_size; i++) {
+    //        std::string texture_path = "";
 
-           if (!m_materials[i].diffuse_texname.empty()){
-               if (m_materials[i].diffuse_texname[0] == '/') texture_path = m_materials[i].diffuse_texname;
-               texture_path = mtlbasepath + m_materials[i].diffuse_texname;
-            //    materials.push_back(Material(DIFF, Vector3(1,1,1), Vector3()));
-           }
-           else {
-            //    materials.push_back(Material(DIFF, Vector3(1,1,1), Vector3()) );
-           }
+    //        if (!m_materials[i].diffuse_texname.empty()){
+    //            if (m_materials[i].diffuse_texname[0] == '/') texture_path = m_materials[i].diffuse_texname;
+    //            texture_path = mtlbasepath + m_materials[i].diffuse_texname;
+    //         //    materials.push_back(Material(DIFF, Vector3(1,1,1), Vector3()));
+    //        }
+    //        else {
+    //         //    materials.push_back(Material(DIFF, Vector3(1,1,1), Vector3()) );
+    //        }
 
-       }
+    //    }
        // Load triangles from scene
        for (int i = 0; i < shapes_size; i++) {
            indices_size = m_shapes[i].mesh.indices.size() / 3;
@@ -147,15 +145,15 @@ namespace hikari{
                }
                if (m_shapes[i].mesh.material_ids[ f ] < materials.size())
                    //tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_, &materials[ m_shapes[i].mesh.material_ids[ f ] ]));
-                   tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_, &m_m));
+                   tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_));
                else
-                   tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_, &m_m));
+                   tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_));
            }
        }
 
        // Clean up
        m_shapes.clear();
-       m_materials.clear();
+    //    m_materials.clear();
        printf("\n");
 
     }
@@ -186,9 +184,4 @@ namespace hikari{
 
         return box;
     }
-
-    Bounds Triangle::getBounds() {
-        return Union(Bounds(v0, v1), v2);
-    }
-
 }

@@ -1,9 +1,7 @@
 #pragma once
 
-#include "hikari.h"
 #include "Vectors.h"
 #include "Ray.h"
-#include "Material.h"
 #include "Primitive.h"
 
 
@@ -17,7 +15,6 @@
              coords=Vector3();
              normal=Vector3();
              distance= std::numeric_limits<double>::max();
-             m=nullptr;
          }
 
          Ray SpawnRay(const Vector3 &d) const {
@@ -42,6 +39,5 @@
          const Shape *shape = nullptr;
          const Primitive *primitive = nullptr;
          BSDF *bsdf;
-         Material* m;
      };
 }

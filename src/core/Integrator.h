@@ -3,7 +3,7 @@
 //
 
 #pragma once
-#include "hikari.h"
+
 #include "Primitive.h"
 #include "Light.h"
 #include "Reflection.h"

@@ -30,24 +30,24 @@ Vector3 DiffuseAreaLight::Sample_Li(const Intersection &ref, const Vector2 &u,
     return L(pShape, -*wi);
 }
 
-Float DiffuseAreaLight::Pdf_Li(const Interaction &ref,
+float DiffuseAreaLight::Pdf_Li(const Interaction &ref,
                                const Vector3f &wi) const {
-    ProfilePhase _(Prof::LightPdf);
+    // ProfilePhase _(Prof::LightPdf);
     return shape->Pdf(ref, wi);
 }
 
-Spectrum DiffuseAreaLight::Sample_Le(const Vector2 &u1, const Vector2 &u2,
+Vector3 DiffuseAreaLight::Sample_Le(const Vector2 &u1, const Vector2 &u2,
                                      float time, Ray *ray, Vector3 *nLight,
                                      float *pdfPos, float *pdfDir) const {
     // Sample a point on the area light's _Shape_, _pShape_
-    Interaction pShape = shape->Sample(u1, pdfPos);
-    pShape.mediumInterface = mediumInterface;
+    Intersection pShape = shape->Sample(u1, pdfPos);
+    // pShape.mediumInterface = mediumInterface;
     *nLight = pShape.n;
 
     // Sample a cosine-weighted outgoing direction _w_ for area light
-    Vector3f w;
+    Vector3 w;
     if (twoSided) {
-        Point2f u = u2;
+        Vector2 u = u2;
         // Choose a side to sample and then remap u[0] to [0,1] before
         // applying cosine-weighted hemisphere sampling for the chosen side.
         if (u[0] < .5) {
@@ -64,7 +64,7 @@ Spectrum DiffuseAreaLight::Sample_Le(const Vector2 &u1, const Vector2 &u2,
         *pdfDir = CosineHemispherePdf(w.z);
     }
 
-    Vector3f v1, v2, n(pShape.n);
+    Vector3 v1, v2, n(pShape.n);
     CoordinateSystem(n, &v1, &v2);
     w = w.x * v1 + w.y * v2 + w.z * n;
     *ray = pShape.SpawnRay(w);
@@ -73,8 +73,8 @@ Spectrum DiffuseAreaLight::Sample_Le(const Vector2 &u1, const Vector2 &u2,
 
 void DiffuseAreaLight::Pdf_Le(const Ray &ray, const Normal3f &n, Float *pdfPos,
                               Float *pdfDir) const {
-    ProfilePhase _(Prof::LightPdf);
-    Interaction it(ray.o, n, Vector3f(), Vector3f(n), ray.time,
+    // ProfilePhase _(Prof::LightPdf);
+    Intersection it(ray.o, n, Vector3f(), Vector3f(n), ray.time,
                    mediumInterface);
     *pdfPos = shape->Pdf(it);
     *pdfDir = twoSided ? (.5 * CosineHemispherePdf(AbsDot(n, ray.d)))

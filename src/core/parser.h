@@ -35,19 +35,8 @@
 #pragma once
 
 // core/parser.h*
-#include "scene.h"
-#include "Primitive.h"
-#include "Shapes/Triangle.h"
-#include "Shapes/Sphere.h"
-#include "Materials/matte.h"
-#include "Vectors.h"
-
 
 namespace hikari {
-  /**
- * \brief Load a scene from the specified filename and
- * return its root object
- */
-extern void loadScene(Scene * scene);
+ 
 }  // namespace hikari
 

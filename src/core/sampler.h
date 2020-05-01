@@ -3,8 +3,11 @@
 //
 
 #pragma once
-#include "hikari.h"
+
+#include <vector>
+#include <memory>
 #include "Bounds.h"
+#include "Vectors.h"
 #include "Ray.h"
 
 namespace hikari {

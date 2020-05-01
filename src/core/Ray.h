@@ -1,6 +1,5 @@
 #pragma once
 
-#include "hikari.h"
 #include "Vectors.h"
 #include <limits>
 
