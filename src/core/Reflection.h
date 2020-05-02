@@ -7,10 +7,23 @@
 #include "Bounds.h"
 #include "Ray.h"
 #include "Shape.h"
+#include "sampling.h"
 
 namespace  hikari {
-    // BSDF Declarations
+    //BSDF Inline functions
+    inline float CosTheta(const Vector3 &w){ return w.z;}
+    inline float Cos2Theta(const Vector3 &w){return w.z*w.z;}
+    inline float AbsCosTheta(const Vector3 &w){return std::abs(w.z);}
+    inline float Sin2Theta(const Vector3 &w){ return std::max(0.f, 1.f - Cos2Theta(w));}
+    inline float SinTheta(const Vector3 &w){return std::sqrt(Sin2Theta(w));}
+    inline float TanTheta(const Vector3 &w){return SinTheta(w)/ CosTheta(w);}
+    inline float Tan2Theta(const Vector3 &w){return Sin2Theta(w)/ Cos2Theta(w);}
     
+    inline bool SameHemisphere(const Vector3 &w, const Vector3 &wp){
+        return w.z * wp.z >0;
+    }
+    
+    // BSDF Declarations
     enum BxDFType {
         BSDF_REFLECTION = 1 << 0,
         BSDF_TRANSMISSION = 1 << 1,
@@ -68,21 +81,11 @@ class BxDF {
         virtual Vector3 Sample_f(const Vector3 &wo, Vector3 *wi, const Vector2 &sample, float *pdf, BxDFType *sampledType = nullptr) const;
         virtual Vector3 rho(const Vector3 &wo, int nSamples, const Vector2 *samples) const;
         virtual Vector3 rho(int nSamples, const Vector2 *samples1, const Vector2 *samples2) const;
-        virtual double Pdf(const Vector3 &wo, const Vector3 &wi) const;
+        virtual float Pdf(const Vector3 &wo, const Vector3 &wi) const;
         virtual std::string ToString() const = 0;
 
         // BxDF Public Data
         const BxDFType type;
-};
-
-
-class BRDF: public BxDF{
-
-};
-
-
-class BTDF: public  BxDF{
-
 };
 
 class LambertianReflection : public BxDF{
