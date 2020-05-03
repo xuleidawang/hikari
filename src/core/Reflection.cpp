@@ -137,6 +137,46 @@ inline int BSDF::NumComponents(BxDFType flags) const {
     return num;
 }
 
+Vector3 BxDF::Sample_f(const Vector3 &wo, Vector3 *wi, const Vector2 &u, float *pdf, BxDFType *sampledType) const 
+{
+    *wi = CosineSampleHemisphere (u);
+    if(wo.z < 0)
+        wi->z *= -1;
+    *pdf = Pdf(wo, *wi);
+    return f(wo, *wi);
+}
+
+float BxDF::Pdf(const Vector3 &wo, const Vector3 &wi) const {
+    return SameHemisphere(wi, wo)? AbsCosTheta(wi)/PI :0;
+}
+
+Vector3 BxDF::rho(const Vector3 &w, int nSamples, const Vector2 *u) const{
+    Vector3 r(0.0);
+    for (int i = 0; i < nSamples; i++)
+    {
+        Vector3 wi;
+        float pdf = 0;
+        Vector3 f = Sample_f(w, &wi, u[i], &pdf);
+        if(pdf > 0) 
+        r += f*AbsCosTheta(wi) / pdf;
+    }
+    return r / nSamples;
+}
+
+Vector3 BxDF::rho(int nSamples, const Vector2 *u1, const Vector2 *u2) const{
+    Vector3 r(0.f);
+    for (int i = 0; i < nSamples; ++i) {
+        // Estimate one term of $\rho_\roman{hh}$
+        Vector3 wo, wi;
+        wo = UniformSampleHemisphere(u1[i]);
+        float pdfo = UniformHemispherePdf(), pdfi = 0;
+        Vector3 f = Sample_f(wo, &wi, u2[i], &pdfi);
+        if (pdfi > 0)
+            r += f * AbsCosTheta(wi) * AbsCosTheta(wo) / (pdfo * pdfi);
+    }
+    return r / (PI * nSamples);
+}
+
 Vector3 LambertianReflection::f(const Vector3 &wo, const Vector3 &wi) const{
     return R /M_PI;
 }

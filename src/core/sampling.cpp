@@ -22,4 +22,22 @@ namespace hikari {
         }
         return r * Vector2(std::cos(theta), std::sin(theta));
     }
+
+    Vector3 UniformSampleHemisphere(const Vector2 &u) {
+        float z = u[0];
+        float r = std::sqrt(std::max((float)0, (float)1. - z * z));
+        float phi = 2 * PI * u[1];
+        return Vector3(r * std::cos(phi), r * std::sin(phi), z);
+    }
+
+    float UniformHemispherePdf() { return 1/(2*PI); }
+
+    Vector3 UniformSampleSphere(const Vector2 &u) {
+        float z = 1 - 2 * u[0];
+        float r = std::sqrt(std::max((float)0, (float)1 - z * z));
+        float phi = 2 * PI * u[1];
+        return Vector3(r * std::cos(phi), r * std::sin(phi), z);
+}
+
+
 }
