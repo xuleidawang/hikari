@@ -46,7 +46,11 @@ add_executable(Hikari
         src/core/sampler.h 
         src/core/parser.cpp 
         src/core/parser.h 
+        src/core/sampling.h
+        src/core/sampling.cpp
         src/core/Intersection.cpp 
         src/core/Integrator.cpp 
         src/core/Material.cpp
+        src/materials/matte.h
+        src/materials/matte.cpp
         README.md)
