@@ -26,21 +26,26 @@ add_executable(Hikari
         src/core/Shape.h
         src/core/Ray.h
         src/core/Scene.h
+        src/core/Primitive.h
+        src/core/Light.h
+        src/core/Reflection.h
+        src/core/Integrator.h
+
         src/shapes/Sphere.h
         src/shapes/Triangle.h
+
+        
         src/Vectors.h
+        src/core/Camera.cpp
         src/shapes/Sphere.cpp
+
         src/accelerators/BVH.h
         src/accelerators/BVH.cpp
-        src/core/Reflection.h
+
         src/core/Reflection.cpp
-        src/core/Integrator.h
-        src/integrators/whitted.h 
-        src/integrators/whitted.cpp 
+        src/core/Scene.cpp
         src/core/Primitive.cpp 
-        src/core/Primitive.h 
         src/core/Light.cpp 
-        src/core/Light.h 
         src/core/hikari.h 
         src/core/sampler.cpp 
         src/core/sampler.h 
@@ -51,6 +56,11 @@ add_executable(Hikari
         src/core/Intersection.cpp 
         src/core/Integrator.cpp 
         src/core/Material.cpp
+
+        src/integrators/whitted.h 
+        src/integrators/whitted.cpp 
+
         src/materials/matte.h
         src/materials/matte.cpp
+        
         README.md)
