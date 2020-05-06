@@ -3,9 +3,9 @@
 //
 
 #pragma once
-#include "core/hikari.h"
+
 #include "Integrator.h"
-#include "Scene.h"
+
 namespace hikari {
     // WhittedIntegrator Declarations
     class WhittedIntegrator : public SamplerIntegrator {

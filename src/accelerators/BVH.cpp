@@ -6,6 +6,52 @@
 #include <algorithm>
 
 namespace hikari {
+
+    struct BVHBuildNode {
+        //BVHBiildNode data
+        Bounds bounds;
+        BVHBuildNode *children[2];
+        int splitAxis=0, firstPrimOffset=0, nPrimitives=0;
+        // BVHBuildNode Public Methods
+        BVHBuildNode(){
+            bounds = Bounds();
+            *children = nullptr ;
+        }
+        void InitLeaf(BVHBuildNode* node, int first, int n, const Bounds &b) {
+            node->firstPrimOffset = first;
+            node->nPrimitives = n;
+            node->bounds = b;
+            node->children[0] = node->children[1] = nullptr;
+            // leafNodes++;
+
+            // totalLeafNodes++;
+            // totalPrimitives += n;
+        }
+        void InitInterior(BVHAccel* ptr, int axis, BVHBuildNode *c0, BVHBuildNode *c1) {
+            children[0] = c0;
+            children[1] = c1;
+            bounds = Union(c0->bounds, c1->bounds);
+            splitAxis = axis;
+            nPrimitives = 0;
+            // interiorNodes++;
+        }
+    };
+        struct BVHPrimitiveInfo {
+        BVHPrimitiveInfo() {}
+        BVHPrimitiveInfo(size_t primitiveNumber, const Bounds &bounds)
+                : primitiveNumber(primitiveNumber),
+                  bounds(bounds),
+                  centroid(.5f * bounds.pMin + .5f * bounds.pMax) {}
+        size_t primitiveNumber;
+        Bounds bounds;
+        Vector3 centroid;
+    };
+    
+    struct BucketInfo {
+        int count = 0;
+        Bounds bounds;
+    };
+
     // BVHAccel Method Definitions 
     BVHAccel::BVHAccel(std::vector<std::shared_ptr<Primitive> > p, int maxPrimsInNode, SplitMethod splitMethod)
             : maxPrimsInNode(std::min(255, maxPrimsInNode)),
