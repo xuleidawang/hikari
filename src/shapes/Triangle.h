@@ -6,7 +6,6 @@
 
 namespace hikari {
 
-    class mesh;
     class Triangle: public Shape {
     public:
         Vector3 v0, v1, v2; //vertices A, B ,C , counter-clockwise order
@@ -41,10 +40,9 @@ namespace hikari {
         //Material m_m;	// Material
         //BVH bvh;
 
-
         std::vector<Triangle*> tris;
-        Mesh(Vector3 p_, const char* file_path);
-
+        Mesh(Vector3 p, const char* file_path);
+        ~Mesh(){};
         bool Intersect(const Ray& ray, Intersection* intersection)const;
         Vector3 getNormal(Vector3 position);
         Bounds getBounds()const;

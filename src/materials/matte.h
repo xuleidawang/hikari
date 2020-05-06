@@ -8,7 +8,7 @@ namespace hikari
     //MatteMaterial Declarations
     class MatteMaterial : public Material{
     public:
-        MatteMaterial(Vector3 kd);
+        MatteMaterial(Vector3 kd){this->kd = kd;}
         ~MatteMaterial(){};
         void ComputeScatteringFunctions(Intersection *intersection, bool allowMultipleLobes) const;
         

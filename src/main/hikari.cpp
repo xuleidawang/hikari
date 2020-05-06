@@ -1,16 +1,19 @@
 //
 // Created by LEI XU on 3/6/20.
 //
-#include "Scene.h"
+
 #include "Camera.h"
-#include "Shapes/Triangle.h"
-#include "shapes/Sphere.h"
-#include "Vectors.h"
-#include "materials/matte.h"
+#include "Scene.h"
+#include "sampling.h"
+#include "Integrator.h"
 #include "time.h"
+#include "shapes/Sphere.h"
+#include "shapes/Triangle.h"
+#include "materials/matte.h"
 
 using namespace std;
 using namespace hikari;
+
 
 void render(Scene *scene, Sampler *sampler)
 {
@@ -31,17 +34,17 @@ int main(int argc, char** argv){
     Camera camera1(Vector3(0,-20,5),Vector3(0,0,1),1280,720);
 
 
-    MatteMaterial* red = new MatteMaterial(Vector3(1.0, 0.0,0.0));
+    MatteMaterial* red = new MatteMaterial( Vector3(1.0, 0.0,0.0) );
     cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,0,-1000), Vector3(), Vector3(1.0,1.0,1.0))), red);
     cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(-1004,0,0), Vector3(), Vector3(0.85,0.4,0.4))), red);
     cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(1004,0,0),  Vector3(), Vector3(0.4,0.4,0.85))), red);
     cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0))), red);
     cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0))), red);
-    // scene->add( dynamic_cast<Shape*>(new Sphere(100, Vector3(0,0,110),   Vector3(1,1,1)*.999,Vector3(1.0,1.0,1.0)*.999,DIFF))); //light
-    // const char* path = "../scene/dragon2.scene";
-    // Mesh dragon(Vector3(0.0,0.0,0.0), "../scene/dragon2.obj");
+    // CornellBox->add( dynamic_cast<Shape*>(new Sphere(100, Vector3(0,0,110),   Vector3(1,1,1)*.999,Vector3(1.0,1.0,1.0)*.999,DIFF))); //light
+    const char* path = "../scene/dragon2.scene";
+    Mesh dragon(Vector3(0.0,0.0,0.0), "../scene/dragon2.obj");
 
-    // cornellBox->addMesh( &dragon, new MatteMaterial(Vector3(0.99, 0.84, 0)));
+    cornellBox->addMesh( &dragon, new MatteMaterial(Vector3(0.99, 0.84, 0)));
     cornellBox->buildBVH();
     
     // Renderer renderer1 =Renderer(&cornellBox,&camera1);

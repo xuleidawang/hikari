@@ -4,7 +4,8 @@ namespace hikari
 {
     void MatteMaterial::ComputeScatteringFunctions(Intersection* si, bool allowMultipleLobes) const {
         Vector3 r = kd;
-        si->bsdf->Add(&LambertianReflection(r));
+        LambertianReflection lambertianReflection(r);
+        si->bsdf->Add(&lambertianReflection);
+
     }
-    
 } // namespace hikari

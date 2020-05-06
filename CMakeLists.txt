@@ -19,6 +19,7 @@ add_executable(Hikari
         src/main/hikari.cpp
         lib/tiny_obj_loader/tiny_obj_loader.cc
         lib/tiny_obj_loader/tiny_obj_loader.h
+        
         src/Bounds.h
         src/core/Camera.h
         src/core/Intersection.h
@@ -31,18 +32,18 @@ add_executable(Hikari
         src/core/Reflection.h
         src/core/Integrator.h
 
-        src/shapes/Sphere.h
-        src/shapes/Triangle.h
-
-        
         src/Vectors.h
-        src/core/Camera.cpp
+
+        src/shapes/Sphere.h
         src/shapes/Sphere.cpp
+        src/shapes/Triangle.h
+        src/shapes/Triangle.cpp
 
         src/accelerators/BVH.h
         src/accelerators/BVH.cpp
 
         src/core/Reflection.cpp
+        src/core/Camera.cpp
         src/core/Scene.cpp
         src/core/Primitive.cpp 
         src/core/Light.cpp 

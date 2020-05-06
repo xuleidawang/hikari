@@ -23,7 +23,6 @@ namespace hikari{
         t_tmp = e2.dot(qvec)* det_inv;
 
         intersection->shape=this;
-        intersection->m = this->m;
         intersection->happened=true;
         intersection->normal = this->normal;
         intersection->coords = t_tmp*ray.direction+ray.origin;
@@ -58,7 +57,6 @@ namespace hikari{
     }
 
     Mesh::Mesh(Vector3 p_, const char* file_path) {
-
     //    m_p=p_, m_m=m_;
        std::string mtlbasepath;
        std::string inputfile = file_path;
@@ -143,11 +141,12 @@ namespace hikari{
                    t1_=Vector3();
                    t2_=Vector3();
                }
-               if (m_shapes[i].mesh.material_ids[ f ] < materials.size())
-                   //tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_, &materials[ m_shapes[i].mesh.material_ids[ f ] ]));
-                   tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_));
-               else
-                   tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_));
+            //    if (m_shapes[i].mesh.material_ids[ f ] < materials.size())
+            //        //tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_, &materials[ m_shapes[i].mesh.material_ids[ f ] ]));
+            //        tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_));
+            //    else
+            //        tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_));
+                tris.push_back(new Triangle(v0_, v1_, v2_, t0_, t1_, t2_));
            }
        }
 
@@ -181,7 +180,6 @@ namespace hikari{
     Bounds Mesh::getBounds() const{
         std::cout<<"This is a Mesh Bound, try something else"<<std::endl;
         Bounds box;
-
         return box;
     }
 }
