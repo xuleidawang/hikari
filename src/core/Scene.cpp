@@ -1,6 +1,15 @@
 #include "Scene.h"
 
 namespace hikari {
+    void Scene::addIntegrator(Integrator *integrator)
+    {
+        this->integrator = integrator;
+    }
+
+    void Scene::addCamera(Camera *camera)
+    {
+        this->camera = camera;
+    }
     void Scene::add(Shape *object, Material *material) {
         auto primitive = new GeometricPrimitive(std::shared_ptr<Shape>(object), std::shared_ptr<Material>(material));
         primitives.push_back( std::shared_ptr<GeometricPrimitive>(primitive));

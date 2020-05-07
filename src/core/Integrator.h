@@ -14,6 +14,7 @@ namespace hikari{
     class Integrator {
     public:
         virtual  ~Integrator();
+        virtual Vector3 Li(const Ray &ray, const Scene &scene, Sampler &sampler, int depth = 0) const = 0;
         virtual void Render(const Scene& scene) = 0;
     };
 

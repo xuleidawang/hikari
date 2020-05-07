@@ -6,6 +6,7 @@
 #include "Scene.h"
 #include "sampling.h"
 #include "Integrator.h"
+#include "Renderer.h"
 #include "time.h"
 #include "shapes/Sphere.h"
 #include "shapes/Triangle.h"
@@ -18,7 +19,8 @@ using namespace hikari;
 void render(Scene *scene, Sampler *sampler)
 {
     const Camera *camera = scene->getCamera();
-    Integrator *integrator = scene->getIntegrator();
+    const Integrator *integrator = scene->getIntegrator();
+
 }
 
 
@@ -44,12 +46,13 @@ int main(int argc, char** argv){
     const char* path = "../scene/dragon2.scene";
     Mesh dragon(Vector3(0.0,0.0,0.0), "../scene/dragon2.obj");
 
-    cornellBox->addMesh( &dragon, new MatteMaterial(Vector3(0.99, 0.84, 0)));
+    cornellBox->addMesh(&dragon, new MatteMaterial(Vector3(0.99, 0.84, 0)));
     cornellBox->buildBVH();
     
-    // Renderer renderer1 =Renderer(&cornellBox,&camera1);
-    // renderer1.render(spp, spp_recp);
-    // renderer1.save_image();
+    cornellBox->addCamera(&camera1);
+    Renderer renderer1 = Renderer(cornellBox);
+    renderer1.render(spp, spp_recp);
+    renderer1.save_image();
 
     time(&stop);
     double diff = difftime(stop, start);
