@@ -27,10 +27,10 @@ namespace hikari {
         Integrator *getIntegrator() const { return integrator; }
 
         /// Return a pointer to the scene's camera
-        const Camera *getCamera() const { return camera; }
+        Camera *getCamera() const { return camera; }
 
         /// Return a pointer to the scene's sample generator (const version)
-        const Sampler *getSampler() const { return sampler; }
+        Sampler *getSampler() const { return sampler; }
 
 
     private:

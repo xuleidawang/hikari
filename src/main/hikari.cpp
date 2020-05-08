@@ -45,11 +45,11 @@ int main(int argc, char** argv){
     // CornellBox->add( dynamic_cast<Shape*>(new Sphere(100, Vector3(0,0,110),   Vector3(1,1,1)*.999,Vector3(1.0,1.0,1.0)*.999,DIFF))); //light
     const char* path = "../scene/dragon2.scene";
     Mesh dragon(Vector3(0.0,0.0,0.0), "../scene/dragon2.obj");
-
     cornellBox->addMesh(&dragon, new MatteMaterial(Vector3(0.99, 0.84, 0)));
     cornellBox->buildBVH();
     
     cornellBox->addCamera(&camera1);
+    cornellBox->addIntegrator(new WhittedIntegrator());
     Renderer renderer1 = Renderer(cornellBox);
     renderer1.render(spp, spp_recp);
     renderer1.save_image();

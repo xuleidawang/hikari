@@ -34,9 +34,9 @@ namespace hikari {
     void Renderer::render(int samples,double spp_recp) {
         int width = camera->get_width();
         int height = camera->get_height();
-        Sampler sampler = scene->getSampler();
-
+        Sampler *sampler = scene->getSampler();
         Integrator *integrator = scene->getIntegrator();
+        
         // Main Loop
         #pragma omp parallel for schedule(dynamic, 1)       // OpenMP
         for (int y=0; y<height; y++)
@@ -50,7 +50,7 @@ namespace hikari {
                     Ray ray = camera->generate_ray(x, y, a>0);
                     // color = color + m_scene->castRay(ray,0);
                     //Li(const Ray &ray, const Scene &scene, Sampler &sampler, int depth = 0)
-                    color = color + integrator->Li(ray, *scene, sampler, 0);
+                    color = color + integrator->Li(ray, *scene, *sampler, 0);
                 }
                 
                 int i = y*width+x;
