@@ -11,6 +11,7 @@
 #include "shapes/Sphere.h"
 #include "shapes/Triangle.h"
 #include "materials/matte.h"
+#include "integrators/whitted.h"
 
 using namespace std;
 using namespace hikari;
@@ -49,7 +50,8 @@ int main(int argc, char** argv){
     cornellBox->buildBVH();
     
     cornellBox->addCamera(&camera1);
-    cornellBox->addIntegrator(new WhittedIntegrator());
+    
+    cornellBox->addIntegrator(new WhittedIntegrator(4, 2));
     Renderer renderer1 = Renderer(cornellBox);
     renderer1.render(spp, spp_recp);
     renderer1.save_image();
