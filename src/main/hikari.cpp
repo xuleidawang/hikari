@@ -12,6 +12,7 @@
 #include "shapes/Triangle.h"
 #include "materials/matte.h"
 #include "integrators/whitted.h"
+#include "sampler.h"
 
 using namespace std;
 using namespace hikari;
@@ -50,8 +51,12 @@ int main(int argc, char** argv){
     cornellBox->buildBVH();
     
     cornellBox->addCamera(&camera1);
+
+    //                 spp, sampler dimension
+    PixelSampler *sampler = new PixelSampler(4, 2);
+    WhittedIntegrator *whitted = new WhittedIntegrator(4, make_shared<Camera>(camera1), make_shared<Sampler>(sampler));
     
-    cornellBox->addIntegrator(new WhittedIntegrator(4, 2));
+    cornellBox->addIntegrator(whitted);
     Renderer renderer1 = Renderer(cornellBox);
     renderer1.render(spp, spp_recp);
     renderer1.save_image();

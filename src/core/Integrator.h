@@ -28,7 +28,7 @@ namespace hikari{
                           std::shared_ptr<Sampler> sampler)
                 : camera(camera), sampler(sampler){}
         virtual void Preprocess(const Scene &scene, Sampler &sampler) {}
-        void Render(const Scene &scene)const;
+        void Render(const Scene &scene);
         virtual Vector3 Li(const Ray &ray, const Scene &scene,
                            Sampler &sampler, int depth = 0) const = 0;
     Vector3 SpecularReflect(const Ray &ray,

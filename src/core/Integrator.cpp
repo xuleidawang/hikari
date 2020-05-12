@@ -52,7 +52,7 @@ namespace hikari {
     }
 
     // SamplerIntegrator Method Definitions
-    void SamplerIntegrator::Render(const Scene &scene)const {
+    void SamplerIntegrator::Render(const Scene &scene) {
 
     }
 
