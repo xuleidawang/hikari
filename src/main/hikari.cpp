@@ -55,8 +55,8 @@ int main(int argc, char** argv){
     //                 spp, sampler dimension
     PixelSampler *sampler = new PixelSampler(4, 2);
     WhittedIntegrator *whitted = new WhittedIntegrator(4, make_shared<Camera>(camera1), make_shared<PixelSampler>(*sampler));
-    
     cornellBox->addIntegrator(whitted);
+    
     Renderer renderer1 = Renderer(cornellBox);
     renderer1.render(spp, spp_recp);
     renderer1.save_image();
