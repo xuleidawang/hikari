@@ -32,6 +32,7 @@ namespace hikari {
     }
 
     void Renderer::render(int samples,double spp_recp) {
+        printf("Starting main rendering loop...");
         int width = camera->get_width();
         int height = camera->get_height();
         Sampler *sampler = scene->getSampler();

@@ -45,9 +45,9 @@ int main(int argc, char** argv){
     cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0))), red);
     cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0))), red);
     // CornellBox->add( dynamic_cast<Shape*>(new Sphere(100, Vector3(0,0,110),   Vector3(1,1,1)*.999,Vector3(1.0,1.0,1.0)*.999,DIFF))); //light
-    const char* path = "../scene/dragon2.scene";
-    Mesh dragon(Vector3(0.0,0.0,0.0), "../scene/dragon2.obj");
-    cornellBox->addMesh(&dragon, new MatteMaterial(Vector3(0.99, 0.84, 0)));
+    //const char* path = "../scene/dragon2.scene";
+    //Mesh dragon(Vector3(0.0,0.0,0.0), "../scene/dragon2.obj");
+    //cornellBox->addMesh(&dragon, new MatteMaterial(Vector3(0.99, 0.84, 0)));
     cornellBox->buildBVH();
     
     cornellBox->addCamera(&camera1);
@@ -66,7 +66,7 @@ int main(int argc, char** argv){
     int hrs = (int)diff/3600;
     int mins = ((int)diff/60)-(hrs*60);
     int secs = (int)diff-(hrs*3600)-(mins*60);
-    printf("\rRendering (%i samples): Complete!\nTime Taken: %i hrs, %i mins, %i secs\n\n", spp, hrs, mins, secs);
+    // printf("\rRendering (%i samples): Complete!\nTime Taken: %i hrs, %i mins, %i secs\n\n", spp, hrs, mins, secs);
 
     return 0;
 }
