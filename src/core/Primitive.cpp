@@ -29,6 +29,7 @@ namespace hikari {
        if (!shape->Intersect(r, isect)) return false;
        //r.t_max = tHit;
        isect->primitive = this;
+       isect->happened = true;
 //    CHECK_GE(Dot(isect->, isect->shading.n), 0.);
        // Initialize _SurfaceInteraction::mediumInterface_ after _Shape_
        // intersection

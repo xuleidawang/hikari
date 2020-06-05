@@ -10,7 +10,9 @@ namespace hikari {
     public:
         Scene(){};
         void addIntegrator(Integrator* integrator);
+        void addSampler(Sampler* sampler);
         void addCamera(Camera* camera);
+
         void add(Shape *object, Material *material);
         void addMesh(Mesh* mesh, Material *material);
         void addPrimitive(Primitive *primitive);

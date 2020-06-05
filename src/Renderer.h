@@ -35,11 +35,11 @@ namespace hikari {
         printf("Starting main rendering loop...");
         int width = camera->get_width();
         int height = camera->get_height();
-        Sampler *sampler = scene->getSampler();
         Integrator *integrator = scene->getIntegrator();
-        
+        Sampler *sampler = scene->getSampler();
+
         // Main Loop
-        #pragma omp parallel for schedule(dynamic, 1)       // OpenMP
+//        #pragma omp parallel for schedule(dynamic, 1)       // OpenMP
         for (int y=0; y<height; y++)
         {
             fprintf(stderr, "\rRendering (%i samples): %.2f%% ",samples, (double)y/height*100);                   // progress

@@ -39,11 +39,14 @@ int main(int argc, char** argv){
 
 
     MatteMaterial* red = new MatteMaterial( Vector3(1.0, 0.0,0.0) );
-    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,0,-1000), Vector3(), Vector3(1.0,1.0,1.0))), red);
-    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(-1004,0,0), Vector3(), Vector3(0.85,0.4,0.4))), red);
-    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(1004,0,0),  Vector3(), Vector3(0.4,0.4,0.85))), red);
-    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0))), red);
-    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0))), red);
+    Sphere *sphere1 = new Sphere(1000,Vector3(0,0,-1000), Vector3(), Vector3(1.0,1.0,1.0));
+    GeometricPrimitive* primitive1 = new GeometricPrimitive(make_shared<Sphere>(*sphere1), make_shared<MatteMaterial>(*red));
+    cornellBox->addPrimitive(primitive1);
+//    cornellBox->add( dynamic_cast<GeometricPrimitive*>(new Sphere(1000,Vector3(0,0,-1000), Vector3(), Vector3(1.0,1.0,1.0)), red));
+//    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(-1004,0,0), Vector3(), Vector3(0.85,0.4,0.4))), red);
+//    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(1004,0,0),  Vector3(), Vector3(0.4,0.4,0.85))), red);
+//    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0))), red);
+//    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0))), red);
     // CornellBox->add( dynamic_cast<Shape*>(new Sphere(100, Vector3(0,0,110),   Vector3(1,1,1)*.999,Vector3(1.0,1.0,1.0)*.999,DIFF))); //light
     //const char* path = "../scene/dragon2.scene";
     //Mesh dragon(Vector3(0.0,0.0,0.0), "../scene/dragon2.obj");
@@ -56,6 +59,7 @@ int main(int argc, char** argv){
     PixelSampler *sampler = new PixelSampler(4, 2);
     WhittedIntegrator *whitted = new WhittedIntegrator(4, make_shared<Camera>(camera1), make_shared<PixelSampler>(*sampler));
     cornellBox->addIntegrator(whitted);
+    cornellBox->addSampler(sampler);
     
     Renderer renderer1 = Renderer(cornellBox);
     renderer1.render(spp, spp_recp);
