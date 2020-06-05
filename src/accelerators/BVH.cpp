@@ -193,40 +193,6 @@ namespace hikari {
         return node;
     }
 
-    Intersection BVHAccel::getIntersection(BVHBuildNode* node, const Ray& ray)const{
-        Intersection isec=Intersection();
-        if(!node)return isec;
-        Vector3 invDir(1 / ray.direction.x, 1 / ray.direction.y, 1 / ray.direction.z);
-        int dirIsNeg[3] = {invDir.x < 0, invDir.y < 0, invDir.z < 0};
-        //if intersect with this bounds
-        if(node->bounds.IntersectP(ray,invDir,dirIsNeg)){
-            //if it is a leaf node
-            if(node->nPrimitives>0){
-
-                for (int i = 0; i < node->nPrimitives; ++i){
-                    Intersection* tmp = new Intersection();
-                    if (primitives[node->firstPrimOffset + i]->Intersect(ray, tmp)){
-                        isec.happened = true;
-                        if(tmp->distance<isec.distance)
-                        {
-                            isec = *tmp;
-                        }
-                    }
-                }
-//            std::cout<<"Hit leaf node"<<std::endl;
-                return isec;
-            }
-                //else go to its two child nodes
-            else{
-                Intersection ins1 = getIntersection(node->children[0],ray);
-                Intersection ins2 = getIntersection(node->children[1],ray);
-                return ins1.distance < ins2.distance ? ins1:ins2;
-            }
-        }
-        else 
-            return isec;
-    }
-
     bool BVHAccel::Intersect(BVHBuildNode *node, const Ray &ray, Intersection* isect) const {
 
         if(root == nullptr) return false;
@@ -248,11 +214,10 @@ namespace hikari {
                         }
                     }
                 }
-//            std::cout<<"Hit leaf node"<<std::endl;
                 return isect->happened;
             }
-            else{
-                //else go to its two child nodes
+            else //It is an interior node
+                {
                 Intersection *ins1 = new Intersection();
                 if(Intersect(node->children[0],ray, ins1))
                 {
