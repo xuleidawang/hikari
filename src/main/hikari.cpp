@@ -42,8 +42,8 @@ int main(int argc, char** argv){
     Sphere *sphere1 = new Sphere(1000,Vector3(0,0,-1000), Vector3(), Vector3(1.0,1.0,1.0));
     GeometricPrimitive* primitive1 = new GeometricPrimitive(make_shared<Sphere>(*sphere1), make_shared<MatteMaterial>(*red));
     cornellBox->addPrimitive(primitive1);
-//    cornellBox->add( dynamic_cast<GeometricPrimitive*>(new Sphere(1000,Vector3(0,0,-1000), Vector3(), Vector3(1.0,1.0,1.0)), red));
-//    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(-1004,0,0), Vector3(), Vector3(0.85,0.4,0.4))), red);
+//  cornellBox->add( dynamic_cast<GeometricPrimitive*>(new Sphere(1000,Vector3(0,0,-1000), Vector3(), Vector3(1.0,1.0,1.0)), red));
+//  cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(-1004,0,0), Vector3(), Vector3(0.85,0.4,0.4))), red);
 //    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(1004,0,0),  Vector3(), Vector3(0.4,0.4,0.85))), red);
 //    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0))), red);
 //    cornellBox->add( dynamic_cast<Shape*>(new Sphere(1000,Vector3(0,1006,0),  Vector3(), Vector3(1.0,1.0,1.0))), red);

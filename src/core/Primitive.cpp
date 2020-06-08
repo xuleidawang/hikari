@@ -30,14 +30,8 @@ namespace hikari {
        //r.t_max = tHit;
        isect->primitive = this;
        isect->happened = true;
-//    CHECK_GE(Dot(isect->, isect->shading.n), 0.);
-       // Initialize _SurfaceInteraction::mediumInterface_ after _Shape_
-       // intersection
-//    if (mediumInterface.IsMediumTransition())
-//        isect->mediumInterface = mediumInterface;
-//    else
-//        isect->mediumInterface = MediumInterface(r.medium);
-       return true;
+
+       return isect->happened;
    }
    
    Bounds GeometricPrimitive::WorldBound() const { return shape->getBounds();}
