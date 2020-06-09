@@ -12,19 +12,18 @@ namespace hikari {
         if (d < 0.0) return false;
         double t = (-b - sqrt(d)) * 0.5;
         if (t > EPSILON){
-            if(t>ray.t_min&& t<ray.t_max){
+            if(t>ray.t_min&& t<ray.t_max && t < intersection->distance){
                 intersection->happened = true;
                 intersection->coords = Vector3(ray.origin + ray.direction * t);
                 intersection->normal = Vector3(intersection->coords - pos).normalize();
                 intersection->shape = this;
                 intersection->distance = t;
             }
-
             return true;
         }
         t = (-b + sqrt(d)) * 0.5;
         if (t > EPSILON){
-            if(t>ray.t_min&& t<ray.t_max){
+            if(t>ray.t_min&& t<ray.t_max && t < intersection->distance){
                 intersection->happened = true;
                 intersection->coords = Vector3(ray.origin + ray.direction * t);
                 intersection->normal = Vector3(intersection->coords - pos).normalize();
@@ -33,7 +32,6 @@ namespace hikari {
             }
             return true;
         }
-
         return false;
     }
 

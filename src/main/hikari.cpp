@@ -35,7 +35,7 @@ int main(int argc, char** argv){
 
     Scene *cornellBox = new Scene();
     // camera pos, target
-    Camera camera1(Vector3(0,-20,5),Vector3(0,0,1),1280,720);
+    Camera camera1(Vector3(0,-20,5),Vector3(0,0,1),100,100);
 
 
     MatteMaterial* red = new MatteMaterial( Vector3(1.0, 0.0,0.0) );
@@ -70,7 +70,7 @@ int main(int argc, char** argv){
     int hrs = (int)diff/3600;
     int mins = ((int)diff/60)-(hrs*60);
     int secs = (int)diff-(hrs*3600)-(mins*60);
-    // printf("\rRendering (%i samples): Complete!\nTime Taken: %i hrs, %i mins, %i secs\n\n", spp, hrs, mins, secs);
+    printf("\rRendering (%i samples): Complete!\nTime Taken: %i hrs, %i mins, %i secs\n\n", spp, hrs, mins, secs);
 
     return 0;
 }

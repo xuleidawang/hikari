@@ -196,7 +196,7 @@ namespace hikari {
     bool BVHAccel::Intersect(BVHBuildNode *node, const Ray &ray, Intersection* isect) const {
 
         if(root == nullptr) return false;
-
+        bool hit = false;
         Vector3 invDir(1 / ray.direction.x, 1 / ray.direction.y, 1 / ray.direction.z);
         int dirIsNeg[3] = {invDir.x < 0, invDir.y < 0, invDir.z < 0};
         //if intersect with this bounds
@@ -205,35 +205,27 @@ namespace hikari {
             //if it is a leaf node
             if(node->nPrimitives>0){
                 for (int i = 0; i < node->nPrimitives; ++i){
-                    Intersection* tmp = new Intersection();
-                    if (primitives[node->firstPrimOffset + i]->Intersect(ray, tmp)){
-                        isect->happened = true;
-                        if(tmp->distance<isect->distance)
-                        {
-                            isect = tmp;
-                        }
+                    if (primitives[node->firstPrimOffset + i]->Intersect(ray, isect)){
+                        hit = true;
                     }
                 }
-                return isect->happened;
+                return hit;
             }
             else //It is an interior node
                 {
-                Intersection *ins1 = new Intersection();
-                if(Intersect(node->children[0],ray, ins1))
+                if(Intersect(node->children[0],ray, isect))
                 {
-                    isect = ins1;
+                    hit = true;
                 }
-                Intersection *ins2 = new Intersection();
-                if(Intersect(node->children[1],ray, ins2))
+                if(Intersect(node->children[1],ray, isect))
                 {
-                    if(ins2->distance < ins1->distance)
-                        isect = ins2;
+                    hit = true;
                 }
-                return isect->happened;
+                return hit;
             }
         }
         else
-            return isect->happened;
+            return hit;
     }
 
     bool BVHAccel::IntersectP(BVHBuildNode *node, const Ray& ray) const 

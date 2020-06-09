@@ -42,6 +42,6 @@ namespace hikari {
     }
     bool Scene::Intersect(const Ray &ray, Intersection *isect)const{
 
-        return (this->bvh->Intersect(this->bvh->root, ray, isect));
+        return this->bvh->Intersect(this->bvh->root, ray, isect);
     }
 }
