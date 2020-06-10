@@ -16,10 +16,14 @@ namespace hikari {
         void add(Shape *object, Material *material);
         void addMesh(Mesh* mesh, Material *material);
         void addPrimitive(Primitive *primitive);
+        void addLight(Light *light);
         bool IntersectP(const Ray &ray) const;
         bool Intersect(const Ray &ray, Intersection* isect)const;
         Vector3 castRay(const Ray &ray, int depth);
+
         std::vector<std::shared_ptr<Primitive>> primitives;
+        std::vector<std::shared_ptr<Light>> lights;
+
         BVHAccel *bvh;
         void buildBVH();
 

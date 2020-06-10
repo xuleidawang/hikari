@@ -14,14 +14,20 @@ namespace hikari {
     {
         this->sampler = sampler;
     }
-    void Scene::add(Shape *object, Material *material) {
+    void Scene::add(Shape *object, Material *material) 
+    {
         auto primitive = new GeometricPrimitive(std::shared_ptr<Shape>(object), std::shared_ptr<Material>(material));
         primitives.push_back( std::shared_ptr<GeometricPrimitive>(primitive));
     }
-    void Scene::addPrimitive(Primitive* primitive){
+    void Scene::addPrimitive(Primitive* primitive)
+    {
         primitives.push_back(std::shared_ptr<Primitive> (primitive));
     }
-
+    
+    void Scene::addLight(Light* light)
+    {
+        this->lights.push_back(std::make_shared<Light>(light));
+    }
     void Scene::addMesh(Mesh *mesh, Material *material){
         for(auto tri: mesh->tris){
             // tri->m = & mesh->m_m;
