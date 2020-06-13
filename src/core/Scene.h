@@ -27,8 +27,6 @@ namespace hikari {
         BVHAccel *bvh;
         void buildBVH();
 
-        std::vector<std::shared_ptr<Light> > lights;
-
         /// Return a pointer to the scene's integrator
         Integrator *getIntegrator() const { return integrator; }
 

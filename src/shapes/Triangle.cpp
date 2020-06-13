@@ -31,6 +31,10 @@ namespace hikari{
 
     }
 
+    float Triangle::Area() const
+    {
+        return 0.5*e1.cross(e2).length();
+    }
     Vector3 Triangle::getNormal(Vector3 position){return normal;}
 
     // p = u*v0 + v*v1 + w*v2;
