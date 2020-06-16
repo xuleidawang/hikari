@@ -25,7 +25,7 @@ namespace hikari {
         }
         bool Intersect(const Ray& ray, Intersection* intersection)const;
         Vector3 getNormal(Vector3 position);
-        float Area();
+        float Area()const;
         Vector3 getBarycentric(Vector3 p);
         Bounds getBounds()const;
         Vector3 getMidpoint();
@@ -47,7 +47,7 @@ namespace hikari {
         bool Intersect(const Ray& ray, Intersection* intersection)const;
         Vector3 getNormal(Vector3 position);
         Bounds getBounds()const;
-        float Area() {return 0.0;}
+        float Area()const {return 0.0;}
     };
 
 

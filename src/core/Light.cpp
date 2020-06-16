@@ -7,9 +7,7 @@
 
 namespace hikari {
     
-    Light::Light(int nSamples)
-            : nSamples(std::max(1, nSamples))
-            {}
+    Light::Light(int nSamples): nSamples(std::max(1, nSamples)){}
     Light::~Light() {}
 
     Vector3 Light::Le(const Ray &ray) const {
@@ -19,8 +17,14 @@ namespace hikari {
             : Light(nSamples) {
         //++numAreaLights;
     }
-
     Vector3 AreaLight::L(const hikari::Intersection &intr, const hikari::Vector3 &w) const {
+        //TODO:
+        return Vector3(0.0);
+    }
+
+    Vector3 AreaLight::Sample_Li(const Intersection &ref, const Vector2 &u, Vector3 *wi, float *pdf, VisibilityTester *vis) const override
+    {
+        //TODO:
         return Vector3(0.0);
     }
     
