@@ -1,6 +1,7 @@
 #include "Scene.h"
 
-namespace hikari {
+namespace hikari
+{
 
     void Scene::addIntegrator(Integrator *integrator)
     {
@@ -14,40 +15,45 @@ namespace hikari {
     {
         this->sampler = sampler;
     }
-    void Scene::add(Shape *object, Material *material) 
+    void Scene::add(Shape *object, Material *material)
     {
         auto primitive = new GeometricPrimitive(std::shared_ptr<Shape>(object), std::shared_ptr<Material>(material));
-        primitives.push_back( std::shared_ptr<GeometricPrimitive>(primitive));
+        primitives.push_back(std::shared_ptr<GeometricPrimitive>(primitive));
     }
-    void Scene::addPrimitive(Primitive* primitive)
+    void Scene::addPrimitive(Primitive *primitive)
     {
-        primitives.push_back(std::shared_ptr<Primitive> (primitive));
+        primitives.push_back(std::shared_ptr<Primitive>(primitive));
     }
-    
-    void Scene::addLight(Light* light)
+
+    void Scene::addLight(Light *light)
     {
-        this->lights.push_back(std::make_shared<Light>(light));
+        //this->lights.push_back(std::make_shared<Light>(light));
     }
-    void Scene::addMesh(Mesh *mesh, Material *material){
-        for(auto tri: mesh->tris){
+    void Scene::addMesh(Mesh *mesh, Material *material)
+    {
+        for (auto tri : mesh->tris)
+        {
             // tri->m = & mesh->m_m;
             auto primitive = new GeometricPrimitive(std::shared_ptr<Triangle>(tri), std::shared_ptr<Material>(material));
-            primitives.push_back(std::shared_ptr<GeometricPrimitive>(primitive)); 
+            primitives.push_back(std::shared_ptr<GeometricPrimitive>(primitive));
         }
 
-        std::cout<<primitives.size();
+        std::cout << primitives.size();
     }
 
-    void Scene::buildBVH() {
+    void Scene::buildBVH()
+    {
         printf(" - Generating BVH...\n\n");
         this->bvh = new BVHAccel(primitives, 4, BVHAccel::SplitMethod::SAH);
     }
 
-    bool Scene::IntersectP(const Ray &ray) const {
+    bool Scene::IntersectP(const Ray &ray) const
+    {
         return this->bvh->IntersectP(bvh->root, ray);
     }
-    bool Scene::Intersect(const Ray &ray, Intersection *isect)const{
+    bool Scene::Intersect(const Ray &ray, Intersection *isect) const
+    {
 
         return this->bvh->Intersect(this->bvh->root, ray, isect);
     }
-}
+} // namespace hikari

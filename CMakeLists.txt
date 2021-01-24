@@ -19,7 +19,8 @@ add_executable(Hikari
         src/main/hikari.cpp
         lib/tiny_obj_loader/tiny_obj_loader.cc
         lib/tiny_obj_loader/tiny_obj_loader.h
-        
+        lib/minipbrt.h
+        lib/minipbrt.cpp
         src/Bounds.h
         src/core/Camera.h
         src/core/Intersection.h
@@ -50,8 +51,6 @@ add_executable(Hikari
         src/core/hikari.h 
         src/core/sampler.cpp 
         src/core/sampler.h 
-        src/core/parser.cpp 
-        src/core/parser.h 
         src/core/sampling.h
         src/core/sampling.cpp
         src/core/Intersection.cpp 
