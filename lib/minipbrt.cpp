@@ -7759,7 +7759,8 @@ namespace minipbrt
         }
         break;
 
-        case SamplerType::Stratified: // stratified
+        case SamplerType::Stratified:
+        default: // stratified
         {
             StratifiedSampler *stratified = new StratifiedSampler();
             bool_param("jitter", &stratified->jitter);
