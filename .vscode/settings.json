@@ -1,0 +1,8 @@
+{
+    "cmake.debugConfig": {
+        "cwd": "${workspaceRoot}/build",
+        "args": [
+            "../scene/cornell-box.pbrt"
+        ]
+    }
+}

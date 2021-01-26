@@ -32,17 +32,13 @@ add_executable(Hikari
         src/core/Light.h
         src/core/Reflection.h
         src/core/Integrator.h
-
         src/Vectors.h
-
         src/shapes/Sphere.h
         src/shapes/Sphere.cpp
         src/shapes/Triangle.h
         src/shapes/Triangle.cpp
-
         src/accelerators/BVH.h
         src/accelerators/BVH.cpp
-
         src/core/Reflection.cpp
         src/core/Camera.cpp
         src/core/Scene.cpp
