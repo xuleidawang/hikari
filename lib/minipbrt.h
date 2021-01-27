@@ -29,6 +29,7 @@ SOFTWARE.
 #include <map>
 #include <vector>
 
+#include "Scene.h"
 /// minipbrt - A simple and fast parser for PBRT v3 files
 /// =====================================================
 ///
@@ -1494,6 +1495,12 @@ namespace minipbrt
 
         Scene();
         ~Scene();
+
+        hikari::Scene *ToHikariSceen()
+        {
+            hikari::Scene *hikariScene = new hikari::Scene();
+            return hikariScene;
+        }
 
         /// Call `triangle_mesh()` on the shape at index i in the list. If the
         /// result is non-null, replace the original shape with the new triangle
